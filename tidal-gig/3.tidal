@@ -1,0 +1,19 @@
+xfadeIn 1 9 $ s "[[sn*10 hh*2] ~] ~ [bd*4 sn*2]" # gain 1
+
+d2 $ "[bd*4 ~ hh*2]*4 ~" # pan cosine # speed (slow 2 tri)
+  # decay "[0.5 0.1]/2"
+
+d3 $ s "sn*8" # n (run rand) # decay "[0.4 0.2]/4" # speed (slow 2 saw)
+  # attack "[0.4 0.2]/2" # gain 1
+
+d4 $ s "[sn*1 hh*2]*4" # gain 1 # pan cosine
+
+d5 $ s "[supersaw:2? | superpwm:2*4 ~]*4 ~ ~" # n "bb*3" + "1 .. 10" # speed "[0.1 0.4 0.6]" #gain 1
+
+d3 $ superimpose (fast 2) $ s "[bd*2 hh*2]*2"
+
+d6 $ s "[hh*4 sn*2 ~]*2 ~" # pan (tri) # speed (slow 2 isaw)
+
+xfade 1 $ "sn*1"
+
+hush
