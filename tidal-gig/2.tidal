@@ -11,5 +11,4 @@ d2 $ superimpose (fast 2) $ sound "bd sn [cp ht]*4 hh*2" # gain 0.8
 
 d3 $ superimpose (fast 10) $ s "[supersaw*16 ~]*4" # n (run rand) # decay "[0.7 0.2]/2" # pan cosine # speed (fast 10 tri)
 
-
 hush

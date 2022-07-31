@@ -44,7 +44,7 @@ void main() {
   }
   for (int i = 0; i < 70; i++) {
     o.x = atan(t * float(i));
-    o.y *= length(cos(t));
+    o.y *= length(sin(t));
   }
-  gl_FragColor = vec4(sin(t + abs((o - uv)+length(o.xy * step(o.z, 500.0))))*.3+.7,1.0);
+  gl_FragColor = vec4(sin(t - abs((o - uv)-length(o.xy * step(o.z, 100.0))))*.3+.7,1.0);
 }
