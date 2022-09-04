@@ -1,0 +1,28 @@
+setcps (80/80/2)
+
+d1 $ slow 2 $ stack [
+  s "[[bass ~]!2 bass*2 ~]!2" # n "11 10" # octave 8 # speed (tri + 0.3) # gain 0.7
+]
+
+d2 $ stack [
+  every 3 (rev) $ n "c'min e'min" # octersub 5 # octave 7
+    # s "superpiano" # decay 0.4 # dry 5 # room 2 # size 0.3 # gain 0.35
+]
+
+d3 $ stack [
+  s "~ hh*2 hh:4*2 sn" # n "10" # gain 1 # pan sine,
+  s "hh*8 ~ hh*2 ~" # speed "1.2 0.8" # gain 1.1,
+  s "~ hh*4" # n "130" # decay "8 2" # gain 1.1
+]
+
+d4 $ stack [
+  s "~ arpy*4 arpy*3 ~" # n (scale "minPent" "6 7") # speed (tri + 0.4) # dry 0.6 # room 1 # size 0.9 # attack 0.1
+]
+
+p "exper" $ every 3 (striate 4) $ s "hh:2*2" # gain 1
+p "exper" $ silence
+
+d1 $ silence
+d2 $ silence
+d3 $ silence
+d4 $ silence
