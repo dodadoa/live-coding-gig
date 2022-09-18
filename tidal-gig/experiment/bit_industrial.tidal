@@ -1,0 +1,20 @@
+setcps (180/80/2)
+
+xfade "main beat" $ fast 1 $ n "6 <1 0> [0 0] [3 <1 4>]" # sound "feel" # speed 1.5
+
+p  "sub beat" $ every 1 (striate 2) $ stack [
+  s "bd:2*4" # pan sine # lpf "1000 100"
+] # gain 1
+
+p "bass 1" $ every 2 (slow 2) $ stack [
+  n "0 [2 0] 2 [0 1]" # s "bass3" # speed (sine + 2),
+  n "0*4" # s "bass" # speed (cosine + 1)
+] # gain 1
+
+p "gab" $ slow 2 $ stack [
+  s "gabba*16" # n "c'maj7 e'min" # speed (tri - 0.4) # attack 0.05
+] # gain 1
+
+p "melody main" $ stack [
+  every 2 (# scale "chinese" "2 .. 8") $ s "superpiano*8" # scale "chinese" "2 .. 6" # attack 0.05
+] # gain 0.9
