@@ -1,0 +1,12 @@
+s0.initVideo("https://media.giphy.com/media/26tPgbUUcfS5IWiTm/giphy.mp4")
+s1.initCam()
+
+src(s0)
+  	.scale(1)
+  	.diff(noise(1, 0.2))
+	.luma(0.2)
+	.modulateKaleid(osc(0.2))
+	.modulateScale(osc(0.5), () => a.fft[0])
+	.posterize([1,5,8], 0.9)
+	.modulateHue(o0, () => Math.sin(time))
+  	.out(o0)
