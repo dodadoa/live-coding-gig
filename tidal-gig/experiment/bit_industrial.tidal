@@ -1,20 +1,73 @@
-setcps (180/80/2)
+setcps (120/80/2)
 
-xfade "main beat" $ fast 1 $ n "6 <1 0> [0 0] [3 <1 4>]" # sound "feel" # speed 1.5
+sock <- carabiner tidal 4 (-0.14)
 
-p  "sub beat" $ every 1 (striate 2) $ stack [
-  s "bd:2*4" # pan sine # lpf "1000 100"
+p "clock" $ n "[0 0] [0 0]" # s "feel" # speed 4
+
+p "clock" $ silence
+
+p "main beat" $ every 2 (# speed 1) $ fast 1 $ n "6 <1 0> [0 0] [3 <1 4>]" # sound "feel" # speed 2 # gain 1
+
+p "main beat" $ silence
+
+p "great beat" $ n "[<8 7> 2] [0 1] [2 <1 2>] [1 <1 0>]" # s "feel" # speed (saw + 3) # gain 1
+
+p "great beat" $ silence
+
+p "test beat" $ n "<2 2 3 4>*2 [0 1] 1 3*2" # s "feel" # speed 2
+
+p "test beat" $ silence
+
+p "rave" $ fast 1 $ n "[<1 4> 0] [1 5] [1 2] 0" # s "feel" # gain 1
+
+p "rave" $ silence
+
+d1 $ silence
+
+d2 $ silence
+
+d1 $ sound "hh*4" # octave 8
+
+d1 $ sound "crow*8" # pan (sine) # speed (saw + 5) # gain 0.8
+
+d1 $ silence
+
+d1 $ "feel:8*4 feel:7*2"
+
+d3 $ "~ hh*8" # pan sine # speed 2
+
+d3 $ silence
+
+d1 $ silence
+
+d2 $ s "~ [hh*2 hh*2] ~ hh*4" # gain 1.5 # pan sine
+
+d2 $ silence
+
+p  "sub beat" $ every 2 (striate 2) $ stack [
+  s "bd:1*8" # pan sine
+] # gain 0.8
+
+p "sub beat" $ silence
+
+p "bass 1" $ every 2 (# speed 4) $ stack [
+  n "[0 2] [2 3] [2 1] [0 1]" # s "bass3" # speed (sine + 3) # pan (sine)
 ] # gain 1
 
-p "bass 1" $ every 2 (slow 2) $ stack [
-  n "0 [2 0] 2 [0 1]" # s "bass3" # speed (sine + 2),
-  n "0*4" # s "bass" # speed (cosine + 1)
-] # gain 1
+p "bass 1" $ silence
 
-p "gab" $ slow 2 $ stack [
-  s "gabba*16" # n "c'maj7 e'min" # speed (tri - 0.4) # attack 0.05
-] # gain 1
+p "gab" $ stack [
+  s "gabba*4" # n "2 3 2 5"
+] # gain 1.1
+
+p "gab" $ silence
 
 p "melody main" $ stack [
-  every 2 (# scale "chinese" "2 .. 8") $ s "superpiano*8" # scale "chinese" "2 .. 6" # attack 0.05
-] # gain 0.9
+  whenmod 3 1 (# scale "chinese" "1 .. 4") $ s "superfm*8" # scale "chinese" "4 .. 2" # attack 0.1
+] # gain 1.6 # room (slow 3 $ range 0 0.75 saw) # voice 1 # pan (sine)
+
+p "melody main" $ silence
+
+p "gong" $ every 2 (# scale "indian" "8..3") $ s "supergong*8" # scale "indian" "1..3" # gain 1
+
+p "gong" $ silence

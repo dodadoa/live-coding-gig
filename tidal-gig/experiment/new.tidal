@@ -1,0 +1,10 @@
+setcps (120/80/2)
+
+sock <- carabiner tidal 4 (-0.14)
+
+p "main" $ stack [
+  jux ((# speed sine) . rev) $ n "[0 1] [0 1]*2 0 1" # s "sn" # gain 1,
+  n "[<7 8> 7]*2 [0 1]*2 [<7 8> 7]? [1 1]?" # s "feel" # gain 1,
+  n "1 1 1 1 1 2" # s "superfm" # gain 1 # lpf "1200 800",
+  every 3 ((fast 2) . rev) $ every 2 (rev) $ scale "chinese" "1..4" # s "supergong" # gain 1 # room 0.8 # size 1
+]

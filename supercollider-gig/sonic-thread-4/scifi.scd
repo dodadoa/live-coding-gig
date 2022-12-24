@@ -19,16 +19,16 @@ Ndef(\small_laser, { |time = 1, freq = 5, env0=1, env1=0|
 
 (
 Ndef(\small_laser)[999] = \xset -> Pbind(
-	\dur, Pseq([0.75,0.75, 0.5, 0.25] * 0.5, inf),
-	\freq, 30,
-	\time, 2,
+	\dur, Pseq([0.75,0.75, 0.5, 0.25] * 1, inf),
+	\freq, 15,
+	\time, 3,
 );
 )
 Ndef(\small_laser).free;
 
 
 Ndef(\laser).play;
-Ndef(\laser).fadeTime = 0;
+Ndef(\laser).fadeTime =5;
 Ndef(\laser).free;
 
 // copy/paste and modified from dcall's code
@@ -46,11 +46,13 @@ Ndef(\laser, { |amp = 0.5, sinfreq = 1000, glissf = 0.001, att = 0.01, rel = 0.9
 (
 Ndef(\laser)[999] = \xset -> Pbind(
 	\dur, Pseq([0.75,0.5]*0.5, inf),
-	\effect, 1000,
-	\att, 0.09,
-	\rel, 2
+	\effect, 100,
+	\att, 0.9,
+	\rel, 10,
+	\amp, 0.005
 );
 )
+Ndef(\laser).free;
 
 
 ////////////////////
@@ -58,10 +60,10 @@ Ndef(\laser)[999] = \xset -> Pbind(
 ////////////////////
 Ndef(\osc).play;
 Ndef(\osc).fadeTime = 1;
-Ndef(\lfo, { LFNoise1.kr(10, 1000, 100) });
+Ndef(\lfo, { LFNoise1.kr(0.5, 1000, 999) });
 Ndef(\osc).map(\freq, Ndef(\lfo));
 Ndef(\osc, { |freq| SinOsc.ar([600, 300] + freq, 0, SinOsc.kr(10).max(0) * 0.2) });
-
+Ndef(\osc).free;
 
 
 

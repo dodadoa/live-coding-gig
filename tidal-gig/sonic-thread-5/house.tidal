@@ -1,0 +1,7 @@
+setcps (90/80/2)
+
+sock <- carabiner tidal 4 (-0.14)
+
+d1 $ s "[house ~ [808oh,808ht] [ht,house]]!4" # speed 1 -- # lpf "12000 100"
+d2 $ sometimes ((# s "supergong:2*4  supergong:1*4") . (jux rev)) $ s "superfm:1*4 ~" # pan tri # speed (tri + 0.2 ) # room 0.4 # size 0.3 # attack 0.15 # lpf "[12000 500]/2"
+d3 $ stutter 4 (1/2) $ n "[[0 1][0 2][<7 8> <8 7>][0 5]]!2" # s "feel" # speed 2  # gain 0.7
