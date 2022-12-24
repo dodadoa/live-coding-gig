@@ -1,0 +1,8 @@
+shape(200,0.5,1.5)
+.scale(0.5,0.5)
+.color(2,2, 0.5)
+.repeat(10,100)
+.modulateScale(osc(3,0.5),-0.6)
+.add(o0,0.5)
+.scale(0.9)
+.out()
