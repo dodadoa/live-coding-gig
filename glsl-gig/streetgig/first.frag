@@ -24,7 +24,7 @@ float f(vec3 p) {
 }
 
 void main() {
-  vec3 uv = 0.5 - vec3(gl_FragCoord.xy, 0.3) / resolution.y;
+  vec3 uv = 0.1 - vec3(gl_FragCoord.xy, 0.3) / resolution.y;
   vec4 ss = texture2D(samples, uv.xy);
   vec4 sp = texture2D(spectrums, uv.xy);
   vec4 _ss = texture2D(spectrums, vec2(1.0));

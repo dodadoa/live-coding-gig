@@ -33,9 +33,9 @@ float mic(float i, float j){
 
 void main() {
   vec2 st = gl_FragCoord.xy / resolution - 0.5;
-  st *= 10.; //* mic(1.0, cos(time));
-	float l = 3.0 * mic(time, time);
-	vec3 col = vec3(l, 0.5, 0.3);
+  st *= 1. * mic(1.0, cos(time));
+	float l = 10.0 * mic(time, time);
+	vec3 col = vec3(l, mic(time - 10.0, time + 5.0), 0.3);
 	float f = 0.0;
 	for(float i = 0.0; i < 50.0; i++)
 	{
@@ -49,7 +49,7 @@ void main() {
     float s = sin(time + i * 30.0);
 		float c = tan(cos(time + i));
 
-		f += f * 0.0005 / length(st * vec2(c * s *  mic(i, i), s / 10.0));
+		f += f * 0.0003 / length(st * vec2(c * s *  mic(i, i), s / 10.0));
 	}
 
 	gl_FragColor = vec4(vec3(f / col), .4);

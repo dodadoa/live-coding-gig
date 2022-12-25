@@ -58,10 +58,10 @@ void main() {
 	}
 
 	pos.xyz = vec3(_sp * PI);
-	pos.xy = mat2(0.2, _ss.y, -0.6, 0.3) * pos.xz;
+	pos.xy = mat2(0.8, _ss.y, -0.6, 0.3) * pos.xz;
 	pos.yz = mat2(.1, -.6, -0.2, cos(_ss.x)) * pos.yz ;
  //zooming function
-  pos.xy *= -50.0 / pos.z;
+  pos.xy *= -100.0 / pos.z;
 
 	vec2 posXY = rotate2d(time * _ss.x * PI) * vec2(pos.x, pos.y);
   gl_Position = vec4(posXY, pos.z, 100.0);

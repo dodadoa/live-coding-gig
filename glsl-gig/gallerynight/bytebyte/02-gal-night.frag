@@ -20,17 +20,17 @@ mat2 rotate2d(float _angle){
 
 float map (vec3 p) {
   float scene = 0.0;
-  p = abs(p) - 0.5;
-  p = abs(p) - 0.3;
-  for (float i = 0.0; i < 30.0; i ++) {
+  p = abs(p) - 0.1;
+  p = abs(p) - 0.1;
+  for (float i = 0.0; i < 100.0; i ++) {
     p.xy = rotate2d(time * 3.14) * p.xz;
   }
-  scene = length(p.xyz) - 0.1;
+  scene = length(p.xyz) - .15;
   return scene;
 }
 
 void main() {
-  vec2 uv = 2.*(gl_FragCoord.xy - 0.5 * resolution.xy)/resolution.y;
+  vec2 uv = 4.*(gl_FragCoord.xy - 0.5 * resolution.xy)/resolution.y;
   vec3 pos = vec3(0, 0, -3.0);
   vec3 ray = normalize(vec3(uv, 1.0));
   vec4 _sp = texture2D(spectrums, vec2(1.0));

@@ -1,7 +1,7 @@
 /*{
   "pixelRatio": 1,
   "vertexCount": 20000,
-  "vertexMode": "POINTS",
+  "vertexMode": "LINES",
   "audio": true,
 	"gamepad": true,
 	"midi": true
@@ -75,8 +75,8 @@ void main() {
 	pos.xy *= mat2(.5,sin(time),.2,-.3);
   pos.xy *= -2.0/pos.z * pos.x;
 
-  gl_Position = vec4(pos, 1.0);
-  gl_PointSize = pos.z * mi7a * 40.0;
+  gl_Position = vec4(pos, .2);
+  gl_PointSize = pos.z * mi7a * 100.0;
 
   v_color = vec4(
 		max(length(ofs), 100.0)/ofs,

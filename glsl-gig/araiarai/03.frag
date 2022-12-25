@@ -41,14 +41,14 @@ void main() {
 	{
 		float s = sin(time) * mic(i, i * 1.5);
 		float c = cos(cos(time + i)) * mic(i * i, i * 3.0);
-		f += 0.05 * length(st * vec2(c * 3.0 * mic(i, i), s / 10.0)) * mic(i, i * 3.0);
+		f += 0.01 / length(st - vec2(c * 1.0 * mic(i, i), s / 10.0)) / mic(i, i * 3.0);
 	}
 
-  for(float i = 0.0; i < 40.0; i++)
+  for(float i = 0.0; i < 30.0; i++)
 	{
-    float c = cos(cos(time + i)) * mic(i * i, i * 3.0);
-		float s = sin(time) * mic(i, i * 1.5);
-		f += 0.05 * length(st * vec2(c * mic(i, i), s / 10.0)) * mic(i, i * 3.0);
+    float c = cos(sin(time + i)) * mic(i * i, i * 3.0);
+		float s = cos(time) + mic(i, i * 1.5);
+		f += 0.01 * length(st * vec2(c * mic(i, i), s / 5.0)) * mic(i, i * 3.0);
 	}
 
 
