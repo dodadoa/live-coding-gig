@@ -1,17 +1,11 @@
-/*{
-  "pixelRatio": 1,
-  "vertexCount": 5000,
-  "vertexMode": "LINES",
-  "audio": true
-}*/
-
-
 precision mediump float;
 
 uniform vec2 resolution;
 uniform float time;
 uniform sampler2D spectrums;
 uniform sampler2D samples;
+
+#define PI 3.14;
 
 mat2 rotate2d(float _angle){
     return mat2(cos(_angle), -sin(_angle),
@@ -20,13 +14,13 @@ mat2 rotate2d(float _angle){
 
 float map (vec3 p) {
   float scene = 0.0;
-  p = abs(p) - 0.6;
-  p = abs(p) - 0.2;
-  // for (float i = 0.0; i < 10.0; i ++) {
-  //   p.xy = rotate2d(cos(time) * 3.14) * p.zy;
-  //   p.xz = rotate2d(sin(time * 3.14) * 3.14) * p.xy - 0.09;
-  // }
-  scene = length(p) - .1;
+  p = abs(p) - 0.4;
+  p = abs(p) - 0.1;
+  for (float i = 0.0; i < 10.0; i ++) {
+    p.xy = rotate2d(cos(time) * PI) * p.zy;
+    p.xz = rotate2d(sin(time * PI) * 3.14) * p.xy - 0.09;
+  }
+  scene = length(p) - .5;
   return scene;
 }
 
@@ -40,7 +34,7 @@ void main() {
   const float  count = 50.0;
   for (float i = count; i > 0.0; i--) {
     float dist = map(pos * _ss.x);
-    if (dist < 0.001) {
+    if (dist < 0.0001) {
       shade = i / count;
       break;
     }

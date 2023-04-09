@@ -44,9 +44,9 @@ void main() {
 		f += 0.0025 * length(st * vec2(c * 3.0 * mic(i, i), s / 10.0)) * mic(i, i * 3.0);
 	}
 
-  for(float i = 0.0; i < 50.0; i++)
+  for(float i = 0.0; i < 100.0; i++)
 	{
-    float s = sin(time + i * 30.0);
+    float s = sin(time + i * 10.0);
 		float c = tan(cos(time + i));
 
 		f += f * 0.0003 / length(st * vec2(c * s *  mic(i, i), s / 10.0));

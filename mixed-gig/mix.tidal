@@ -1,0 +1,22 @@
+setcps (95/80/2)
+
+d1 $ sometimes (# octave 1) $ s "spec_pad*8" # n "0 1 2 3" # octave 4 # pan tri # speed 2 # gain 1
+d1 $ silence
+
+d2 $ degrade $ "hh*16" # pan tri # speed 4 # gain 1.2
+d2 $ silence
+
+d3 $ sometimes (# speed 4) $ sometimes (jux rev) $ "808ht*8 808oh*8" # speed 3
+d3 $ silence
+
+d4 $ s "spec_pad" # n "0 1 3 4" # attack 0.2 # release 0.3 # gain 1 # octave 6
+d4 $ silence
+
+d7 $ degrade $ s "laser*16" # n "10 20 15 5" # octave 2 # gain 0.8
+d7 $ silence
+
+d6 $ sometimes (# speed 2) $ s "bubble_laser*8" # n "1" # gain 2
+d6 $ silence
+
+d7 $ sometimes (# speed 4) $ s "bd*16" # speed 5 # gain 0.8
+d7 $ silence
