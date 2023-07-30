@@ -1,1 +1,5 @@
-d1 $ s "glitch:2*1" # gain 1.2
+panic
+
+d1 $ stack [
+  s "glitch:2*4"
+] # gain 1

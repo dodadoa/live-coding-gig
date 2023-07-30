@@ -1,0 +1,10 @@
+panic
+
+d1 $ stack [
+  chop 2 $ s "glitch:2*4 glitch:5*2" # room 0.4 # size 0.9,
+  chop 1 $ s "808superbass:4*2 808superbass" # speed 1
+] # gain 1
+
+d2 $ slow 4 $ swing 2 $ chop 2 $ sometimes (jux rev) $ n "0 1 2 3 4 5 6 7 8 9" # s "counting" # amp 5 # accelerate 2 # octave 4 # speed 0.8 # room 0.5 # size 0.8 # gain 0.8 # pan sine
+d3 $ degrade $ swing 4 $ chop 2 $ slow 4 $ n "10 11 12 13 14 15 16 17 18 19" # s "counting" # amp 5 # speed 0.5 # gain 0.9
+d4 $ degrade $ chop 2 $ striate 4 $ fast 4 $ stripe 4 $ sometimes (# speed (tri + 3)) $ n "0 10" # s "counting" # speed (sine + 4) # amp 5 # gain 0.8 # room 0.4 # size 0.8
