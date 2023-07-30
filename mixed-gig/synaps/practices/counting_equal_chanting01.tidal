@@ -1,0 +1,4 @@
+d1 $ chop 2 $ s "glitch:2*1" # gain 1.2
+d2 $ degrade $ slow 4 $ stripe 2 $ chop 2 $ n "0 1 2 3 4 5 6 7 8" # s "counting" # amp 4 # speed 0.7 # room 0.6 # size 0.9 # gain 0.8
+d3 $ degrade $ slow 2 $ chop 4 $ striate 4 $ n "9 10 10 11 12 13 14 15 16" # s "counting" # amp 4 # speed 1 # octave 6 # room 0.5 # size 0.8
+d4 $ chop 2 $ s "808superbass*2" # sustain 1.2

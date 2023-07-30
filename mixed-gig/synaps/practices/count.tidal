@@ -1,3 +1,9 @@
-d1  $ s "omi" <| note "a [~ g] [c b] [g gs]"
-    # octave "<3 4 5 6 7 8>"
-    # sustain "{1 2 1}%8"
+d1 $ degrade $ chop 2 $ slow 2 $ striate 4 $ n "0 1 2 3 4 5" # s "counting" # amp 5 # room 0.5 # size 0.3 # speed sine + 1 # gain 0.8
+d2 $ degrade $ slow 2 $ chop 1 $ striate 4 $ n "6 7 8 9" # s "counting" # amp 5 # room 0.5 # size 0.3 # speed 0.8 # gain 0.9
+d3 $ degrade $ chop 2 $ slow 2 $ striate 2 $ n "10 11 12 13 14 15 16 17 18" # s "counting" # start 0.2 # end 2 # amp 5 # pan sine # speed 0.4 # room 0.5 # size 0.7
+d4 $ chop 2 $ s "glitch:2*1" # gain 1.1
+d5 $ chop 2 $ s "808superbass*2 808superbass:3*4"
+
+do
+  d1 $ silence
+  d2 $ silence
