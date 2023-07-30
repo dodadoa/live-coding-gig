@@ -18,20 +18,20 @@ Ndef(\pad, {
 	arg freq, amp = 0.0;
 	var snd;
 	snd = Saw.ar(freq * (LFNoise2.kr(3 ! 8) * 2).midiratio);
-	snd = RLPF.ar(snd, LFNoise2.kr(3 ! 8).linexp(-1, 1, 10, 8000), 0.1);
+	snd = RLPF.ar(snd, LFNoise2.kr(3 ! 8).linexp(-1, 1, 5, 7000), 3);
 	snd = Splay.ar(snd);
 	snd = snd * Env.asr(1, 1, 1).ar(Done.freeSelf, \gate.kr(1));
-	snd = snd * -16.dbamp * amp;
+	snd = snd * amp;
 	Out.ar(\out.kr(0), snd);
 }).add;
 )
 
 (
 Ndef(\pad)[999] = \xset -> Pbind(
-	\time, Pseq([0.75,0.5, 0.5, 0.5] * 0.1, inf),
-	\dur, Pseq([0.75,0.5, 0.5, 0.5] * 0.1, inf),
-	\freq, Pseq([60, 53, 60], inf),
-	\amp, 0.05
+	\time, 1,
+	\dur, 0.1,
+	\freq, Pseq([100, 80, 70, 60, 75, 85, 220], inf),
+	\amp, 0.7
 );
 )
 
@@ -76,10 +76,10 @@ Ndef(\modpad).play;
 Ndef(\modpad).free;
 (
 Ndef(\modpad)[999] = \xset -> Pbind(
-	\time, Pseq([0.75,0.5, 0.5, 0.5] * 0.1, inf),
-	\dur, Pseq([0.75,0.5, 0.5, 0.5] * 0.1, inf),
-	\freq, Pseq([20, 40, 50], inf),
-	\amp, 0.3
+	\time, Pseq([0.75,0.5, 0.5, 0.5] * 10, inf),
+	\dur, Pseq([0.75,0.5, 0.5, 0.5] * 4, inf),
+	\freq, Pseq([100, 50, 25, 12.5], inf),
+	\amp, 1
 );
 )
 

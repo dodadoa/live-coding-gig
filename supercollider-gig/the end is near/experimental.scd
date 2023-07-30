@@ -66,7 +66,7 @@ Ndef(\laser)[999] = \xset -> Pbind(
 	\effect, Pfunc({rrand(100, 2000)}),
 	\att, 0.5,
 	\rel, 2,
-	\amp, 0.008
+	\amp, 0.08
 );
 )
 

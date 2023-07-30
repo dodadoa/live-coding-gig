@@ -1,0 +1,3 @@
+-- manipulate scale with random
+-- t is true, boolean mapping
+d1 $ n (struct "[~ t*4 ~ t*2]" $ scale "chinese" (irand 8)) # s "superfm" # room 0.3 # gain 0.8

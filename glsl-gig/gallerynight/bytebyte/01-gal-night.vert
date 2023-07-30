@@ -1,7 +1,7 @@
 /*{
   "pixelRatio": 1,
-  "vertexCount": 5000,
-  "vertexMode": "LINES",
+  "vertexCount": 500,
+  "vertexMode": "TRIANGLES",
   "audio": true
 }*/
 
@@ -28,8 +28,7 @@ vec3 posFunction(float t, float i) {
 }
 
 void main() {
-  float fps = time * .6;
-  float i = vertexId * 10.;
+  float fps = time * .6;  float i = vertexId * 100.;
 
   vec3 ofs = vec3(0.0);
   vec4 _samples = texture2D(samples, vec2(1.0));
@@ -39,11 +38,11 @@ void main() {
 
 	ofs = abs(fract(pos));
 	pos = vec3(_spectrums) * pos;
-	pos.xy *= -1.0 / pos.z;
-	pos.z = 10.0 / pos.z;
+	pos.xy *= 1.0 / pos.z;
+	pos.z = 50.0 / pos.x;
 
-  gl_Position = vec4(pos, 1.0);
-  gl_PointSize = pos.z * 30.0;
+  gl_Position = vec4(pos, 5.0);
+  gl_PointSize = pos.z * 1.0;
 
   v_color = vec4(
 		ofs,

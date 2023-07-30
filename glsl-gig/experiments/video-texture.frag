@@ -33,7 +33,7 @@ void main() {
   vec2 sm = smoothstep(sin(time), cos(time), uv) + uv.xy;
   vec4 bb = texture2D(backbuffer, _samples.xy * uv);
   vec4 vidT = texture2D(video, rotate2(_samples.x / .03 * 2.0 * 3.14) * uv);
-  vec4 o = vidT / bb;
+  vec4 o = vidT;
 
   gl_FragColor = o;
 }

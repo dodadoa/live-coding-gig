@@ -44,7 +44,7 @@ vec3 push(float t, float i, vec3 ofs, float lerpEnd) {
 
 void main() {
 	// FPS
-	float fps = time * 0.5;
+	float fps = time * 1.5;
 	float i = sin(vertexId) + cos(vertexId) * 20.;
   vec3 pos = posFunction(fps, i);
   vec3 ofs = vec3(0.0);
@@ -52,14 +52,15 @@ void main() {
 	vec4 _ss = texture2D(samples, pos.xy);
 	vec4 _sp = texture2D(spectrums, pos.xy);
 
-	// ofs = pos;
+	// pos += pos - ofs;
 	for(float ii = 1.0; ii < 100.0; ii++) {
 		ofs = ofs + push(fps * 60.0, ii, ofs, 100.0);
 	}
 
 	pos.xyz = vec3(_sp * PI);
 	pos.xy = mat2(0.8, _ss.y, -0.6, 0.3) * pos.xz;
-	pos.yz = mat2(.1, -.6, -0.2, cos(_ss.x)) * pos.yz ;
+	pos.yz = mat2(.1, -.6, -0.2, cos(_ss.x)) * pos.yz;
+	pos.zy = mat2(.5) * pos.yz ;
  //zooming function
   pos.xy *= -100.0 / pos.z;
 

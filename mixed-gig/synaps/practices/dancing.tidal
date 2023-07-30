@@ -1,0 +1,19 @@
+setcps (90/80/2)
+
+do
+  d1 $ fast 4 $ s "[<bd 808oh> 808sd 808mt <808bd house:4/2>]" # gain 0.7
+  d2 $ n "0 1 2 1" # s "superfm" # octave 4 # pan sine # gain 0.8 # room 0.5 # size 0.5
+  d3 $ chop 1 $ s "glitch:2*1" # gain 0.8
+  d4 $ s "house:5*16" # pan sine # gain 0.6 # sustain 1.5 # room 0.5 # size 1
+  d5 $ n (struct "[~ t*4 ~ t*2]" $ scale "chinese" (irand 8)) # s "superfm" # room 0.3 # gain 0.5
+  d6 $ n (struct "[t*2 ~]" $ scale "chinese" (irand 8))  # s "control" # decay 2 # release 2 # gain 0.7
+
+d1 $ chop 4 $ sound "[808superbass:3*4 808superbass*2]" # gain 0.7
+
+do
+  d1 $ silence
+  d2 $ silence
+  d3 $ silence
+  d4 $ silence
+  -- d5 $ silence
+  d6 $ silence

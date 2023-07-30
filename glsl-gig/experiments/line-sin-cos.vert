@@ -1,6 +1,6 @@
 /*{
   "pixelRatio": 1,
-  "vertexCount": 5000,
+  "vertexCount": 3000,
   "vertexMode": "LINES",
   "audio": true
 }*/
@@ -37,7 +37,7 @@ void main() {
 	vec3 pos = posFunction(fps, i * _samples.x);
 	ofs = abs(fract(pos));
 	pos =  vec3(_spectrums) * pos;
-	// pos.xy *= -1.0 / pos.z;
+	pos.xy *= 5.0 * pos.z;
 	pos.z =  1.0 / pos.z;
 
   gl_Position = vec4(pos, 1.0);

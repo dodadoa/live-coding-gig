@@ -61,7 +61,7 @@ float fbm ( in vec2 _st) {
 void main() {
     vec2 st = gl_FragCoord.xy/resolution.xy*3.;
     st += st * abs(sin(time*0.1)*3.0);
-    vec3 color = vec3(0.0);
+    vec3 color = vec3(1.0);
 
     vec4 _ss = texture2D(samples, vec2(1.0));
     vec4 _sp = texture2D(spectrums, vec2(1.0));
@@ -85,25 +85,25 @@ void main() {
     vec2 i_st = floor(st);
     vec2 f_st = fract(st);
 
-    float m_dist = .4;
-    for (int j= -1; j <= 1; j++ ) {
-        for (int i= -1; i <= 1; i++ ) {
-            vec2 neighbor = vec2(float(i),float(j));
-            vec2 offset = random2(i_st * neighbor);
-            offset = .5 + .5 * sin(time * offset * 3.0);
-            vec2 pos = neighbor + offset - i_st;
-            float dist = length(pos);
-            m_dist = max(m_dist, m_dist * dist);
-        }
-    }
+    // float m_dist = .4;
+    // for (int j= -1; j <= 1; j++ ) {
+    //     for (int i= -1; i <= 1; i++ ) {
+    //         vec2 neighbor = vec2(float(i),float(j));
+    //         vec2 offset = random2(i_st * neighbor);
+    //         offset = .5 + .5 * sin(time * offset * 3.0);
+    //         vec2 pos = neighbor + offset - i_st;
+    //         float dist = length(pos);
+    //         m_dist = max(m_dist, m_dist * dist);
+    //     }
+    // }
 
     float x = 0.0;
-    if (_ss.r < 0.5) {
-      x = 3.0;
+    if (_ss.r < 0.001) {
+      x = 10.0;
     } else {
-      x = 0.5;
+      x = 100.;
     }
-    color += step(0.060, m_dist * _sss.x * _sss.y);
+    // color += step(0.60, m_dist * _sss.x * _sss.y);
 
 
     gl_FragColor = vec4((f * 3.0) * color, 1.0);

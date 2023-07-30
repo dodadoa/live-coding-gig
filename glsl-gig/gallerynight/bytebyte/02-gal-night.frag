@@ -21,11 +21,13 @@ mat2 rotate2d(float _angle){
 float map (vec3 p) {
   float scene = 0.0;
   p = abs(p) - 0.1;
-  p = abs(p) - 0.1;
-  for (float i = 0.0; i < 100.0; i ++) {
+  for (float i = 0.0; i < 10.0; i ++) {
+    p = abs(p);
+    p = log(p);
     p.xy = rotate2d(time * 3.14) * p.xz;
+    p.yz = rotate2d(time * 3.14) * p.xz;
   }
-  scene = length(p.xyz) - .15;
+  scene = length(p.xyz) - .001;
   return scene;
 }
 
@@ -39,7 +41,7 @@ void main() {
   const float  count = 50.0;
   for (float i = count; i > 0.0; i--) {
     float dist = map(pos * _ss.x);
-    if (dist < 0.001) {
+    if (dist < 0.01) {
       shade = i / count;
       break;
     }

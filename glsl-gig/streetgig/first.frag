@@ -36,15 +36,15 @@ void main() {
   float l = length(uv.xyz) * float(cos(t));
   float a = atan(uv.y, uv.x);
   float m = 0.0;
-  for(int i=0; i<100; i++){
-    m = texture2D(samples, vec2(float(i / 40))).r;
+  for(int i=0; i<50; i++){
+    m = texture2D(samples, vec2(float(i / 10))).r;
+    o+=f(o*m)/(uv * m / _ss.x);
     o+=f(o*m)*(uv * m / _ss.x);
-    uv.x *= m * _ss.y;
     uv.z *= m * fract(t) + _ss.x;
   }
   for (int i = 0; i < 70; i++) {
     o.x = atan(t * float(i));
     o.y *= length(sin(t));
   }
-  gl_FragColor = vec4(sin(t - abs((o - uv)-length(o.xy * step(o.z, 100.0))))*.3+.7,1.0);
+  gl_FragColor = vec4(sin(t / abs((o - uv)-length(o.xy * step(o.z, 100.0))))*.3+.7,1.0);
 }

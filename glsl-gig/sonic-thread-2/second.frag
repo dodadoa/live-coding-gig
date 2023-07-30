@@ -28,10 +28,10 @@ void main() {
   uv *= mix(0.5, 2.0, 0.5 + 0.5 * fract(cos(t) * 30.0 * _ss.x));
   int m = int(mix(2.0, 10.0, 0.5 + 0.5 * (texture2D(samples, vec2(uv)).r * 10.0 * vol)));
 
-  col.r = f(vec2(atan(uv.y * float(m)), uv.x - _ss.x), 1.0);
+  col.b = f(vec2(atan(uv.y * float(m)), uv.x - _ss.x), 1.0);
   col.r += f(vec2(fract(uv.x * 120.0), 5.0 * _ss.x + 5.0 * sin(t * _ss.x / 100.0)), 0.5);
-  col.r += step(0.5 , fract(f(vec2(fract(pv.x * 120.0), 5.0 * pv.x + 5.0 * cos(t / 10.0)), 0.5)));
+  col.g += step(0.5 , fract(f(vec2(fract(pv.x * 120.0), 5.0 * pv.x + 5.0 * cos(t / 10.0)), 0.5)));
   col.r += step(3.0 , fract(f(vec2(fract(pv.x * 120.0), 5.0 * pv.x + 5.0 * cos(t / 10.0)), 0.5)));
-  col.r += step(5.0 , fract(f(vec2(fract(pv.x * _ss.x * 100.0), 3.0 * pv.x * 5.0 * atan(t * t)), 0.3)));
+  col.b += step(5.0 , fract(f(vec2(fract(pv.x * _ss.x * 100.0), 3.0 * pv.x * 5.0 * atan(t * t)), 0.3)));
   gl_FragColor = vec4(col - cos(fract(t) * _ss.x) * 0.3, .01);
 }

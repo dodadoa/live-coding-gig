@@ -1,0 +1,25 @@
+setcps (100/80/2)
+
+do
+  d1 silence
+  d2 silence
+  d3 silence
+  d4 silence
+  d5 silence
+  d6 silence
+
+d1 $ s "[808bd/2 [hh,808oh] ~ [sn,808bd]]" # speed 1 -- lpf "12000 400" # gain 1
+
+d2 $ sometimes (# octave 6) $ n "[0 1 2 3]!4" # s "superpiano" # octave 5
+  # lpf "[12000 100]/2" # room 0.7 # size 0.4 # gain 1 # pan sine # attack 0.2
+
+d3 $ chop 3 $ s "house:3*8" # gain 1
+
+d3 $ sometimes ((# s "supergong:2*2  supergong:1*2") . (jux rev)) $ s "supergong:1*4 ~" # pan tri # speed 0.8
+  # lpf "[12000 500]/2" # gain 1
+
+d4 $ sometimes (# speed 2) $ s "808ht*16" # speed 1 # gain 0.6
+d1 silence
+
+d5 $ sometimes (# speed 4) $ degrade $ s "gabba*16" # speed 2 # gain 1
+d5 silence

@@ -1,7 +1,7 @@
 /*{
   "pixelRatio": 1,
-  "vertexCount": 5000,
-  "vertexMode": "LINES",
+  "vertexCount": 500,
+  "vertexMode": "TRIANGLES",
   "audio": true,
 	"gamepad": true
 }*/
@@ -14,7 +14,7 @@ uniform vec2 resolution;
 varying vec4 v_color;
 uniform sampler2D samples;
 uniform sampler2D spectrums;
-uniform sampler2D gamepad;
+	uniform sampler2D gamepad;
 
 vec3 posf2(float t, float i) {
 	return vec3(
@@ -22,7 +22,7 @@ vec3 posf2(float t, float i) {
       + cos(t* 2.0 + i * .5),
       cos(t* 1.3 + i * 0.5)
       + cos(t* 1.2 + i * 0.5)
-      + cos(t* 1.3 + i * 0.5),
+      + cos(t* 1.3 + i * 0.2),
       cos(t* 1.0 + i * .5)
 			+ cos(t + i)
 			+ cos(t * 2.0 + i * 35.0)
@@ -66,13 +66,13 @@ void main() {
   pos.xz *= mat2(.1,-.6,-.6, cos(time));
 	pos.xy *= mat2(.5,sin(time),.2,-.3);
   pos.zy *= -1.0/pos.z;
-  pos.xy = + pos.xy + vec2( _samples.x - 0.5, _samples.y - 0.5);
+  pos.xy = + pos.xy + vec2( _samples.x - 0.5, _samples.y - 1.5);
 
   gl_Position = vec4(pos.x, pos.y, pos.z, 1.0 / _samples.z);
-  gl_PointSize = pos.z * 20.0;
+  // gl_PointSize = pos.z * 20.0;
 
   v_color = vec4(
-		max(length(ofs), 100.0)/ofs,
+		max(length(ofs), 1000.0)/ofs,
 		1.0
 	);
 }

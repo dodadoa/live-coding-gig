@@ -1,0 +1,24 @@
+setcps (90/80/2)|
+
+d1 $ s "hh*8"
+
+d2 $ sometimes ((# s "supergong:2*4  supergong:1*4") . (jux rev))
+  $ s "supergong:1*4 ~" # pan tri # speed 1 # room 0.4 # size 0.3 # lpf "[12000 500]/2"
+
+d3 $ s "[house ~ [808oh,808ht] [ht,house]]!4" # speed 1 # gain 1 -- # lpf "12000 100"
+
+d5 $ degrade $ sometimes (fast 2) $ sometimes (jux rev) $ n "[1 1 1 3][1 2 2 1]" # s "superpiano"  # gain 1 -- # room 1 # size 0.6 # release 1.4 # attack 0.25 # pan cosine
+
+d6 $ stutter 4 (1/2) $ n "[[0 1][0 2][<7 8> <8 7>][0 5]]!2" # s "feel" # speed 2  # gain 0.7 # lpf "1200 200"
+
+d7 $ sometimes ((# s "supergong:2*4  supergong:1*4") . (jux rev)) $ s "superfm:1*4 ~" # pan tri # speed (tri + 0.2 ) # room 0.4 # size 0.3 # attack 0.15 # lpf "[12000 500]/2"
+
+do
+  d1 $ s "hh*16"
+  d5 silence
+
+do
+  d1 silence
+  d2 silence
+  d3 silence
+  d4 silence

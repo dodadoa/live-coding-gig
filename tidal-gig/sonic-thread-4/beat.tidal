@@ -2,14 +2,14 @@ setcps (180/80/2)
 
 d1 $ whenmod 6 5 (slow 2) $ every 2 (slow 2) $ stack [
   s "[[bass ~]!2 bass*2 ~]!2" # n "11 10" # octave 8 # speed 2 # gain 1
-] # gain 0
+] # gain 1
 
 d1 $ silence
 
 d2 $ whenmod 6 3 (striate 4) $ stack [
   n "c'maj e'maj7" # octave 6 # octersub 12 # s "superpiano supersaw?" # gain 0.8 # dry 2 # room 1,
   n (scale "egyptian" "2 3 5 7") # s "supertron" # pan cosine
-] # gain 0
+] # gain 1
 
 d3 $ stack [
   s "<hh*8 hh*4>" # n "120 121" # gain 1.6 # lpf "500 200 100"
