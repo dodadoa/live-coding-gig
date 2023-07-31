@@ -10,7 +10,7 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 431.0, 223.0, 758.0, 530.0 ],
+		"rect" : [ 497.0, 241.0, 1094.0, 530.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -1005,7 +1005,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "int" ],
-					"patching_rect" : [ 610.0, -32.0, 37.0, 22.0 ],
+					"patching_rect" : [ 669.5, -89.5, 37.0, 22.0 ],
 					"text" : "* 100"
 				}
 
@@ -1454,7 +1454,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "int" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 636.0, 259.0, 24.0, 24.0 ]
+					"patching_rect" : [ 642.0, 185.0, 24.0, 24.0 ]
 				}
 
 			}
@@ -1465,7 +1465,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "bang" ],
-					"patching_rect" : [ 468.0, 226.0, 69.0, 22.0 ],
+					"patching_rect" : [ 559.5, 236.0, 69.0, 22.0 ],
 					"text" : "metro 1000"
 				}
 
@@ -1600,7 +1600,7 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-9", 0 ],
-					"midpoints" : [ 502.5, 305.0, 568.5, 305.0, 568.5, -239.0, 489.0, -239.0 ],
+					"midpoints" : [ 502.5, 305.0, 742.5, 305.0, 742.5, -239.0, 489.0, -239.0 ],
 					"order" : 0,
 					"source" : [ "obj-12", 0 ]
 				}
@@ -2040,6 +2040,7 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-20", 0 ],
+					"midpoints" : [ 489.0, -177.0, 679.0, -177.0 ],
 					"order" : 0,
 					"source" : [ "obj-9", 0 ]
 				}

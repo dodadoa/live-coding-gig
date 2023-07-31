@@ -1,0 +1,4 @@
+setcps (110/60/4)
+
+d1 $ s "glitch:2" # room 0.5 # size 0.9
+d2 $ n "0" # s "scream"
