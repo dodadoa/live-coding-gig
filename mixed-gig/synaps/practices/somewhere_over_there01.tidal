@@ -1,3 +1,6 @@
-setcps (165/60/4)
-d1 $ n "0" # s "breaks165"
+setcps (120/60/4)
+
+d1 $ s "glitch:2*2"
+d2 $ slow 2 $ striate 2 $ sometimes ( jux rev ) $ s "scream:0*2 scream:1*2 scream:2*2 scream:3*2" # cut 2 # room 0.4 # size 0.8
+
 panic
