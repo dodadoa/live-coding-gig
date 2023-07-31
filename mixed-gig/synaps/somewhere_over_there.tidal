@@ -1,0 +1,1 @@
+d1 $ swingBy 6 (1/12) $ stripe 2 $ striate 4 $ n "0 1 2 3" # s "sequential" # cut 1
