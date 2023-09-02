@@ -8,10 +8,9 @@ d2
   $ every 2 (fast 2)
   $ striate 3
   $ every 3 (# speed 0.8)
-  -- $ slice 8 "0 1 3 3 1 2"
   $ every 2 (bite 2 "0 1*2 ~ 2")
   $ stripe 2
-  $ sometimes ( jux rev ) $ s "scream:0*2 scream:1*2 scream:2*2 scream:3*2"
+  $ sometimes ( jux rev ) $ s "scream:0*1 scream:1*1 scream:2*1 scream:3*1"
   # legato 2
   # accelerate 1
   # grain rand (rand * 2 + 0.5)

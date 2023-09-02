@@ -1,5 +1,32 @@
 panic
 
+setcps (130/60/4)
+
 d1 $ stack [
-  s "glitch:2*4"
-] # gain 1
+  chop 2 $ s "glitch:2*4" # room 0.7  # size 0.9,
+  s "808superbass:1*4 808superbass:4*2" # speed 2
+] # gain 0.9
+
+d2 $ slow 2
+  $ stripe 2
+  $ sometimes (# speed 0.6)
+  $ n "0 1 2 3 4 5 6 7 8 9"
+  # speed 0.4
+  # s "counting"
+  # amp 1
+  # room 0.5 # size 0.8
+  # gain 0.8
+
+d3
+  $ slow 2
+  $ striate 4
+  $ stripe 2
+  $ swing 2
+  $ every 2 (# speed 2)
+  $ sometimes (# speed (tri+ 2))
+  $ n "10 11 12 13 14 15 16 17 18"
+  # s "counting"
+  # amp 1.5
+  # gain 0.8
+
+d4 $ degrade $ every 2 (striate 8) $ every 3 (fast 6) $ fast 4 $ striate 4 $ stripe 2 $ n "0 10" # s "counting" # gain 1.5 # speed 3

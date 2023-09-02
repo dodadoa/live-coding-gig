@@ -1,4 +1,31 @@
 setcps (110/60/4)
 
-d1 $ s "glitch:2" # room 0.5 # size 0.9
-d2 $ n "0" # s "scream"
+d1 $ fast 2 $ chop 4 $ s "glitch:2*4 glitch:5*2" # room 0.5 # size 0.9
+
+d2
+  $ every 2 (# accelerate 1)
+  $ swingBy 6 (1/12) $ sometimes (jux rev) $ striate 2 $ n "0 1 2 3" # s "scream" # gain 1
+
+d3 $ every 2 (# speed 0.5) $ swingBy 6 (1/12)
+  $ degrade
+  $ sometimes (jux rev)
+  $ striate 2
+  $ n "0 1 2 3" # s "scream" # gain 1
+  # speed 0.8
+  # gain 0.8
+
+d4
+  $ degrade
+  $ slow 2
+  $ every 2 (fast 2)
+  $ striate 3
+  $ every 3 (# speed 0.8)
+  $ every 2 (bite 2 "0 1*2 ~ 2")
+  $ stripe 2
+  $ sometimes ( jux rev ) $ s "scream:0*1 scream:1*1 scream:2*1 scream:3*1"
+  # legato 2
+  # accelerate 1
+  # grain rand (rand * 2 + 0.5)
+  # cut 2 # room 0.4 # size 0.8
+
+d5 $ every 2 (swing 5) $ "[808superbass*1 808superbass:4*2]" # gain 1
