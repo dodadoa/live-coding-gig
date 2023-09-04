@@ -1,0 +1,17 @@
+setcps (110/60/4)
+
+d3 $ silence
+
+d1 $ s "808superbass" # gain 1.1
+
+d2
+  $ degrade
+  $ striate 2 $ sometimes (# accelerate 4)
+  $ sometimes (# speed 2) $ every 2 (# accelerate 2) $ n "0 1 2 3" # s "counting" # amp 5 # gain 0.9
+  # pan cosine
+
+d3 $ sometimes (# speed 0.5 ) $ swing 2 $ n "4 5 6 7" # s  "counting" # amp 5 # gain 0.9
+
+d4 $ striate 2 $ chop 2 $ s "glitch:4" # pan cosine
+
+d5 $ n "0 2 4 6" # s "counting" # accelerate 3

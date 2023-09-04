@@ -1,0 +1,6 @@
+d1 $ striate 2
+  -- $ zoom (0.25, 0.75)
+  $ chop 4 $ sometimes (# accelerate 2) $ every 3 (chop 2) $ every 2 (swing 3) $ s "breaks165" # octave 5 # gain 1.4
+
+d2 $ degrade $ striate 2 $ chop 1 $ iter 4 $ n "0 1 2 3" # s "procshort"
+d3 $ degrade $ swing 2 $ striate 2 $ (struct "t*2 ~ ~" $ scale "chinese" (irand 8)) # s "supergong" # sustain 1.2 # attack 0.1 # gain 1 # octave 5 # size 0.4 # room 0.9 # gain 0.8

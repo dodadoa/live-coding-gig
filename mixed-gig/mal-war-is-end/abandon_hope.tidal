@@ -1,0 +1,23 @@
+setcps (100/60/4)
+
+d1 $ striate 2 $ every 2 (# speed 2) $ s "arp*4 arp:1" # gain 1
+
+d2
+  $ superimpose (striate 3)
+  $ sometimes (# accelerate (irand 3))
+  $ sound "[808superbass*2 808superbass:2*2]" # accelerate 0 # gain 1.2
+
+d3 $ every 2 (chop 4) $ sometimes (# speed 0.5) $ chop 1 $ s "glitch:3 glitch:0*2" # room 0.5 # size 0.9 # gain 1 # octave (irand 8)
+d4 $ striate 2 $ chop 4 $ swing 2 $ n "0 1 2" # s "darkpad" # gain 1 # speed 2 # octave (irand 4)
+d5 $ striate 4 $ chop 2 $ s "glitch:2*4" # pan sine # room 0.3 # size 0.9 # speed (irand 2)
+
+d6 $ s "pebbles" # pan cosine #  gain 0.5
+
+do
+  d1 $ silence
+  d2 $ silence
+  d4 $ silence
+  d5 $ silence
+  d6 $ silence
+
+panic

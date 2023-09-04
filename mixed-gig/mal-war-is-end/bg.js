@@ -1,0 +1,7 @@
+osc(10, 0.5, 0.4)
+.modulate(noise(1, 2), 1)
+.modulateRotate(o0, 0.5)
+// .sub(shape(1).scale(10), () => a.fft[0] * 1)
+.luma(0.8)
+.modulateRotate(o0, 1 )
+.out(o0)

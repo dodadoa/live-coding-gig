@@ -1,0 +1,7 @@
+setcps (165/60/4)
+d1 $ striate 2 $ every 4 (fast 0.5) $ chop 4 $ every 3 (swing 3) $ sometimes (# accelerate 2) $ every 2 (chop 2) $ s "breaks165" # gain 1.2
+d2 $ striate 2 $ every 2 (# accelerate 2) $ iter 8 $ n "2 3 0 1" # s "procshort" # sustain 1.2 # gain 0.9
+d3 $ degrade $ striate 2 $ every 3 (# n "0 1 1 2") $ n (scale "chinese" "0 1 1 2") # s "supergong" # octave 6 # sustain 1.2 # room 0.6 # size 0.9 # gain 0.75
+d4 $ striate 4 $ "808superbass:4 808superbass:3" # gain 0.9 # pan sine
+d5 $ jux (rev) $ s "glitch:2*2" # room 0.7 # size 0.9 # gain 1 # pan tri
+panic

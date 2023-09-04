@@ -1,7 +1,7 @@
 setcps (165/60/4)
 d1 $ striate 2 $ chop 4 $ sometimes (# accelerate 2) $ every 3 (chop 2) $ every 2 (swing 3) $ s "breaks165" # octave 5 # gain 1.4
 d2 $ degrade $ striate 2 $ n "0 1 2 3" # s "procshort"
-d3 $ sometimes (striate 2) $ fast 1 $ swing 2 $ every 4 (# octave 5) $ n (scale "chinese" "1 0 1 1 2 3 4") # s "supergong" # gain 1 # grain 2 5
+d3 $ swing 2 $ n (scale "chinese" "1 0 1 1 2 3 4") # s "supergong" # sustain 1.4 # gain 1
 d4 $ iter 4 $ striate 2 $ chop 4 $ sometimes (# accelerate 2) $ s "counting*4" # n "0 1 2 3" # amp 5 # speed 2
 panic
 

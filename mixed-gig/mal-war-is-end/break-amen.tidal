@@ -1,0 +1,22 @@
+setcps (165/60/4)
+
+d1
+  $ degrade
+  $ striate 2
+  $ chop 4
+  $ sometimes (# accelerate 2)
+  -- qqqqq$ zoom (0.25, 0.5)
+  $ s "breaks165" # octave 5 # gain 1.4
+
+d2 $ degrade $ striate 2 $ sometimes (slow 2) $ swing 2 $ iter 4 $ n "0 1 2 3" # s "procshort"
+
+do
+  d1 $ s "breaks165" # octave 5 # gain 1.4
+  d2 $ silence
+  d3 $ silence
+  d4 $ silence
+  d5 $ silence
+
+d1 $ silence
+
+d2 $ silence

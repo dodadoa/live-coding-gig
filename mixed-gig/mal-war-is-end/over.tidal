@@ -1,0 +1,29 @@
+setcps (110/60/4)
+
+d2
+  $ degrade
+  $ sometimes ( jux rev )
+  $ sometimes (striate 2)
+  $ chop 4
+  $ s "scream:0*1 scream:1*1 scream:2*1 scream:3*1"
+  # accelerate 2
+  # gain 0.8
+
+
+
+d1 $ s "808superbass 808superbass:2*2"
+
+d3 $ s "808mt hh bd bd" # gain 1.2
+
+d4
+  $ degrade
+  $ sometimes ( jux rev )
+  $ speed 0.5
+  $ chop 2
+  $ s "scream:0*1 scream:1*1 scream:2*1 scream:3*1"
+  # gain 0.8
+
+do
+  d1 $ silence
+  d3 $ silence
+  d4 $ silence

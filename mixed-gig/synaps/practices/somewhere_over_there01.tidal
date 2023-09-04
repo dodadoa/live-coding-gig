@@ -20,6 +20,6 @@ d3 $ s "808superbass:3*4" # speed (tri + rand * 2)
 
 d4 $ s "pebbles*2" # pan sine # gain 0.8 # room 0.2 # size 0.3
 
-d5 $ s "industrial:2*2" # sustain 1.2
+d5 $ s "jazz:7*2" # sustain 1.2
 
 panic

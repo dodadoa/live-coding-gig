@@ -1,0 +1,5 @@
+d1 $ degrade $ sometimes (# accelerate 1) $ sometimes (slow 2) $ note "c'maj7 d'min e'min e'maj7" # s "gtr" # gain 0.7 # room 0.4 # size 0.8 # accelerate 0
+d2 $ fast 2 $ every 2 (striate 2) $ sound "808mt ~ hh hh"
+d3 $ s "feel*16" # n (shuffle 3 "[0 <1 2> <0 2> <3 2>]*4") # room 0.3 # size 0.6 # gain 0.9 # grain 0.2 0.4
+d4 $ swing 2 $ (struct "[t*2 ~ ~ t*2] t*2" $ n (scale "0" (irand 8))) # octave 6 # s "supergong" # room 0.2 # size 0.9 # sustain 1.4 # gain 0.9
+d5 $ degrade $ striate 2 $ swing 3 $ n (scale "maj7" (shuffle 8 "0 1 2 3")) # s "superfm" # octave 4 # attack 0.3 # sustain 0.9 # gain 0.8 # room 0.4 # size 0.8

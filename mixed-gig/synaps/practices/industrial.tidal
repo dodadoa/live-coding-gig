@@ -1,5 +1,5 @@
 d1 $ striate 2 $ chop 2 $ sound "[808superbass*4 808superbass:3*2]" # pan sine # gain 1 # speed 1
-d2 $ fast 2 $ chop 1 $ s "glitch:2*4 glitch:5*2" # gain 1
+d2 $ fast 1 $ chop 2 $ s "glitch:2*4 glitch:5*2" # gain 1
 d3 $ n "0 1 1 2" # s "supergong" # gain 0.8 # pan cosine
 d4 $ degrade $ fast 1 $ chop 1 $ n (scale "prometheus" "0..7") # octave 6 # s "supersaw" # gain 1 # lpf "2000" # attack 0.2 # sustain 0.6 # room 0.3
 d5 $ fast 2 $ s "808bd 808sd 808mt 808oh" # speed 1 # gain  1.2
