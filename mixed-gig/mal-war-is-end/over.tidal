@@ -17,8 +17,8 @@ d3 $ s "808mt hh bd bd" # gain 1.2
 
 d4
   $ degrade
-  $ sometimes ( jux rev )
-  $ speed 0.5
+  $ sometimes (jux rev)
+  $ sometimes (chop 4)
   $ chop 2
   $ s "scream:0*1 scream:1*1 scream:2*1 scream:3*1"
   # gain 0.8

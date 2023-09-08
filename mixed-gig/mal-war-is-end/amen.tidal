@@ -11,6 +11,7 @@ d3 $ silence
 d4 $ silence
 
 d2
+  $ degrade
   $ every 2 (# grain 0.1 0.9)
   $ every 3 (# n (struct "[t*5 ~ t*3 ~]!2" $ scale "chinese" (irand 8)))
   $ n (scale "chinese" "0 1 2 3 4 5 6 7") # s "superfm" # gain 0.8 # octave 3 # room 0.3 # size 0.5
@@ -23,7 +24,8 @@ d5 $ s "glitch:0 glitch:3*2" # gain 1.2
 
 d4
   $ degrade
-  $ striate 1
+  $ superimpose (swing 2)
+  $ striate 2
   $ every 2 (# octave 6)
   . every 3 (# sustain 3)
   $ n (scale "chinese" "1 2 2 3 1 1 5 1") # s "arpy"
