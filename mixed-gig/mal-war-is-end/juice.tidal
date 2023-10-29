@@ -3,7 +3,7 @@ setcps (110/60/4)
 
 do
   d1
-    $ degrade
+    -- $ degrade
     $ sometimes (striate 2)
     $ every 3 (slow 2)
     $ note "c'maj7 d'min e'min e'maj7" # s "gtr" # gain 0.7
@@ -23,7 +23,8 @@ d4 $ swing 2 $ (struct "[t*2 ~ ~ t*2] t*2" $ n (scale "majPent" (irand 8))) # oc
 
 d4
   $ degrade
-  $ swing 2 $ (struct "t t ~ t" $ n (scale "minPent" (irand 8)))
+  -- $ swing 2
+  $ (struct "t t ~ t" $ n (scale "majPent" (irand 8)))
   # octave 6 # s "supersaw" # gain 0.8
   # sustain 0.6
   # release 0.4

@@ -1,6 +1,6 @@
 /*{
   "pixelRatio": 1,
-  "vertexCount": 500,
+  "vertexCount": 1000,
   "vertexMode": "TRIANGLES",
   "audio": true
 }*/
@@ -38,7 +38,7 @@ void main() {
 
 	ofs = abs(fract(pos));
 	pos = vec3(_spectrums) * pos;
-	pos.xy *= 1.0 / pos.z;
+	pos.xy *= 1. / pos.z;
 	pos.z = 50.0 / pos.x;
 
   gl_Position = vec4(pos, 5.0);

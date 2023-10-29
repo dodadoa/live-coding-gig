@@ -20,13 +20,13 @@ mat2 rotate2d(float _angle){
 
 float map (vec3 p) {
   float scene = 0.1;
-  p = abs(p) - 0.2;
+  p = abs(p) - 0.1;
   for (float i = 0.0; i < 10.0; i ++) {
-    p = abs(p) - 0.1;
+    p = abs(p) - 0.3;
     p.xy = rotate2d(cos(time) * 3.14) * p.xz;
     p.yz = rotate2d(cos(time) * 3.14) * p.xy;
   }
-  scene = length(p.xyz) - 0.1;
+  scene = length(p.xyz) - 0.05;
   return scene;
 }
 

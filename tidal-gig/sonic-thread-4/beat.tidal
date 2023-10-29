@@ -1,4 +1,4 @@
-setcps (180/80/2)
+setcps (140/80/2)
 
 d1 $ whenmod 6 5 (slow 2) $ every 2 (slow 2) $ stack [
   s "[[bass ~]!2 bass*2 ~]!2" # n "11 10" # octave 8 # speed 2 # gain 1

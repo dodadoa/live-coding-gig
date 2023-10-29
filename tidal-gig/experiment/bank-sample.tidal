@@ -1,0 +1,46 @@
+setcps (120/80/2)
+
+xfade 1
+  $ striate 2
+  $ chop 8
+  $ zoom (0.25, 0.5)
+  $ (fast 2)
+  $ sometimes (chop 16)
+  $ superimpose (# accelerate 2)
+  $ iter 4
+  $ s "decompose" # grain 0 0.2
+  # n "4 5 6 7"
+  # attack 0.015
+  # release 0.8
+  # decay 0.3
+  # pan rand
+  # gain 0.8
+
+d2
+  $ hurry 2
+  $ chop 4
+  $ sometimes (chop 8)
+  $ sometimes (# octave 4)
+  $ s "decompose:20"
+  # amp 1.2
+  # grain 0 0.2
+  # pan sine
+  # octave 3
+  # gain 0.65
+
+xfade 3
+  $ chop 4
+  $ hurry 2
+  $ sometimes (# speed 2)
+  $ s "decompose:44"
+  # grain 0 0.2
+  # octave 4
+  # legato 1
+  # gain 1.2
+
+do
+  xfade 1 $ silence
+  xfade 2 $ silence
+  xfade 3 $ silence
+
+panic
