@@ -1,0 +1,227 @@
+setcps (100/60/4)
+
+panic
+
+d1
+  $ sometimes (chop 2)
+  $ every 2 (# accelerate 2)
+  $ degrade
+  $ s "pebbles"
+  # grain 0 0.3
+  # gain 0.6
+  # cloudswet 0.3 # cloudspos 0.7
+  # pan cosine
+
+d3
+  $ degrade
+  $ every 2 (chop 4)
+  $ every 4 (# speed 2)
+  $ sometimes (jux rev)
+  -- $ striate 2
+  $ fast 8
+  -- $ sometimes (fast 2)
+  $ chop 1 $ s "glitch:3 glitch:0*2"
+  # room 0.5 # size 0.9 # gain 1 # octave (irand 8)
+  # pan sine
+  # speed 3
+  # gain 0.8
+  # octave 2
+  -- # djf 0.2
+
+------------------------------------------
+
+setcps (130/60/4)
+
+d1
+  -- $ striate 2
+  $ every 4 (# accelerate 1)
+  $ chop 2
+  $ iter 4
+  $ s "outdoor*4"
+  # n "1 2 3 4"
+  # grain 0 0.8
+  # room 0.2
+  # size 0.6
+  # release 0.9
+  # warpsalgo 4
+  # ringspoly 1
+  # ringspos sine
+  # gain 1.1
+
+anticipate 2
+  $ s "bd*4"
+  # gain 1.1
+  # pan sine
+--------------------------------------
+
+d1
+  $ s "decompose_cut*4"
+  # n "0 1 2 3"
+  # gain 1
+  # grain 0 0.4
+  -- # elementsstrength "0.9"
+  # elementspitch (slow 3 sine)
+  -- # elementsblowlevel 0.6
+  -- # elementsblowtimb (slow 5 sine)
+  # elementsflow "{0.3 0.6 0.7}"
+  # elementsstrikelevel 1
+  -- # elementsstriketimb 0.1
+  # elementsmallet rand
+  # elementseasteregg "[1 | 0 | 0]"
+  -- # elementsmodel "[0 | 1]"
+  -- # elementscontour (slow 5 saw)
+  # elementsgeom 2
+  # elementsbright (slow 7 saw)
+  -- # elementsdamp 0
+  -- # elementspos 0.314
+  -- # elementsspace 0.9
+
+d3  $ s "decompose_cut*4"
+  # clouds 0.1 0.5 0.05 0.1
+  # cloudsblend 1 0.2 0.33 0.8
+  # gain 0.65
+
+d4
+  $ degrade
+  $ slow 2
+  $ every 2 (fast 2)
+  $ striate 3
+  $ every 3 (# speed 2)
+  $ every 2 (bite 2 "0 1*2 ~ 2")
+  -- $ stripe 2
+  $ sometimes ( jux rev ) $ s "scream:0*1 scream:1*1 scream:2*1 scream:3*1"
+  # legato 2
+  # accelerate 0
+  # grain rand (rand * 2 + 0.5)
+  # cut 2 # room 0.4 # size 0.7
+
+---------------------------------------------
+
+anticipate 2 $ s "glitch:0 glitch:3*2" # gain 1
+
+d1 $ sometimes ((# s "808superbass:2*2  808superbass:1*2") . (jux rev))
+  $ s "808superbass:1*4 ~" # pan tri # speed 0.8
+  -- # lpf "[12000 500]/2" # gain 1
+
+d3
+  $ sometimes (# speed 2)
+  $ sometimes (# accelerate 1)
+  $ iter 8 $ n "0 1 2 3" # s "outdoor"
+
+d4
+  $ degrade
+  $ sometimes (# accelerate (irand 8))
+  $ sometimes (# speed 4) $ s "gabba*16" # speed 2 # gain 0.92
+
+-------------------------------------------
+
+d3
+  $ degrade
+  $ striate 2
+  $ fast 2
+  $ iter 4
+  $ chop 2
+  $ s "decompose_cut*5"
+  # n "0 1 2 3 4"
+  # distort 5
+  # grain 0 0.25
+  # smear 1
+  # crush 4
+  # squiz 2
+  # imag 0.2
+  # real 0.5
+  # scram 0.5
+  # cloudsdens 0.5
+  -- # pan sine
+
+-----------------------------------------
+
+do
+  d1
+    $ stack [
+      s "dr:1 dr:2*4 [dr:0*2 dr:1?] dr:2*4",
+      s "hh27*16"
+    ]
+
+d5
+  $ degrade
+  $ slow 2
+  $ jux rev
+  $ n "a'min7(1,2,1) a'min7(1,8,4) c'maj(1,8,4) e'min7(1,1,8)"
+  # s "superpiano"
+  # size 0.5
+  # room 0.7
+  # crush 4.5
+  # release 1
+  # decay 2
+  # gain 0.8
+  # octave "7 8 7 5"
+
+d5
+  $ degrade
+  $ fast 4
+  $ n (scale "minPint" "3? 1 2 4?")
+  # s "plaits"
+  # octave 4
+  # speed 1.2
+  # decay 0.5
+  # release 0.8
+  # gain 0.8
+
+d4 $ silence
+  $ degrade
+  $ sometimes (# grain 0.2 0.4)
+  $ s "feel*16"
+  # n "[0 <1 2> <0 2> <3 2>]*4"
+  # gain 1
+
+
+-------------------------------------------
+
+setcps (165/60/4)
+
+do
+  d1
+    $ degrade
+    $ sometimes (chop 2)
+    $ sometimes (striate 2)
+    $ s "breaks165" # octave 5 # gain 1
+    # grain 0 0.3
+
+d1 $ silence
+ญด
+d2 $ silence
+
+  d2
+    $ degrade
+    $ fast 4
+    $ n (scale "minPint" "3? 1 2 4?")
+    # s "plaits"
+    # octave 4
+    # speed 1.2
+    # decay 0.5
+    # release 0.8
+    # gain 0.8
+
+d4 $ silence
+
+d2 $ silence
+
+  $ degrade
+  $ fast 2
+  $ sometimes (# accelerate 1)
+  $ iter 4 $ n "2 3 4 5" # s "procshort" # room 0.2 # size 0.6
+
+d5 $ silence
+
+
+d4 $ silence
+
+  $ degrade
+  $ every (choose [1,2,3]) degrade
+  $ sometimes (striate 2)
+  $ every 2 (# grain 0.1 0.9)
+  $ every 3 (# n (struct "[t*5 ~ t*3 ~]!2" $ scale "chinese" (irand 8)))
+  $ n (scale "chinese" "0 1 2 3 4 5 6 7")
+  # s "superstatic" # gain 0.8 # octave 3 # room 0.3 # size 0.5
+  -- # grain 0.5 0.8

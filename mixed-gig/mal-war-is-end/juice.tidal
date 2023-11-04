@@ -4,9 +4,11 @@ setcps (110/60/4)
 do
   d1
     -- $ degrade
+    -- $ fast 2
+    $ every 2 (rev)
     $ sometimes (striate 2)
     $ every 3 (slow 2)
-    $ note "c'maj7 d'min e'min e'maj7" # s "gtr" # gain 0.7
+    $ note "c'maj7 d'min e'min e'maj7" # s "gtr" # gain 0.85 # pan sine
 
 d2 $ fast 2 $ every 2 (striate 2) $ sound "808mt ~ hh hh"
 
@@ -19,10 +21,12 @@ d3
 
 d3 $ silence
 
-d4 $ swing 2 $ (struct "[t*2 ~ ~ t*2] t*2" $ n (scale "majPent" (irand 8))) # octave 6 # s "supergong"
+d4 $ swing 2 $ fast 4 $ (struct "[t*2 ~ ~ t*2] t*2" $ n (scale "majPent" (irand 8))) # octave 6 # s "supergong"
 
 d4
   $ degrade
+  $ striate 3
+  $ fast 2
   -- $ swing 2
   $ (struct "t t ~ t" $ n (scale "majPent" (irand 8)))
   # octave 6 # s "supersaw" # gain 0.8

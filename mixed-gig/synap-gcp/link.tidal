@@ -1,0 +1,15 @@
+d1 $ s "glitch:0 glitch:3*2" # gain 1
+
+d2 $ sometimes ((# s "808superbass:2*2  808superbass:1*2") . (jux rev))
+  $ s "808superbass:1*4 ~" # pan tri # speed 0.8
+  # lpf "[12000 500]/2" # gain 1
+
+d3
+  $ sometimes (# speed 2)
+  $ sometimes (# accelerate 1)
+  $ iter 8 $ n "0 1 2 3" # s "outdoor"
+
+d4
+  $ degrade
+  $ sometimes (# accelerate (irand 8))
+  $ sometimes (# speed 4) $ s "gabba*16" # speed 2 # gain 0.8

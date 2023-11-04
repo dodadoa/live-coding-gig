@@ -1,0 +1,29 @@
+setcps (130/60/4)
+
+do
+  d1
+    $ stack [
+      s "dr:1 dr:2*4 [dr:0*2 dr:1?] dr:2*4",
+      s "hh27*16"
+    ]
+  d2
+    $ slow 2
+    -- $ jux rev 
+    $ n "a'min7(1,2,1) a'min7(1,8,4) c'maj(1,8,4) e'min7(1,1,8)"
+    # s "superpiano"
+    # size 0.5
+    # room 0.7
+    # crush 4.5
+    # release 1
+    # decay 2
+    # gain 0.8
+    # octave 4
+
+d3
+  $ degrade
+  $ n (scale "ionian" "3? 1 2 4?")
+  # s "superfm"
+  # octave 4
+  # speed 1.2
+  # decay 0.5
+  # release 0.8

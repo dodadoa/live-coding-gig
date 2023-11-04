@@ -1,0 +1,14 @@
+-- 100 -> 130
+setcps (100/60/4)
+
+panic
+
+d1 $ s "pebbles" # grain 0 1 # gain 0.7
+
+d2
+  $ every 2 (chop 4)
+  $ sometimes (# speed 0.5)
+  $ fast 1
+  $ sometimes (fast 2)
+  $ chop 1 $ s "glitch:3 glitch:0*2"
+  # room 0.5 # size 0.9 # gain 1 # octave (irand 8)

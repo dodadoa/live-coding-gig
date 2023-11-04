@@ -11,7 +11,7 @@ d1
 
   -- 0, 1, 8, 10, 11
 d1
-  -- $ sometimes (# accelerate 2)
+  $ sometimes (# accelerate 2)
   -- $ striate 2
   $ slow 4
   $ chop 2
@@ -38,7 +38,7 @@ d5 $ silence
 
 d6 $ silence
 
-d1
+d3
   $ degrade
   $ jux rev
   $ iter 4

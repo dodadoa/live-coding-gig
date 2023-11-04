@@ -1,0 +1,18 @@
+d1
+  $ s "plaits" <| note "c g d e"
+  # octave "<6 7>"
+  # engine (slow 2 $ run 16)
+  # timbre (slow 4 sine)
+  # harm (slow 2 saw)
+  # pan sine
+  # gain 0.8
+
+d2
+  $ s "tides" <| note "c g d e"
+  # octave "<5 4 5 6>"
+  # engine (slow 2 $ run 16)
+  # timbre (slow 4 sine)
+  # harm (slow 2 saw)
+  # morph (slow 2 saw)
+  # level (slow 4 sine)
+  # shift (slow 2 sine)
