@@ -85,17 +85,17 @@ void main() {
     vec2 i_st = floor(st);
     vec2 f_st = fract(st);
 
-    // float m_dist = .4;
-    // for (int j= -1; j <= 1; j++ ) {
-    //     for (int i= -1; i <= 1; i++ ) {
-    //         vec2 neighbor = vec2(float(i),float(j));
-    //         vec2 offset = random2(i_st * neighbor);
-    //         offset = .5 + .5 * sin(time * offset * 3.0);
-    //         vec2 pos = neighbor + offset - i_st;
-    //         float dist = length(pos);
-    //         m_dist = max(m_dist, m_dist * dist);
-    //     }
-    // }
+    float m_dist = .4;
+    for (int j= -1; j <= 1; j++ ) {
+        for (int i= -1; i <= 1; i++ ) {
+            vec2 neighbor = vec2(float(i),float(j));
+            vec2 offset = random2(i_st * neighbor);
+            offset = .5 + .5 * sin(time * offset * 3.0);
+            vec2 pos = neighbor + offset - i_st;
+            float dist = length(pos);
+            m_dist = max(m_dist, m_dist * dist);
+        }
+    }
 
     float x = 0.0;
     if (_ss.r < 0.001) {

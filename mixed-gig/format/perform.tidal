@@ -1,0 +1,413 @@
+sock <- carabiner tidal 4 0
+
+d1 $ s "pebbles" # grain 0 1 # gain 0.7
+
+d1 $ silence
+
+hush
+
+d1
+  $ degrade
+  $ striate 2
+  $ superimpose (swing 2)
+  $ jux rev
+  -- $ sometimes (# speed 4)
+  -- $ sometimes (# accelerate 8)
+  $ sometimes (chop 4)
+  $ chop 4
+  $ zoom (0.25, 0.75)
+  $ n "0 1 2 3 4 5 6 7 8 9"
+  # s "pebbles"
+  # octave 5 # gain 1.4 # accelerate (irand 8)
+  # pan rand
+  # room 0.2 # size 0.7
+  # attack 0.15
+  # sustain 1.2
+  # release 0.8
+  # amp 3
+  # gain 0.3
+
+d3
+  $ chop 4
+  -- $ degrade
+  $ striate 4
+  $ fast 4
+  $ s "darkpad"
+  # n (choose [0, 1, 2])
+  # gain 0.6
+  # accelerate 0
+  # grain 0.1 0.3
+
+d4 $ silence
+
+d3
+  -- $ every 2 (zoom (0.25, 0.75))
+  -- $ striate 1
+  $ whenmod 8 7 (# speed 2)
+  $ every 2 (chop 2)
+  $ iter 4
+  $ s "808superbass"
+  # n "0 1 2 3"
+  # accelerate 0
+  # gain 1
+
+d2
+  $ whenmod 16 15 (chop 4)
+  $ whenmod 8 7 (# speed 2)
+  $ sometimes (# speed 0.5)
+  -- $ fast 1
+  $ sometimes (fast 2)
+  $ chop 1
+  $ s "glitch:3 glitch:0*2"
+  # room 0.5 # size 0.9
+  # gain 1 # octave (irand 8)
+
+d1
+  $ stack [
+    -- part 1
+    every 2 (chop 4)
+    $ sometimes (# speed 0.5)
+    $ fast 1
+    $ sometimes (fast 2)
+    $ chop 1 $ s "glitch:3 glitch:0*2"
+    # room 0.5 # size 0.9 # gain 1 # octave (irand 8),
+    -- part 2
+    every (irand 4) (stripe 4)
+    $ every 2 (# speed 5)
+    $ s "glitch:2*4"
+    # pan rand
+  ]
+
+d1
+  -- $ rot "2 4"
+  $ whenmod 4 3 (# speed 2)
+  $ s "808oh*16" # gain 1
+  -- # accelerate 3
+  # octave (irand  10)
+
+d1 $ silence
+d2 $ silence
+d3 $ silence
+d4 $ silence
+d5 $ silence
+
+d1
+  $ chop 4
+  $ sometimes (# accelerate 2)
+  $ n (scale "chinese" "0..15" |+ rand)
+  # s "tides"
+  # accelerate 0
+  # room 0.3
+  # pan sine
+  # gain 1.2
+  # octave 4
+  -- # cloudswset 0.4
+  # cloudsgain 1.3
+  # cloudspitch 2
+  # size 0.9
+
+
+d3
+  $ degrade
+  -- $ swing 2
+  -- $ striate 2
+  $ (struct "[t*2 ~ ~ t*2] t*4"
+  $ n (scale "chinese" (irand 8))) # octave 6 # s "superpiano"
+  # room 0.4
+  # size 0.9
+
+d3
+  $ chop 4
+  $ s "bd*2"
+  # elementsflow (slow 4 tri)
+  # ringspos (fast 2 sine)
+  # cloudsspread (slow 4 sine)
+  # cloudswet 2
+  # cloudsgain (slow 2 sine)
+  # elementspitch (fast 2 sine)
+  # gain 1
+
+----
+d1
+  $ s "plaits*8"
+  # note (scale "chinese" "0..7")
+  # octave "<6 7>"
+  # engine (slow 2 $ run 16)
+  # timbre (slow 4 sine)
+  # harm (slow 2 saw)
+  # pan sine
+  # gain 0.8
+
+d2
+  $ s "tides" <| note "c g d e"
+  # octave "<5 4 5 6>"
+  # engine (slow 2 $ run 16)
+  # timbre (slow 4 sine)
+  # harm (slow 2 saw)
+  # morph (slow 2 saw)
+  # level (slow 4 sine)
+  # shift (slow 2 sine)
+
+----
+
+d4
+  -- $ striate 2
+  $ every 4 (# accelerate 1)
+  $ chop 2
+  $ iter 4
+  $ s "outdoor*4"
+  # n "1 2 3 4"
+  -- # grain 0 0.8
+  # room 0.2
+  # size 0.6
+  # release 0.9
+  # warpsalgo 4
+  # ringspoly 1
+  # ringspos sine
+  # gain 0.95
+
+d5 $ silence
+
+d5 $ sometimes ((# s "808superbass:2*2  808superbass:1*2") . (jux rev))
+  $ s "808superbass:1*4 ~" # pan tri # speed 0.8
+  # gain 0.9
+
+
+d1
+  -- $ chop 2
+  -- $ sometimes (striate 2)
+  $ s "decompose_cut:2*4"
+  # n "0 1 2 3"
+  # gain 0.8
+  # grain 0 0.75
+
+d2  $ s "decompose_cut:1*4"
+  -- # clouds 0.1 0.5 0.05 0.1
+  -- # cloudsblend 1 0.2 0.33 0.8
+  # gain 0.85
+  # grain 0 0.35
+
+d3
+  $ s "bd*4"
+  # gain 1.1
+  # pan sine
+
+d4 $ s "808superbass"
+
+d3
+  $ s "808superbass:1*2 808superbass:0*1"
+
+---
+
+
+panic
+
+d1 $ silence
+
+d2 $ silence
+
+d3 $ silence
+
+d4 $ silence
+
+d2 $ silence
+
+d4
+  -- $ degrade
+  $ slow 2
+  $ every 2 (fast 2)
+  $ striate 2
+  $ every 2 (# speed 2)
+  $ every 2 (bite 2 "0 1*2 ~ 2")
+  -- $ stripe 2
+  $ sometimes ( jux rev ) $ s "scream:0*1 scream:1*1 scream:2*1 scream:3*1"
+  # legato 2
+  # accelerate 2
+  # grain rand (rand * 2 + 0.5)
+  # cut 2 # room 0.4 # size 0.7
+  # gain 0.95
+
+d1
+  $ chop 2
+  $ n "0 2 4 6"
+  # s "counting" # accelerate 1
+  # grain 0 1
+  # amp 1.5
+
+d2 $ s "glitch:0 glitch:3*2" # gain 1
+
+d3
+  $ degrade
+  $ s "laser*4"
+  # n "10 20 15 5"
+  # octave 2 # gain 0.8
+
+d5
+  $ degrade
+  $ sometimes (striate 2)
+  $ sometimes (# speed 2)
+  $ s "bubble_laser*4"
+  # n "1" # gain 2
+
+
+d1 $ "bd*4"
+
+d6 $ silence
+
+d6
+  -- $ sometimes (# speed 2)
+  -- $ sometimes (# accelerate 1)
+  $ iter 8
+  $ n "0 1 2 3"
+  # s "outdoor"
+
+d2
+  -- $ degrade
+  $ sometimes (# accelerate 2)
+  $ fast 1 $ chop 2 $ s "glitch:2*4 glitch:5*2" # gain 1
+
+d1
+  $ degrade
+  $ fast 2
+  $ every 2 (# speed 4) $ iter 4 $ n "[0 2] [2 3] [2 1] [0 1]" # s "bass3" # speed (sine + 3) # pan (sine)
+
+d2 $ n "[<8 7> 2] [0 1] [2 <1 2>] [1 <1 0>]"
+  # s "feel" # speed (saw + 3) # gain 1
+
+d2
+  $ whenmod 16 15 (# speed 2)
+  $ fast 1 $ n "[<1 4> 0] [1 5] [1 2] 0"
+  # s "feel"
+  # gain 0.9
+
+d1 $ silence
+d2 $ silence
+d6 $ silence
+d3 $ silence
+d4 $ silence
+d3 $ silence
+d7 $ silence
+d5 $ silence
+
+d3 $ "[bd*4 ~ hh*2]*4 ~" # pan cosine # speed (slow 2 tri)
+  # decay "[0.5 0.1]/2"
+
+---
+d3 $ s "[808bd/2 [hh,808oh] ~ [sn,808bd]]" # speed 1 # lpf "12000 400" # gain 1
+
+d4 $ sometimes (# octave 6) $ n "[0 1 2 3]!4" # s "superpiano" # octave 5
+  # lpf "[12000 100]/2" # room 0.7 # size 0.4 # gain 1 # pan sine # attack 0.2
+
+d1 $ silence
+d2 $ silence
+
+d5
+  $ sometimes ((# s "supergong:2*2  supergong:1*2") . (jux rev)) $ s "supergong:1*4 ~" # pan tri # speed 0.8
+  # lpf "[12000 500]/2"
+  # gain 1.2
+  # pan sine
+
+d3 $ chop 3 $ s "house:3*8" # gain 1
+
+d2 $ every 3 (# speed 2)
+  $ s "hh*16" # speed 1
+  # gain 1
+  # pan sine
+
+d2 $ silence
+d4 $ silence
+
+d6
+  $ degrade
+  $ sometimes (# accelerate (irand 8))
+  $ sometimes (# speed 4) $ s "gabba*16" # speed 2 # gain 0.8
+
+d1 $ swingBy 6 (1/12) $ stripe 2 $ striate 4 $ n "0 1 2 3" # s "sequential" # cut 1
+
+d2
+  $ sometimes (# speed 2)
+  $ sometimes (# accelerate 1)
+  $ iter 8 $ n "0 1 2 3" # s "outdoor"
+
+d2
+  $ sometimes (# accelerate 1)
+  $ iter 4 $ n "2 3 4 5" # s "procshort" # room 0.2 # size 0.6
+
+d4
+  $ every (choose [1,2,3]) degrade
+  $ sometimes (striate 2)
+  $ every 2 (# grain 0.1 0.9)
+  $ every 3 (# n (struct "[t*5 ~ t*3 ~]!2" $ scale "chinese" (irand 8)))
+  $ n (scale "chinese" "0 1 2 3 4 5 6 7")
+  # s "superfm" # gain 0.8 # octave 3 # room 0.3 # size 0.5
+  # grain 0.5 0.8
+
+
+d4
+  -- $ degrade
+  $ sometimes (jux rev)
+  $ every 2 (# sustain 0.3)
+  $ striate 2
+  $ s "supersaw*4" # n (scale "chinese" "0 1 2 3") # gain (choose [0.9, 0.8])
+  # pan (rand)
+  # octave 5
+
+do
+  d1 $ silence
+  d2 $ silence
+  d3 $ silence
+  d4 $ silence
+  d5 $ silence
+  d6 $ silence
+
+d4
+  -- $ degrade
+  $ fast 1
+  $ every 2 (# octave 3)
+  . every 3 (# sustain 3)
+  $ n (scale "chinese" "1 2 2 3 1 1 5 1") # s "arpy"
+  # gain 1.3
+  # sustain 1.4
+  # attack 0.1
+  # room 0.2
+  # size 0.6
+  # pan cosine
+
+---
+d1
+  -- $ degrade
+  -- $ fast 2
+  $ every 2 (rev)
+  $ sometimes (striate 2)
+  $ every 3 (slow 2)
+  $ note "c'maj7 d'min e'min e'maj7" # s "gtr" # gain 0.85 # pan sine
+
+d1 $ degrade $ stack [
+  every 3 (rev) $ n "c'min e'min" # octersub 5 # octave 7
+    # s "superpiano" # decay 0.4 # dry 5 # room 2 # size 0.3 # gain 0.55
+]
+
+d2 $ stack [
+  s "~ arpy*4 arpy*3 ~" # n (scale "minPent" "6 7") # speed (tri + 0.4) # dry 2 # room 1 # size 0.9 # attack 0.1
+]
+
+d1
+  $ stack [
+    s "dr:1 dr:2*4 [dr:0*2 dr:1?] dr:2*4",
+    s "hh27*16"
+  ]
+
+d2
+  -- $ degrade
+  -- $ sometimes (striate 2)
+  -- $ every 3 (slow 2)
+  $ note "c'maj7 d'min e'min e'maj7" # s "gtr" # gain 1
+
+d2
+  $ (struct "[t*2 ~ ~ t*2] t*2"
+  $ n (scale "0" (irand 16)))
+  # octave 6
+  # s "supergong"
+  # room 0.2 # size 0.9
+  # sustain 1.4
+  # gain 0.9

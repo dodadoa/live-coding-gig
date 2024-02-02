@@ -1,7 +1,7 @@
 /*{
   "pixelRatio": 1,
   "vertexCount": 500,
-  "vertexMode": "TRIANGLES",
+  "vertexMode": "LINES",
   "audio": true,
 	"gamepad": true
 }*/

@@ -2,18 +2,18 @@ d1
   $ s "decompose_cut*4"
   # n "0 1 2 3"
   # elementsstrength "0.9"
-  # elementspitch (slow 3 sine)
-  # elementsblowlevel 0.6
-  # elementsblowtimb (slow 5 sine)
-  # elementsflow "{0.3 0.6 0.7}"
-  # elementsstrikelevel 1
-  # elementsstriketimb 0.1
-  # elementsmallet rand
-  # elementseasteregg "[1 | 0 | 0]"
-  # elementsmodel "[0 | 1]"
-  # elementscontour (slow 5 saw)
-  # elementsgeom 2
-  # elementsbright (slow 7 saw)
-  # elementsdamp 0
-  # elementspos 0.314
-  # elementsspace 0.9
+  -- # elementspitch (slow 3 sine)
+  -- # elementsblowlevel 0.6
+  -- # elementsblowtimb (slow 5 sine)
+  -- # elementsflow "{0.3 0.6 0.7}"
+  -- # elementsstrikelevel 1
+  -- # elementsstriketimb 0.1
+  -- # elementsmallet rand
+  -- # elementseasteregg "[1 | 0 | 0]"
+  -- # elementsmodel "[0 | 1]"
+  -- # elementscontour (slow 5 saw)
+  -- # elementsgeom 2
+  -- # elementsbright (slow 7 saw)
+  -- # elementsdamp 0
+  -- # elementspos 0.314
+  -- # elementsspace 0.9

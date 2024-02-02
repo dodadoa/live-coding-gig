@@ -1,8 +1,8 @@
 d1
   -- $ fast 2
-  -- $ every 4 (# accelerate 1)
-  -- $ chop 2
-  -- $ iter 4
+  $ every 4 (# accelerate 1)
+  $ chop 2
+  $ iter 4
   $ s "outdoor*4"
   # n "1 2 3 4"
   -- # grain 0 0.8

@@ -23,8 +23,10 @@ d1 $ silence
 
 d3
   -- $ swing 2
+  -- $ striate 2
   $ (struct "[t*2 ~ ~ t*2] t*4"
-  $ n (scale "majPent" (irand 8))) # octave 6 # s "supergong"
+  $ n (scale "chinese" (irand 8))) # octave 6 # s "superpiano"
+  # room 0.4 # size 0.9
 
 d3
   $ degrade

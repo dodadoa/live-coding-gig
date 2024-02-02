@@ -1,7 +1,7 @@
 /*{
   "pixelRatio": 1,
   "vertexCount": 200,
-  "vertexMode": "TRIANGLES",
+  "vertexMode": "LINES",
   "audio": true
 }*/
 
@@ -72,10 +72,10 @@ void main() {
   pos += posf0(fps);
   pos.yz *= scale2(vec2(cos(time)));
   pos.xz *= mat2(.1,.6,.3, cos(time));
-  pos.xy *=1.0/(pos.z);
+  pos.xy *=.5/(pos.z);
 
-  gl_Position = vec4(pos.x, pos.y, pos.z, 2. / _ss.r);
-  gl_PointSize = 5.0;
+  gl_Position = vec4(pos.x, pos.y, pos.z, 1. / _ss.r);
+  gl_PointSize = 1.0;
 
   v_color = vec4(
 		max(length(ofs), 100.0)/ofs,

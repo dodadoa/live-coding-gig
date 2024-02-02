@@ -21,11 +21,11 @@ d1 $ s "breaks165" # octave 5 # gain 1.4
 -- 0, 1, 8, 10, 11
 d2
   $ sometimes (# accelerate 2)
-  $ striate 2
-  $ chop 2
-  $ s "decompose:10" # grain 0 0.1
+  $ striate 4
+  $ chop 4
+  $ s "decompose_cut:10" # grain 0 0.5
   # amp 2
-  -- # pan rand
+  # pan rand
   # gain 0.7
 
 d1 $ silence

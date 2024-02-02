@@ -17,9 +17,9 @@ d3
   $ every 2 (chop 4)
   $ every 4 (# speed 2)
   $ sometimes (jux rev)
-  -- $ striate 2
+  $ striate 2
   $ fast 8
-  -- $ sometimes (fast 2)
+  $ sometimes (fast 2)
   $ chop 1 $ s "glitch:3 glitch:0*2"
   # room 0.5 # size 0.9 # gain 1 # octave (irand 8)
   # pan sine
@@ -55,6 +55,8 @@ anticipate 2
 --------------------------------------
 
 d1
+  $ chop 2
+  -- $ sometimes (striate 2)
   $ s "decompose_cut*4"
   # n "0 1 2 3"
   # gain 1
@@ -142,9 +144,14 @@ do
       s "dr:1 dr:2*4 [dr:0*2 dr:1?] dr:2*4",
       s "hh27*16"
     ]
+  d2 $ silence
+  d3 $ silence
+  d4 $ silence
+  d5 $ silence
+  d6 $ silence
 
-d5
-  $ degrade
+d2
+  -- $ degrade
   $ slow 2
   $ jux rev
   $ n "a'min7(1,2,1) a'min7(1,8,4) c'maj(1,8,4) e'min7(1,1,8)"
@@ -157,10 +164,10 @@ d5
   # gain 0.8
   # octave "7 8 7 5"
 
-d5
+d3
   $ degrade
   $ fast 4
-  $ n (scale "minPint" "3? 1 2 4?")
+  $ n (scale "ionion" "3? 1 2 4?")
   # s "plaits"
   # octave 4
   # speed 1.2
@@ -168,8 +175,8 @@ d5
   # release 0.8
   # gain 0.8
 
-d4 $ silence
-  $ degrade
+d2
+  -- $ degrade
   $ sometimes (# grain 0.2 0.4)
   $ s "feel*16"
   # n "[0 <1 2> <0 2> <3 2>]*4"
@@ -181,18 +188,34 @@ d4 $ silence
 setcps (165/60/4)
 
 do
-  d1
-    $ degrade
-    $ sometimes (chop 2)
-    $ sometimes (striate 2)
-    $ s "breaks165" # octave 5 # gain 1
-    # grain 0 0.3
+  d2 $ silence
+
+do
+  -- d1
+    -- $ degrade
+    -- $ sometimes (chop 2)
+    -- $ sometimes (striate 2)
+    -- $ s "breaks165" # octave 5 # gain 1.25
+    -- # grain 0 0.3
+  d1 $ silence
+  d2 $ silence
+  -- d2
+  --   $ degrade
+  --   $ every (choose [1,2,3]) degrade
+  --   $ sometimes (striate 2)
+  --   $ every 2 (# grain 0.1 0.9)
+  --   $ every 3 (# n (struct "[t*5 ~ t*3 ~]!2" $ scale "chinese" (irand 8)))
+  --   $ n (scale "chinese" "0 1 2 3 4 5 6 7")
+  --   # s "superpiano" # gain 0.8 # octave 3 # room 0.3 # size 0.5
+  d3 $ silence
+  d4 $ silence
+  d5 $ silence
+  d6 $ silence
 
 d1 $ silence
-ญด
 d2 $ silence
 
-  d2
+  d3
     $ degrade
     $ fast 4
     $ n (scale "minPint" "3? 1 2 4?")
@@ -205,8 +228,7 @@ d2 $ silence
 
 d4 $ silence
 
-d2 $ silence
-
+d3
   $ degrade
   $ fast 2
   $ sometimes (# accelerate 1)
@@ -215,13 +237,13 @@ d2 $ silence
 d5 $ silence
 
 
-d4 $ silence
-
+d4
   $ degrade
   $ every (choose [1,2,3]) degrade
   $ sometimes (striate 2)
   $ every 2 (# grain 0.1 0.9)
-  $ every 3 (# n (struct "[t*5 ~ t*3 ~]!2" $ scale "chinese" (irand 8)))
+  $ every 3 (# n (struct "[t*5 ~ t*3 ~]!2" $ scale "minPent" (irand 8)))
   $ n (scale "chinese" "0 1 2 3 4 5 6 7")
-  # s "superstatic" # gain 0.8 # octave 3 # room 0.3 # size 0.5
+  # s "supersaw" # gain 0.8 # octave 3 # room 0.3 # size 0.5
+  # gain 0.8
   -- # grain 0.5 0.8

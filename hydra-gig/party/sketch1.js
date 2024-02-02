@@ -28,13 +28,13 @@ osc(3, 0.1, [0.1, 0.3, 0.5])
   // .brightness(0.1)
   // .thresh(0.1)
   // .pixelate(100, 1000)
-  .out(o2)
+  .out(o0)
 
 osc(5, 0.1, 0.5)
   .modulate(noise(10), 0.1)
-  .modulate(o0, 1)0omodulateScale(o1, () => time / 5)
+  .modulate(o0, 1)modulateScale(o1, () => time / 5)
   .diff(voronoi(3))
-  .out(o/)
+  .out(o0)
 
 
 voronoi(5, 2, () => a.fft[0] * 1)

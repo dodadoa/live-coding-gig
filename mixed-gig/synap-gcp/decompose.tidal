@@ -3,10 +3,10 @@ d1
   $ chop 2
   $ s "decompose_cut*5"
   # n "0 1 2 3 4"
-  -- # distort 5
-  -- # smear 1
-  -- # squiz 2
-  -- # crush 4
-  -- # imag 0.2
-  -- # real 0.5
-  -- # scram 0.5
+  # distort 2
+  # smear 1
+  # squiz 2
+  # crush 4
+  # imag 0.2
+  # real 0.5
+  # scram 0.5
