@@ -1,0 +1,31 @@
+d1 $ sound "arpy*16" # cutoff 100
+
+interpolate 1 $ sound "arpy*16" # cutoff 16000
+
+d1 $ sound "bd(3,8)"
+clutch 1 $ sound "[hh*4, odx(3,8)]"
+
+d1 $ sound "hh*8"
+d2 $ sound "odx*4"
+jumpIn 1 2 $ sound "bd*8" --`1` to change the pattern in `d1`
+
+d1 $ fast 2 $ sound "hh*4"
+
+anticipateIn 2 8 $ fast 2 $ sound "bd sn" *| gain "0.9 0.6"
+
+d1 $ sound "jvbass(3,8)"
+anticipate 1 $ sound "bd sn" # delay "0.5" # room "0.3"
+
+d1 $ s "superchip*8" # n (quantise 2 $ range (-10) (10) $ slow 8 $ cosine)
+                     # release (quantise 5 $ slow 8 $ sine + 0.1)
+
+d1 $ ply "2 3" $ s "bd ~ sn cp"
+
+d1 $ stutter 4 (1/16) $ s "bd cp"
+
+d1
+  $ jux rev
+  $ chunk 4 (fast 2 . (|- n 12))
+  $ off 0.25 (|+ 7)
+  $ struct (iter 4 "t(5,8)")
+  $ n (scale "melodicMinorDesc" "0 .. 7") # sound "tides"

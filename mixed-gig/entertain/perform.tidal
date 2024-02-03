@@ -1,0 +1,282 @@
+setcps (120/60/4)
+
+d1
+  $ iter 4
+  $ s "beep*4"
+  # n "0 1 2 3"
+  # octave 5
+  # speed 2
+  # size 0.4
+  # room 0.2
+  -- # gain 0.9
+
+d1
+  $ iter 2
+  $ s "splash*4"
+  # n "0 3 2 3"
+  # amp 1
+  # pan rand
+  -- # speed (-1)
+  -- # octave 2
+  # grain 0 0.5
+
+d1
+  $ s "splash:1"
+  # grain 0 0.25
+
+d1
+  $ s "waterstream"
+  # n "0 1 2"
+  # amp 2
+  # grain 0 0.5
+
+panic
+
+d1
+  -- $ striate 2
+  $ s "plaits" <| note "c g" |+ rand
+  # octave "<5 4 5 6>"
+  # engine (slow 2 $ run 16)
+  # timbre (slow 4 sine)
+  # harm (slow 2 saw)
+  # morph (fast 2 saw)
+  # level (slow 4 sine)
+  # shift (slow 2 sine)
+
+d1
+  $ iter 4
+  $ chop 2
+  $ s "decompose_cut:1*5"
+  # n "0 1 2 3 4"
+  -- # distort 2
+  -- # smear 1
+  -- # squiz 2
+  -- # crush 4
+  -- # imag 0.2
+  -- # real 0.5
+  -- # scram 0.5
+  # gain 0.8
+
+d1
+  $ s "outdoor"
+
+d1
+  $ sound "jvbass(3,8)"
+
+d1
+  $ slow 1
+  $ stutter 2 3
+  $ chunk 4 (fast 1 . (|- n 12))
+  $ jux rev
+  -- $ off 0.65 (|+ 3)
+  $ struct (iter 4 "t(3,8)")
+  $ n (scale "melodicMinorDesc" "0 .. 7")
+  # sound "tides"
+
+d1
+  $ whenmod 16 15 (chop 4)
+  $ whenmod 8 7 (# speed 2)
+  $ sometimes (# speed 0.5)
+  $ fast 1
+  $ sometimes (fast 2)
+  $ chop 1
+  $ s "glitch:3 glitch:0*2"
+  # room 0.5 # size 0.9
+  # gain 1 # octave (irand 8)
+
+d1
+  -- $ degrade
+  $ rot "2 4"
+  $ whenmod 4 3 (# speed 2)
+  $ s "808oh*16" # gain 1
+  -- # accelerate 3
+  -- # octave (irand 10)
+
+d1
+  -- $ swing 2
+  -- $ s "bd*4 sd"
+  $ "bd*4"
+  # gain 1.2
+
+d1
+  -- $ chop 2
+  $ sometimes (# accelerate 2)
+  $ n (scale "chinese" "0..14" |+ rand)
+  # s "tides"
+  # accelerate 0
+  # room 0.3
+  -- # pan sine
+  # gain 1
+  # octave 4
+  # cloudswet 1
+  # cloudsgain 1
+  # cloudspitch 0.4
+  # cloudsrvb 0.7
+  # cloudsfb 0.3
+  # ringsfreq 700
+  # size 0.9
+
+d1
+  -- $ chop 4
+  $ sometimes (# accelerate 2)
+  $ n (scale "chinese" "0..14" |+ rand)
+  # s "tides"
+  # accelerate 0
+  # room 0.3
+  -- # pan sine
+  # gain 1.2
+  # octave 2
+  -- # cloudswset 0.4
+  # cloudsgain 1.3
+  # cloudspitch 2
+  # size 0.9
+
+d1
+  -- $ degrade
+  -- $ swing 2
+  -- $ striate 2
+  $ (struct "[t*2 ~ ~ t*2] t*4"
+  $ n (scale "chinese" (irand 8))) # octave 6 # s "superpiano"
+  # octave 3
+  -- # crush 2
+  # room 0.3
+  # size 0.45
+
+d1
+  $ n "[<8 7> 2] [0 1] [2 <1 2>] [1 <1 0>]"
+  # s "feel"
+  # speed (saw + 3)
+  # gain 1
+
+d1
+  -- $ degrade
+  -- $ fast 2
+  $ every 2 (# speed 4) $ iter 4 $ n "[0 2] [2 3] [2 1] [0 1]"
+  # s "bass3"
+  -- # accelerate (1)
+  # speed (sine + 3)
+  # octave 3
+  # pan (sine)
+
+d1
+  $ whenmod 4 3 (swingBy 3 2)
+  $ whenmod 8 7 (# speed 2)
+  $ fast 1 $ n "[<1 4> 0] [1 5] [1 2] 0"
+  # s "feel"
+  # gain 1
+
+d1
+  $ s "[808bd/2 [hh,808oh] ~ [sn,808bd]]!4"
+  # speed 1
+  -- # lpf "12000 400"
+  # gain 1
+
+d1
+  $ s "[808bd/2 [hh,808oh] ~ [sn,808bd]]!4"
+  -- # speed (irand 4)
+  # lpf "12000 400"
+  # gain 1
+
+d1
+  -- $ slow 2
+  $ jux rev
+  $ s "[house ~ [808oh,808ht] [<ht odx>, house]]*4"
+  # speed 1
+  # gain 1
+  -- # lpf "12000 80"
+
+setcps (113/60/4)
+
+d1
+  -- $ fast 2
+  -- $ whenmod 4 3 (striate 2)
+  -- $ whenmod 4 3 (# speed 3)
+  -- $ degrade
+  $ s "yf"
+  # amp 2
+  -- # room 0.3
+  -- # size 0.7
+  -- # speed (2)
+  -- # grain rand ran d+0.3
+  -- # pan rand
+  -- # grain 0 0.5
+  -- # accelerate (1)
+  -- # crush 5
+  -- # octave 4
+
+d1
+  $ superimpose (# speed (-1))
+  $ s "yf:1"
+  # amp 0.4
+  # grain 0 0.5
+  -- # speed 1
+  -- # pan sine
+  -- # speed (2)
+
+d2
+  $ swingBy 3 2
+  $ s "[[808sd*2 808bd*2]/2 ~ sd 808ht/2]*2"
+  # gain 1.2
+
+d3
+  $ whenmod 4 3 (# speed 2)
+  $ "808oh*4 hh*4"
+
+d4
+  $ s "decompose_cut:1*4"
+  # clouds 0.1 0.5 0.05 0.1
+  # cloudsblend 1 0.2 0.33 0.8
+  # gain 0.8
+  # grain 0 0.35
+
+d5
+  -- $ degrade
+  $ sometimes (# accelerate (irand 8))
+  $ sometimes (# speed 4)
+  $ s "gabba*16"
+  -- # speed 2
+  -- # gain 0.8
+  -- # crush 1.2
+
+setcps (130/60/4)
+
+xfadeIn 1 4
+  $ stack [
+    s "dr:1 dr:2*4 [dr:0*2 dr:1?] dr:2*4",
+    s "hh27*16"
+  ]
+  # gain 1.1
+
+
+d2
+  -- $ degrade
+  $ fast 2
+  $ every 2 (rev)
+  $ sometimes (striate 2)
+  $ every 3 (slow 2)
+  -- $ n (scale "minPent" "0..7")
+  $ note "c'maj7 d'min e'min e'maj7"
+  # s "plaits"
+  # gain 1
+  # cloudslofi 0.4
+  # cloudsfb 0.32
+  # cloudsrvb 1
+  # cloudssize 1
+  # cloudspitch 1
+  -- # pan sine
+
+d3
+  -- $ degrade
+  $ chop 2
+  $ jux rev
+  $ iter 4
+  $ sometimes (# legato 2)
+  $ sometimes (# gain 1.4)
+  $ s "pad*2"
+  # n "0 1 3 1"
+  -- # attack 0.7
+  # amp 0.2
+  # grain 0 0.5
+  # pan sine
+  -- # speed 2
+  -- # accelerate (rand)

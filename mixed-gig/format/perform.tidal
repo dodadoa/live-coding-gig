@@ -28,13 +28,13 @@ d1
   # gain 0.3
 
 d3
-  $ chop 4
+  $ chop 1
   -- $ degrade
   $ striate 4
   $ fast 4
   $ s "darkpad"
   # n (choose [0, 1, 2])
-  # gain 0.6
+  # gain 1
   # accelerate 0
   # grain 0.1 0.3
 
