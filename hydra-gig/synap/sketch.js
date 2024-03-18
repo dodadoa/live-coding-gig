@@ -24,15 +24,17 @@ p5src(s1)
   .out(o2)
 
 
+bpm = 120
+speed = 0.76
 
-osc(0.5,1.25).mult(shape(10,0.09).rotate(1.5))
+osc([2, 100, 200],1.25).mult(shape(10,0.09).rotate(1.5))
   .diff(gradient())
-  .modulate(noise()
-  .modulate(noise().scrollY(1,0.0625)))
-  .color(1,-0.5,-0.75)
-   .modulateRotate(osc(10, 2, 10), 0.6)
+  // .modulate(noise()
+  // .modulate(noise().scrollY(1,0.0625)))
+  // .color(1,-0.5,-0.75)
+   // .modulateRotate(osc(10, 2, 10), 0.6)
   .modulateScale(noise(), 0.8)
-  .pixelate(100, 5)
+  .pixelate([100, 20, 1], 5)
   .rotate(() => time / 2)
   .hue(0.2, 0.5)
   .mult(osc(10))

@@ -42,7 +42,7 @@ voronoi(5, 2, () => a.fft[0] * 1)
   .rotate(() => time / 4)
   .scale(() => Math.sin(time) * 1 - 1.5)
   .modulate(o0)
-  .out(oๅ)
+  .out(o0)
 
 
 osc(10, [1, 2], [0.2, 0.6, 1, 2])
@@ -72,7 +72,7 @@ noise(2, 2, 10)
 .color(0.5, [0.2, 0.4, 0.7], [0.5, 0.1])
 .modulateRotate(osc(10, 2, 3))
 .modulateScale(o1, 1)
-.out(o1)
+.out(o0)
 
 osc([2, 3, 6], 0.3, [1, 0.7, 1.2])
 .modulateScale(noise(1), 1)
