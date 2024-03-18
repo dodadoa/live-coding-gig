@@ -1,20 +1,23 @@
-bpm = 125
-speed = 0.5
+bpm = 90
+speed = 1
 
 hush()
 
 osc(3, 0.5, 2)
   .modulateRotate(o0, 1)
-  .sub(shape(1).scale(10), () => a.fft[0] * 1)
+  .sub(shape(1).scale(10), () => a.fft[0] * 0.5)
   .luma(0.3)
   .modulateRotate(osc(3, 0.1, 5), 1)
-  .modulate(o1, 1)
-  .diff(
-    shape(2)
+  .modulate(o0, 1)
+  .diff(o1)
+  .sub(
+    gradient(1)
       .scale(() => Math.sin(time) * 0.5 + 1.5)
       .rotate(() => time / 2)
   )
-  .pixelate([1, 2, 10, 100], 500)
+  // .pixelate([1, 2, 10, 100], 500)
+  .color([10, 0, 0, 5],0, [0, 6.5, 3, 0])
+  .luma(0.6)
   .out(o0)
 
 osc(5, 3, 1)
@@ -32,16 +35,13 @@ scene 2
 
 osc(0.5,1.25).mult(shape(10,0.09).rotate(1.5))
   .diff(gradient())
-  .modulate(noise()
-  .modulate(noise().scrollY(1,0.0625)))
+  .modulate(noise().scrollY(1,0.0625))
   .color(1,-0.5,-0.75)
-   .modulateRotate(osc(10, 2, 10), 0.6)
-  .modulateScale(noise(), 0.8)
   .pixelate(100, 5)
   .rotate(() => time / 2)
   .hue(0.2, 0.5)
   .mult(osc(10))
-  .modulate(o0, 0.5)
+  // .modulate(o0, 0.5)
   .out(o0)
 
 /*

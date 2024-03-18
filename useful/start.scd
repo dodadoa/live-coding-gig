@@ -1,4 +1,4 @@
-SuperDirt.start;
+ SuperDirt.start;
 s.quit;
 s.options.memSize = 32*8192;
 

@@ -244,6 +244,6 @@ d4
   $ every 2 (# grain 0.1 0.9)
   $ every 3 (# n (struct "[t*5 ~ t*3 ~]!2" $ scale "minPent" (irand 8)))
   $ n (scale "chinese" "0 1 2 3 4 5 6 7")
-  # s "supersaw" # gain 0.8 # octave 3 # room 0.3 # size 0.5
+  # s "supergong" # gain 0.8 # octave 3 # room 0.3 # size 0.5
   # gain 0.8
   -- # grain 0.5 0.8
