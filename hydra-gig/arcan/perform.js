@@ -24,7 +24,8 @@ osc(10, 0.1, 10)
 bpm = 110
 speed = 0.1
 
-src(s0)
+// src(s0)
+osc(10, 1, 10)
   .invert([0, 1])
   .modulateScrollX(osc([1, 3, 2], 0.2))
   // .modulate(osc(20, 0.2))
@@ -53,10 +54,18 @@ voronoi(3, 1)
   // .blend(src(o1).scale(2))
   .modulate(o0, 0.5)
   // .sub(o1)
-  .luma(0.4)
+  // .luma(0.4)
   // .layer(src(o1).luma(0.3))
   // .diff(src(o1))
-  .out(o1)
+  .out(o0)
+
+  voronoi(3, 1)
+    .modulateRotate(o0, 1)
+    .diff(gradient([1, 5]))
+    .layer(shape(4).rotate(() => time /2).luma(0).scale([1, 3, 0.2]).color(1, 0, 0))
+    .diff(src(o1).mask(shape(4).scale(2)))
+    .modulate(o0, 0.5)
+    .out(o0)
 
 bpm = 115
 speed = 0.5
@@ -129,8 +138,8 @@ osc(3, 0.5, 2)
 
 osc(5, 3, 1)
   .modulate(noise(1), 0.1)
-  .modulate(o0, 1)
-  .modulateScale(o1, () => time / 2)
-  .brightness(0.8)
-  .diff(o0)
+  .modulate(o0, 0.5)
+  .modulateScale(shape(2).rotate(() => time), () => time / 2)
+  .brightness(0.3)
+  .sub(o0)
   .out(o0)

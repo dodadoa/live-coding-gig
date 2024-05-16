@@ -1,5 +1,5 @@
 
-setcps (120/80/2)
+setcps (100/80/2)
 
 sock <- carabiner tidal 4 (-0.14)
 
@@ -10,9 +10,9 @@ p "main" $ stack [
    every 2 (slow 2) $ every 4 (# n "1 0") $ n "0 0 1 1 0 1" # s "superpiano" # octave 5 # room 0.8 # size 0.2 # gain 0.9
 ]
 
-p "main" $ stack [
-   n "0 0 7 -1 1 0" # s "superfm" # pan sine # gain 1 # room 0.9 # size 0.5,
-   every 2 (# s "feel") $ n "[0 1]? [1 1]? [<7 8> <1 2>]? [<7 8> <3 4>]" # s "sn" # gain 0,
-   every 4 (# n "1 0") $ n "0 1" # s "superpiano" # octave 7 # lpf "1200 700" # gain 1,
+d1 $ stack [
+   jux (slow 2) $ whenmod 4 3 (# speed 1.2) $ n "0 0 7 -1 1 0 1 -1" # s "superfm" # pan rand # room 0.9 # size 0.5 # gain 0.8,
+   every 2 (# s "808") $ n "[0 1]? [1 1]? [<7 8> <1 2>]? [<7 8> <3 4>]" # s "808bd",
+   every 4 (# n "1 0") $ n "0 1" # s "superpiano" # octave 7 # lpf "1200 700" # gain 1.1,
    every 2 (fast 2) $ every 3 (rev) $ scale "minorPent" "1..8" # s "supergong" # gain 1
-] # gain 1
+]

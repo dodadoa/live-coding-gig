@@ -1,0 +1,88 @@
+setcps (130/60/4)
+
+"""
+check your credit
+check your pocket
+check your debit, bitch
+
+feel like in k-hole
+feel like no control
+feel like I'm sicko, shit
+
+government will come to you
+taxation is only their tool
+love is only for trade
+will pay debt, if only help me sane
+
+something's crawling on my bed
+it's dragging me but I negotiate
+sign the contract and leave the room
+send me the budget and I will help you consume
+"""
+
+d7
+  $ "metal"
+  # gain 1.4
+
+d5
+  $ whenmod 4 3 (chop 4)
+  $ whenmod 8 7 (# speed 2)
+  $ sometimes (# speed 0.5)
+  $ fast 1
+  $ sometimes (fast 2)
+  $ jux (slow 2 . (# speed "-1"))
+  $ s "superfm:3 superfm:0*2"
+  # n (scale "minPent" "0..4")
+  # room 0.5 # size 0.9
+  # octave (irand 8)
+  # room 0.3
+  # release 0.9
+  # imag 2
+  # gain 1.2
+
+d1
+  $ "bd*2"
+  # crush 1.45
+  # size 0.4
+  # release 0.05
+  # gain 1.15
+
+d2
+  $ jux (chop 2)
+  $ "ht*4 hh*4"
+  # imag 1
+  # sustain 0.5
+  # release 0.2
+  # octave (irand 8)
+  # gain 1
+
+panic
+
+d6
+  -- $ striate 4
+  $ chop (irand 4)
+  -- $ sometimes (# grain rand (rand + 0.2))
+  -- $ sometimes (# crush 1.2)
+  $ jux (# speed 2)
+  $ s "decompose:34"
+  # grain 0 0.2
+  # gain 1.15
+
+d7
+  $ stack [
+    degrade
+    $ rolled
+    $ struct "t*16" $ (scale "chinese" (irand 14))
+    # s "gtr*8"
+    -- # crush 1.7
+    # octave ((irand 4) + 2)
+    # gain 0.6,
+    ---
+    sometimes (# crush 0.65)
+    -- $ swing 1.1
+    $ "808superbass"
+    # crush 0.75
+    -- # size 0.4
+    -- # room 0.7
+    # gain 0.75
+  ]

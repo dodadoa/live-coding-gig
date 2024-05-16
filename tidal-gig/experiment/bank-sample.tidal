@@ -28,11 +28,11 @@ d2
   # octave 3
   # gain 0.65
 
-xfade 3
+d3
   $ chop 4
   $ hurry 2
   $ sometimes (# speed 2)
-  $ s "decompose:44"
+  $ s "decompose:34"
   # grain 0 0.2
   # octave 4
   # legato 1

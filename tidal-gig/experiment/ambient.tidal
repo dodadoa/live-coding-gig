@@ -1,0 +1,14 @@
+d5
+  $ whenmod 16 15 (chop 4)
+  $ whenmod 8 7 (# speed 2)
+  $ sometimes (# speed 0.5)
+  $ fast 1
+  $ sometimes (fast 2)
+  $ jux (slow 2 . (# speed "-1"))
+  $ chop 1
+  $ swing 1.2
+  $ s "superfm:3 superfm:0*2"
+  # n (scale "minPent" "0..4")
+  # room 0.5 # size 0.9
+  # gain 1
+  # octave (irand 8)

@@ -8,7 +8,7 @@ do
     ]
   d2
     $ slow 2
-    -- $ jux rev 
+    -- $ jux rev
     $ n "a'min7(1,2,1) a'min7(1,8,4) c'maj(1,8,4) e'min7(1,1,8)"
     # s "superpiano"
     # size 0.5
@@ -19,9 +19,10 @@ do
     # gain 0.8
     # octave 4
 
-d3
-  $ degrade
-  $ n (scale "ionian" "3? 1 2 4?")
+d6
+  $ fast 2
+  -- $ degrade
+  $ n (scale "chinese" "3? 1 2 4?")
   # s "superfm"
   # octave 4
   # speed 1.2

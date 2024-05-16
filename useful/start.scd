@@ -1,13 +1,26 @@
- SuperDirt.start;
-s.quit;
-s.options.memSize = 32*8192;
+(
+s.options.memSize = 8192 * 16;
+s.options.numBuffers = 1024 * 16;
+s.options.maxNodes = 1024 * 32;
+)
+
+(
+s.waitForBoot {
+    ~dirt = SuperDirt(2, s);
+    ~dirt.start(57120, 0 ! 14);
+
+	load("C:\\Users\\asus\\AppData\\Local\\SuperCollider\\synthdefs\\mi-ugens.scd");
+	~dirt.loadSoundFiles("C:\\Users\\asus\\AppData\\Local\\SuperCollider\\downloaded-quarks\\Dirt-Samples\\*");
+	~dirt.loadSoundFiles("C:\\Users\\asus\\AppData\\Local\\SuperCollider\\samples\\*");
+}
+)
 
 //"C:\Users\asus\AppData\Local\SuperCollider\synthdefs\mi-ugens.scd.txt"
-load("C:\\Users\\asus\\AppData\\Local\\SuperCollider\\synthdefs\\mi-ugens.scd");
 
-~dirt.loadSoundFiles("C:\\Users\\asus\\AppData\\Local\\SuperCollider\\downloaded-quarks\\Dirt-Samples\\*");
+~mixer.gui;
 
-~dirt.loadSoundFiles("C:\\Users\\asus\\AppData\\Local\\SuperCollider\\samples\\*");
+s.quit;
+
 
 (
 ~dirt.orbits.do { |x|
@@ -54,21 +67,12 @@ SynthDef(\spec_pad, {
 	OffsetOut.ar(out,DirtPan.ar(snd, ~dirt.numChannels, pan, env));
 }).add;
 
-SynthDef(\laser, {
-	|out, freq = 440, att = 0.01, rel = 0.6, speed=1, begin=0, end=1, pan, accelerate, offset|
-    var gliss = XLine.kr(freq.midiratio*100, freq.midiratio*0.01, rel);
-    var snd = SinOsc.ar(gliss);
-    var env = EnvGen.kr(Env.perc(att, rel), doneAction: 2);
-    snd = snd * env;
-	OffsetOut.ar(out,DirtPan.ar(snd, ~dirt.numChannels, pan, env));
-}).add;
-
 SynthDef(\bubble_laser, {
 	|out, freq = 440, speed=1, begin=0, end=1, pan, accelerate, offset|
 	var frequency = (freq/ 100).midicps ;
 	var amp = 2;
 	var wave = VarSaw.ar(
-		frequency / 2,
+		frequency / 10,
 		width: XLine.ar(0.2,2.0, 0.4)
 	).range(0, XLine.ar(0.5,1/300, 0.4));
 

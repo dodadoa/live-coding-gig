@@ -1,0 +1,74 @@
+setcps (130/60/4)
+
+d5
+  $ slow 2
+  $ s "horror_fx:2 horror_rev"
+  # amp 0.9
+  -- # clouds 0.1 0.5 0.05 0.1
+  -- # cloudsblend 0.8 0.2 0.33 0.8
+  # pan rand
+  # gain 1
+
+d6
+  $ degrade
+  $ slow 4
+  $ swing 1.3
+  $ s "laser"
+  <| n (shuffle 8 $ run 16)
+  # room 0.3
+  # size 0.5
+  # pan sine
+  # gain 0.9
+
+d1
+  -- $ degrade
+  -- $ fast 4
+  $ slow 2
+  $ s "impact*4@4"
+  # n "0 1 2 3"
+  # pan rand
+  # room 0.3
+  # gain 1
+
+d3
+  $ s "sophie_fx*2@4"
+  # n "4 5"
+
+d2
+  -- $ slow 2
+  $ s "sophie_fx@8"
+  <| n (shuffle 8 $ run 8)
+  # up "0 1 2 3 [1 2]"
+  # grain 0 0.2
+  # release 0.4
+  # gain 1
+
+d4
+  $ slow 2
+  -- $ fast 2
+  $ iter 4
+  $ n "0 1 2 2 1 2 2 3"
+  # s "808bass"
+  # octave 6
+  # gain 0.85
+
+panic
+
+d2
+  $ s "horror_rhythm@8"
+  # grain 0 0.01
+  # gain 1.35
+
+d2
+  $ s "horror_rhythm"
+  # n "2"
+  # grain 0.05 0.25
+  # gain 1
+
+d5
+  $ sometimes (fast 2)
+  $ iter 4
+  $ "supergong*4"
+  # n "0 1 2 3"
+  -- # hpf 600
+  # gain 1

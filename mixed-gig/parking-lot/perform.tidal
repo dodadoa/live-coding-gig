@@ -1,0 +1,600 @@
+setcps (130/60/4)
+
+once
+  $ s "speak"
+  # amp 1.4
+
+d1
+  $ s "808bd*4"
+
+d1
+  $ chop 16
+  $ slow 2
+  $ n "1 0 2"
+  # s "elevator"
+  # grain 0 0.3
+  # gain 1.2
+
+d2
+  $ chop 16
+  $ s "airport@4"
+
+d3
+  $ slow 2
+  $ iter 2
+  $ sometimes (# speed (-1))
+  $ s "splash*4"
+  # n "0 3 2 3"
+  # amp 1.4
+  -- # pan rand
+  -- # speed (-1)
+  -- # octave 2
+  # grain 0 0.5
+
+d4
+  $ sometimes (chop 8)
+  $ chop 4
+  -- $ sometimes (# speed 2)
+  $ s "splash:1 splash:2"
+  # clouds 0.1 0.5 0.05 0.1
+  # cloudsblend 1 0.2 0.33 0.8
+  # grain 0 0.15
+  # pan sine
+  # speed 4
+  # gain 0.9
+
+d6
+  $ jux rev
+  $ striate 4
+  $ s "plaits" <| note "c g d e" |+ rand
+  # octave "<5 4 5 6>"
+  # clouds 0.1 0.5 0.05 0.1
+  # cloudsblend 1 0.2 0.33 0.8
+  # engine (slow 2 $ run 16)
+  # timbre (slow 2 sine)
+  # harm (slow 2 saw)
+  # morph (slow 2 saw)
+  # level (slow 2 sine)
+  # shift (slow 2 sine)
+  # gain 1
+
+d5
+  $ whenmod 16 15 (chop 4)
+  $ whenmod 8 7 (# speed 2)
+  $ sometimes (# speed 0.5)
+  $ fast 1
+  $ sometimes (fast 2)
+  $ chop 1
+  $ s "glitch:3 glitch:0*2"
+  # room 0.5 # size 0.9
+  # gain 0.85
+  # octave (irand 8)
+
+d3
+  $ s "808shot*2"
+  # n "1 2"
+  # gain 0.9
+  # pan rand
+
+d7
+  $ sometimes (# accelerate 1.5)
+  $ s "bike*2"
+  # amp 2
+  # grain (rand + 0.1) (rand + 0.2)
+  # sustain 1
+  # release 1
+  # pan rand
+  # gain 1
+
+xfade 7
+  -- $ degrade
+  -- $ swing 2
+  -- $ striate 2
+  $ jux rev
+  $ jux (slow 2 . rev)
+  $ slow 2
+  $ (struct "[t*3 ~ ~ t*5] t*4"
+    $ n (scale "chinese" (irand 8))
+  )
+  # s "superhoover"
+  # octave 2
+  # room 0.3
+  # size 0.6
+  # release 0.8
+  # gain 0.8
+  # pan rand
+
+---------------------------------------------------------------
+---------------------------------------------------------------
+---------------------------------------------------------------
+
+d5
+  $ whenmod 4 3 (chop 4)
+  $ whenmod 8 7 (# speed 2)
+  $ sometimes (# speed 0.5)
+  $ fast 1
+  $ sometimes (fast 2)
+  $ jux (slow 2 . (# speed "-1"))
+  $ s "superfm:3 superfm:0*2"
+  # n (scale "minPent" "0..4")
+  # room 0.5 # size 0.9
+  # octave (irand 8)
+  # room 0.3
+  # release 0.9
+  # imag 2
+  # gain 1.2
+
+d1
+  $ stack [
+    s"bd*2"
+    # crush 1.45
+    # size 0.4
+    # release 0.05
+    # gain 1.15
+    ,
+    s "metal" # gain 1.2
+  ]
+
+d2
+  $ jux (chop 2)
+  $ "ht*4 hh*4"
+  # imag 1
+  # sustain 0.5
+  # release 0.2
+  # octave (irand 8)
+  # gain 1
+
+d4
+  -- $ whenmod 8 7 (# octave 6)
+  $ s "808superbass:2"
+  # gain 1
+
+d3
+  $ s "808shot*2"
+  # n "1 2"
+  # gain 0.5
+
+d6
+  -- $ striate 4
+  $ chop (irand 4)
+  -- $ sometimes (# grain rand (rand + 0.2))
+  -- $ sometimes (# crush 1.2)
+  $ jux (# speed 2)
+  $ s "decompose:34"
+  # grain 0 0.2
+  # gain 1.15
+
+xfade 7
+  $ stack [
+    degrade
+    $ rolled
+    $ struct "t*16" $ (scale "chinese" (irand 14))
+    # s "gtr*8"
+    -- # crush 1.7
+    # octave ((irand 4) + 2)
+    # gain 0.55,
+    ---
+    sometimes (# crush 0.65)
+    -- $ swing 1.1
+    $ "808superbass"
+    # crush 0.75
+    -- # size 0.4
+    -- # room 0.7
+    # gain 0.7
+  ]
+
+---------------------------------------------------------------
+---------------------------------------------------------------
+---------------------------------------------------------------
+
+xfade 7
+  $ rolled
+  $ whenmod 8 7 (jux rev)
+  $ sometimes (fast 2)
+  $ whenmod 4 3 (# up "2 1")
+  $ s "gtr@2 gtr@2"
+  # n "6 3"
+  # lpf 550
+  -- # release 0.9
+  # sustain 1.2
+  # up "1 2"
+  -- # octave 6
+  # gain 0.75
+
+d1
+  $ stack [
+    s "808bd*2 ~ ~ 808bd" # gain 1.4
+    ,
+    s "~ 808hh*4 808oh 808hh*3" # gain 1.15
+  ]
+  # room 0.2
+  # size 0.5
+
+d3
+  $ n "0 1 0 3"
+  # s "hopbass"
+  -- # crush 2
+  # gain 0.8
+  # pan rand
+
+d6
+  $ degrade
+  -- $ sometimes (fast 8)
+  $ s "impact:3 impact:2"
+  -- # accelerate 6
+  -- # octave 3
+  # hpf 800
+  # sustain 0.3
+  # release 1
+  # room 0.3
+  # size 0.7
+  # pan sine
+  # gain 0.95
+
+d4
+  $ iter 4
+  $ n (scale "chinese" "0 2 4 3")
+  # s "superpiano@4"
+  # sustain 2
+  # octave 2
+  # hpf 1500
+  # room 0.3
+  # gain 1
+
+d4
+  $ s "808bass"
+  # gain 1
+
+d3
+  $ fast 2
+  $ degrade
+  $ s "808shot*2"
+  # n "0 1"
+  # gain 1
+
+d7
+  $ rarely (# gain 0)
+  $ jux (# speed 2)
+  $ sometimes (fast 2)
+  $ iter 4
+  $ n "0 0 4 4 3 3 2 2"
+  # s "gong"
+  # gain 0.85
+
+---------------------------------------------------------------
+---------------------------------------------------------------
+---------------------------------------------------------------
+
+d5
+  $ slow 2
+  $ s "horror_fx:2 horror_rev"
+  # amp 0.9
+  -- # clouds 0.1 0.5 0.05 0.1
+  -- # cloudsblend 0.8 0.2 0.33 0.8
+  # pan rand
+  # gain 0.85
+
+d6
+  $ degrade
+  $ slow 4
+  $ swing 1.3
+  $ s "laser"
+  <| n (shuffle 8 $ run 16)
+  # room 0.3
+  # size 0.5
+  # pan sine
+  # gain 1
+
+d1
+  -- $ degrade
+  -- $ fast 4
+  $ slow 2
+  $ s "impact*4@4"
+  # n "0 1 2 3"
+  # pan rand
+  # room 0.3
+  # gain 1
+
+d3
+  $ s "sophie_fx*2@4"
+  # n "4 5"
+
+d2
+  -- $ slow 2
+  $ s "sophie_fx@8"
+  <| n (shuffle 8 $ run 8)
+  # up "0 1 2 3 [1 2]"
+  # grain 0 0.2
+  # release 0.4
+  # gain 1
+
+panic
+
+d4
+  $ slow 2
+  -- $ fast 2
+  $ iter 4
+  $ n "0 1 2 2 1 2 2 3"
+  # s "808bass"
+  # octave 6
+  # gain 0.7
+
+panic
+
+d2
+  $ s "horror_rhythm@8"
+  # grain 0 0.01
+  # gain 1.35
+
+d2
+  $ s "horror_rhythm"
+  # n "2"
+  # grain 0.05 0.25
+  # gain 1
+
+d5
+  $ sometimes (fast 2)
+  $ iter 4
+  $ "supergong*4"
+  # n "0 1 2 3"
+  -- # hpf 600
+  # gain 1
+
+-----------------------------------------------------------
+-----------------------------------------------------------
+
+d1
+  $ stack [
+    s "808bd*4",
+    sometimes (# speed 2) $ s "808oh*8 hh27*8"
+  ] # gain 1.3
+
+d3
+  -- $ whenmod 8 7 (# octave 5)
+  $ s "808superbass:2"
+  # gain 1
+
+d3
+  -- $ degrade
+  $ n "0 1"
+  # s "hopbass*4"
+  # crush 0.8
+  # pan rand
+  # gain 0.8
+
+d4
+  -- $ whenmod 8 7 (# octave 5)
+  $ s "808superbass:0@2"
+  # gain 1
+
+d6
+  $ striate 2
+  $ s "plaits" <| note "c g" |+ rand
+  # octave "<5 4 5 6>"
+  # clouds 0.1 0.5 0.05 0.1
+  # cloudsblend 1 0.2 0.33 0.8
+  # engine (slow 2 $ run 16)
+  # timbre (slow 4 sine)
+  # harm (slow 2 saw)
+  # morph (slow 2 saw)
+  # level (slow 4 sine)
+  # shift (slow 2 sine)
+  # gain 0.9
+
+d7
+  $ degrade
+  $ s "gabba*16"
+  # crush 1.2
+  # gain 0.86
+
+d1
+  $ sometimes (fast 2)
+  $ n "[<8 7> 2] [0 1] [2 <1 2>] [1 <1 0>]"
+  # s "feel"
+  # speed (saw + 3)
+  # gain 1
+
+d5
+  $ degrade
+  $ fast 2
+  $ slow 4
+  -- $ stutter 2 3
+  -- $ chunk 4 (fast 2 . (|- n 12))
+  $ jux rev
+  -- $ off 0.65 (|+ 3)
+  $ struct (iter 4 "t(3,8)")
+  $ n (scale "melodicMinorDesc" "0 .. 7")
+  # sound "superpiano"
+  # octave 2
+  # gain 1
+
+d1
+  -- $ slow 2
+  $ stack [
+    s "dr:1 dr:2*4 [dr:0*2 dr:1?] dr:2*4" # 1.3,
+    s "hh27*16" # gain 1.2
+  ]
+  # gain 1
+
+d3
+  -- $ every (choose [1,2,3]) degrade
+  $ sometimes (striate 2)
+  $ every 2 (# grain 0.1 0.9)
+  $ every 3 (# n (struct "[t*5 ~ t*3 ~]!2" $ scale "chinese" (irand 8)))
+  $ n (scale "chinese" "0 1 2 3 4 5 6 7")
+  # s "superfm" # gain 0.8 # octave 3 # room 0.3 # size 0.5
+  # grain 0.5 0.8
+  # gain 0.7
+
+d6
+  $ degrade
+  -- $ fast 4
+  -- $ slow 2
+  $ s "impact*4@4"
+  # n "4 1 4 1"
+  # pan rand
+  -- # room 0.3
+  # hpf 1500
+  # gain 1
+
+d4
+  $ slow 4
+  $ (jux rev)
+  $ every 2 (# sustain 0.3)
+  -- $ striate 2
+  $ s "supergong*4" # n (scale "chinese" "0 1 2 3")
+  # gain (choose [0.9, 0.8])
+  -- # pan (rand)
+  # octave 5
+  # sustain 0.7
+  # gain 1.1
+
+d1
+  -- $ slow 2
+  $ stack [
+    s "808bd*4" # gain 1.35
+    ,
+    s "~ ~ ~ <808sn 808r*4>" # gain 1.1
+    ,
+    s "808hh*16"
+    ,
+    s "~ 808oh ~ 808oh*2"
+  ]
+
+d5
+  $ degrade
+  $ striate 2
+  $ every 2 (# octave 6)
+  $ every 3 (# sustain 3)
+  $ jux (slow 4)
+  $ jux (slow 2 . rev)
+  $ n (scale "chinese" "1 2 2 3 1 1 5 1") # s "superfm"
+  -- # sustain 1.4
+  -- # attack 0.2
+  # release 0.12
+  # room 0.3
+  # size 0.6
+  # pan cosine
+  # octave 4
+  # gain 0.8
+
+d2
+  $ degrade
+  $ rot "2 4"
+  $ whenmod 8 7 (# speed 2)
+  $ s "808oh*16" # gain 1
+  # accelerate 4
+  -- # octave (irand 10)
+
+d3
+  $ chop 4
+  $ s "808shot*2"
+  # n "0 1"
+  # gain 0.95
+
+d1
+  $ whenmod 4 3 (swingBy 3 2)
+  $ whenmod 8 7 (# speed 2)
+  $ fast 2
+  $ n "[<0 1> 0] [0 1]"
+  # s "techno"
+  # gain 1.3
+
+d2
+  $ s "sophie_percussion*4"
+  # n "6"
+  # gain 0.95
+
+d7
+  $ degrade
+  $ s "gabba*16"
+  -- # crush 0.9
+  # gain 0.85
+
+d8
+  $ chop 4
+  $ s "counting*2" # n "1 4"
+  # amp 5
+  # octave 5
+  # up "10 11"
+  # gain 1
+
+d5
+  $ degrade
+  $ fast 2
+  $ every 2 (# speed 4) $ iter 4 $ n "[0 2] [2 3] [2 1] [0 1]"
+  # s "bass2"
+  # accelerate (2)
+  # speed (sine + 5)
+  # octave 5
+  # pan rand
+  # crush 0.6
+  # room 0.3
+  # size 0.6
+  # gain 0.85
+  -- # gain 0
+
+d2
+  $ s "sophie_percussion*4"
+  # n "6"
+  # gain 1
+
+
+d4
+  -- $ degrade
+  $ n "1 1 1 2"
+  # s "808bass"
+  # gain 0.9
+  -- # gain 0
+
+d1
+  -- $ fast 2
+  -- $ iter 4
+  -- $ whenmod 4 3 (struct "t(3,8) t t*2 t(3,8)")
+  -- $ sometimes (# octave 5)
+  $ (struct "t(3,8) t*2"
+    $ n "1 2 4 2")
+  # s "sophie_percussion"
+  # lpf 2500
+  # room 0.4
+  # size 0.5
+  # octave 4
+  # gain 0.9
+
+
+d6
+  -- $ jux rev
+  $ degrade
+  $ rarely (jux rev)
+  $ sometimes (# octave 5)
+  -- $ slow 2
+  $ chop 2
+  $ n "a'min7(1,2,1) a'min7(1,8,4) c'maj(1,8,4) e'min7(1,1,8)"
+  # s "superfm"
+  # size 0.5
+  # room 0.7
+  # crush 2.5
+  # release 0.8
+  -- # decay 2
+  # octave 6
+  # gain 0.65
+
+d1
+  $ fast 2
+  $ s "amencutup"
+  # amp 1.5
+  <| n (shuffle 8 $ run 8)
+  # hpf 600
+  -- # release 0.25
+  # gain 1
+  # speed "{1,2,3}%8" # gain 0.85
+  -- # gain 0
+
+d7
+  -- $ degrade
+  $ sometimes (fast 2)
+  -- $ every 4 (fast 2)
+  -- $ whenmod 4 3 (fast 2)
+  $ s "bottle*2 [bottle bottle] ~ bottle"
+  # room 0.3
+  # gain 1.15

@@ -1,0 +1,59 @@
+d5
+  $ rolled
+  $ whenmod 8 7 (jux rev)
+  $ sometimes (fast 2)
+  $ whenmod 4 3 (# up "2 1")
+  $ s "gtr@2 gtr@2"
+  # n "6 3"
+  # lpf 550
+  -- # release 0.9
+  # sustain 1.2
+  # up "1 2"
+  -- # octave 6
+  # gain 0.75
+
+d1
+  $ stack [
+    s "808bd*2 ~ ~ 808bd",
+    s "~ 808hh*4 808oh 808hh*3"
+  ]
+  # room 0.2
+  # size 0.5
+  # gain 1.1
+
+d6
+  $ degrade
+  -- $ sometimes (fast 8)
+  $ s "impact:3 impact:2"
+  -- # accelerate 6
+  -- # octave 3
+  # hpf 800
+  # sustain 0.3
+  # release 1
+  # room 0.3
+  # size 0.7
+  # pan sine
+  # gain 0.9
+
+d4
+  $ iter 4
+  $ n (scale "chinese" "0 2 4 3")
+  # s "superpiano@4"
+  # sustain 2
+  # octave 2
+  # hpf 1500
+  # room 0.3
+  # gain 1
+
+d3
+  $ s "808bass"
+  # gain 1.1
+
+d7
+  $ rarely (# gain 0)
+  $ jux (# speed 2)
+  $ sometimes (fast 2)
+  $ iter 4
+  $ n "0 0 4 4 3 3 2 2"
+  # s "gong"
+  # gain 0.9
