@@ -2,8 +2,8 @@
 const cyfemmanifestoImgUrl = "https://raw.githubusercontent.com/dodadoa/visualstore/main/cyberfem_manifesto.png"
 s0.initImage(cyfemmanifestoImgUrl)
 
-bpm = 132
-speed = 0.2
+bpm = 130
+speed = 10
 
 hush()
 
@@ -15,10 +15,13 @@ osc(10, 0.1, 10)
       .modulateScale(noise(0.3))
   )
   .colorama(0.1)
-  .modulateRotate(osc([100, 20, 1].fast()))
+  // .modulateRotate(osc([100, 20, 1].fast()))
   .color(1, [0, 0.2,1].smooth(), [0, 1])
   .scroll([2, 4, 6], [2, 3, 4])
   .scale(1.5)
+  // .thresh(0.2)
+  .modulate(o0, 0.5)
+  .diff(o1)
   .out(o0)
 
 bpm = 110
@@ -39,7 +42,8 @@ osc(10, 1, 10)
   // .blend(solid(1, 1, 1), [0, 1].fast())
   // .diff(o1)
   // .layer(src(o1).luma(0.6))
-  .out(o0)
+  .thresh(0.5)
+  .out(o1)
 
 hush()
 
