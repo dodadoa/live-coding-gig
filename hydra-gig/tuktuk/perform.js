@@ -1,9 +1,5 @@
-
-const cyfemmanifestoImgUrl = "https://raw.githubusercontent.com/dodadoa/visualstore/main/cyberfem_manifesto.png"
-s0.initImage(cyfemmanifestoImgUrl)
-
-bpm = 132
-speed = 0.2
+bpm = 150
+speed = 1.2
 
 hush()
 
@@ -14,11 +10,14 @@ osc(10, 0.1, 10)
       .rotate(() => time / 2)
       .modulateScale(noise(0.3))
   )
+  .pixelate(2, 1000)
   .colorama(0.1)
   .modulateRotate(osc([100, 20, 1].fast()))
   .color(1, [0, 0.2,1].smooth(), [0, 1])
   .scroll([2, 4, 6], [2, 3, 4])
   .scale(1.5)
+  .diff(o1, 0.9)
+  // .luma(0.3)
   .out(o0)
 
 bpm = 110
@@ -39,7 +38,7 @@ osc(10, 1, 10)
   // .blend(solid(1, 1, 1), [0, 1].fast())
   // .diff(o1)
   // .layer(src(o1).luma(0.6))
-  .out(o0)
+  .out(o1)
 
 hush()
 
@@ -143,43 +142,3 @@ osc(5, 3, 1)
   .brightness(0.3)
   .sub(o0)
   .out(o0)
-
-  // licensed with CC BY-NC-SA 4.0 https://creativecommons.org/licenses/by-nc-sa/4.0/
-  bpm = 120
-  speed = 1
-
-  a.setBins(6)
-  a.show()
-
-  noise(2, 1)
-  	.modulate(
-    		shape(3).rotate(
-            () => (time / Math.PI)
-          )
-    		.scrollX(() => Math.sin(time))
-    		.modulateRotate(shape(3).modulateRepeat(noise(10)))
-  	)
-  	.modulate(voronoi(2).modulate(noise()))
-  	.color(1, 0, 0)
-  	.diff(
-    		osc(1, 0.5, 4)
-  	)
-  	.diff(noise(3).rotate(() => time / 2))
-  	.diff(gradient(2))
-  	.modulatePixelate(osc(2).rotate(() => Math.cosine(time)).scale(() => Math.sin(time) * 0.2 + 0.4))
-      .modulateScale(noise(5).scale([0.1, 0.2, 0.3, 2, 0.2].smooth()), 0.4)
-  	.diff(osc(4, 0.8, 1))
-    	.modulate(o0)
-  	.mult(
-    		shape(50)
-    		.scale(3, 0.5)
-    		.modulateScale(noise(2, 0.5))
-    		.modulateRotate(noise(3, 0.2))
-    		.scale(
-            () => a.fft[0] * 1.5 + 1
-          )
-  	)
-  	.diff(gradient(0.1).color([1, 0.2, 0.4].smooth(), 0.2, 0.2).colorama(10).luma(0.85))
-  	.pixelate([80, 200, 1000].smooth(), 150)
-  	.modulate(o0)
-  	.out(o0)

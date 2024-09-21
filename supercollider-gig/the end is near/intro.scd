@@ -1,4 +1,12 @@
-SuperDirt.start;
+(
+s.options.memSize = 8192 * 16;
+s.options.numBuffers = 1024 * 16;
+s.options.maxNodes = 1024 * 32;
+s.options.inDevice_("ASIO : JackRouter");
+s.options.outDevice_("ASIO : JackRouter");
+)
+
+s.start;
 
 MainHPF.new();
 

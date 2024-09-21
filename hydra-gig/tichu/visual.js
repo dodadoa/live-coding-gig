@@ -14,7 +14,7 @@ osc(3, 1, 1)
   // .sub(o2)
   // .thresh(0.25)
   // .mult(o1, 0.2)
-  .modulate(o1, [0.7, 0, 0.5])
+  // .modulate(o1, [0.7, 0, 0.5])
   // .pixelate([3, 5, 10, 100, 1000], [5, 100])
   // .sub(o2)
   // .diff(o0)
@@ -36,7 +36,7 @@ osc(5, 0.5, 2)
   .sub(o0)
   .color(1,0,[2,1,0.5])
   .modulate(o0)
-  .out(o2)
+  .out(o0)
 
 
 /*
@@ -113,7 +113,7 @@ noise(6,.25)
  	,3
 )
 .rotate( ()=>time/22 )
-.mult(o1)
+// .mult(o1)
 .color(10, 0, 1)
 .out(o0)
 
@@ -128,7 +128,7 @@ s0.initVideo("https://media.giphy.com/media/qiUd76TpepjZS/giphy.mp4")
 s0.initVideo("https://media.giphy.com/media/v467lTy81ixwY/giphy.mp4")
 s0.initVideo("https://media.giphy.com/media/QHwf11y2ZfFSM/giphy.mp4")
 
-src(s0)
+src(osc(10, 2, 10))
   .scale(1)
   .diff(osc(5, 0.4, 0.5))
   .modulate(o0, [0,0.2,0.4])
@@ -138,6 +138,7 @@ src(s0)
   .modulateRotate(o1, 0.5)
   .luma(0.7)
   .color(0.8, 0.4, 0.5)
+  .add(gradient(10))
   .out(o0)
 
 /*
