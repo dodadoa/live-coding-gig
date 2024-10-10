@@ -43,7 +43,7 @@ osc(10, 1, 10)
   // .diff(o1)
   // .layer(src(o1).luma(0.6))
   .thresh(0.5)
-  .out(o1)
+  .out(o0)
 
 hush()
 
@@ -87,7 +87,7 @@ noise(0.5, 0.1)
 .color(0, 0.1, [0.5, 0.9, 0.3])
 // .colorama(2)
 .pixelate([10, 100, 300].ease(), [100, 10, 50].ease())
-.out(o1)
+.out(o0)
 
 bpm = 105
 speed = 0.8
@@ -106,7 +106,7 @@ shape(3)
 .diff(o1, 0.1)
 .modulate(o0, 0.3)
 // .invert()
-.out(o1)
+.out(o0)
 
 bpm = 130
 speed = 0.5
@@ -121,7 +121,7 @@ shape(3)
 .rotate(() => time / 2)
 .color(1, 0.2, 0)
 // .thresh(0.2)
-.out(o1)
+.out(o0)
 
 osc(3, 0.5, 2)
   .modulateRotate(o0, 1)
@@ -138,7 +138,7 @@ osc(3, 0.5, 2)
   // .color(0, 0, 1)
   // .modulate(o0, [0, 0.2, 0.7, 1].ease())
   // .modulate(osc(20))
-  .out(o1)
+  .out(o0)
 
 osc(5, 3, 1)
   .modulate(noise(1), 0.1)

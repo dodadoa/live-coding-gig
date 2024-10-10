@@ -10,7 +10,7 @@ osc(5,0.4,2)
 .modulate(o1, 1)
 .thresh([0.7], 0)
 .pixelate([2,8, 100, 1000], 1000)
-.out(o1)
+.out(o0)
 
 hush()
 
@@ -51,7 +51,7 @@ osc(10, 0.1, 10)
   // .layer(src(o0))
   .modulate(o0, 0.5)
   // .brightness(-0.15)
-  .out(o1)
+  .out(o0)
 
 bpm = 110
 speed = 1
@@ -91,12 +91,12 @@ speed = 1.5
 
 osc(5, [0.5, -0.5], 0)
   .modulate(noise(1), 0.1)
-  // .modulateScale(shape(2).rotate(() => time), () => time / 2)
+  .modulateScale(shape(2).rotate(() => time), () => time / 2)
   // .modulate(o0, 0.5)
   // .brightness(0.5)
   .sub(o1)
   .luma(0.8)
-  .thresh(0.5)
+  // .thresh(0.5)
   .pixelate([10, 50, 100], 2)
   .out(o0)
 

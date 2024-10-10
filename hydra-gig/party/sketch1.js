@@ -35,7 +35,8 @@ osc(3, 0.1, [0.1, 0.3, 0.5])
 
 osc(5, 0.1, 0.5)
   .modulate(noise(10), 0.1)
-  .modulate(o0, 1)modulateScale(o1, () => time / 5)
+  .modulate(o0, 1)
+  .modulateScale(o1, () => time / 5)
   .diff(voronoi(3))
   .out(o0)
 
