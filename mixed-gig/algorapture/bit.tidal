@@ -1,121 +1,37 @@
-setcps (130/60/4)
-
-d1 $ s "bd*4"
-
-d1
-  -- $ degrade
-  -- $ sometimes (slow 2)
-  -- $ sometimes (fast 2)
-  -- $ iter 8
-  $ jux rev
-  $ slow 2
-  $ s "per"
-  <| n (shuffle 8 $ run 8)
-  # clouds 0.1 0.5 0.05 0.1
-  # cloudsblend 0.8 0.2 0.33 0.8
-  # octave 4
-  # grain 0 1
-  # speed 1
-  # size 0.6
-  # room 0.2
-  # gain 1
-
-d2
-  -- $ degrade
-  -- $ sometimes (slow 2)
-  -- $ sometimes (fast 2)
-  -- $ iter 8
-  $ s "gong"
-  <| n (shuffle 8 $ run 8)
-  # clouds 0.1 0.5 0.05 0.1
-  -- # cloudsblend 0.8 0.2 0.33 0.8
-  # octave 4
-  # grain 0 1
-  # speed 1
-  # pan sine
-  # size 0.6
-  # room 0.2
-  # gain 0.7
-
-panic
-
-d3
-  $ s "raining"
-  # amp 0.9
-  # grain 0.20 0.21
-  -- # clouds 0.1 0.5 0.05 0.1
-  -- # cloudsblend 0.8 0.2 0.33 0.8
-  # pan sine
-  # gain 0.8
-  -- #
-
-panic
-
-d3 $ silence
-
-d5
-  $ slow 2
-  $ s "horror_fx:2 horror_rev"
-  # amp 0.9
-  -- # clouds 0.1 0.5 0.05 0.1
-  -- # cloudsblend 0.8 0.2 0.33 0.8
-  # pan rand
-  # gain 1
-
-panic
-
-d1
-  $ s "traffic"
-  # grain 0.1 0.11
-  # amp 0.7
-  -- # clouds 0.1 0.5 0.05 0.1
-  -- # cloudsblend 0.8 0.2 0.33 0.8
-  # pan sine
-  # gain 0.7
-
-d1
-  $ s "bike@4"
-  # grain 0.45 0.46
-  # gain 1
-
-d3 $ silence
-
-panic
 
 setcps (150/60/4)
 
 let samcha_r = "bd:1 ~ sn:1 bd bd ~ bd ~"
+
 let samcha_hat = "808cb:2 808hh"
+
 let hat = "808hh:5*8"
 
 d1
  $ whenmod 4 3 (hurry 2)
  $ s "bd:1 ~ sn:1 bd bd ~ bd ~"
- # gain 1
-
-
-panic
+ # gain 1.2
 
 d1
-  -- $ striate 2
-  -- $ jux rev
+  $ rarely (jux rev)
   $ stack [
-    s samcha_r # gain 1,
+    s samcha_r # gain 1.1 # room 0.4 # size 0.6,
     fast 4 $ samcha_hat # speed 1 # gain 1.2,
     swing 1.3
       $ whenmod 4 3 (hurry 2 . (# speed 0.5))
       $ hat
       # release 0.3
       # speed 1
+      # room 0.3 # size 0.5
       # gain 0.75
-      -- # gain 0
   ]
   -- <| n (shuffle 8 $ run 8)
 
-d1
+d2
+  $ slow 2
   $ s "808kick*8"
   <| n (shuffle 8 $ run 8)
-  # gain 1.15
+  # gain 1
 
 d1
   $ s "amencutup"
@@ -126,9 +42,8 @@ d1
   # gain 1
   -- # gain 0
 
-panic
 
-d1
+d2
   -- $ fast 2
   -- $ iter 4
   -- $ whenmod 4 3 (struct "t(3,8) t t*2 t(3,8)")
@@ -136,29 +51,12 @@ d1
   $ (struct "t t*2 t(3,8) t*2"
     $ n "1 2 4 3")
   # s "sophie_percussion*4"
-  # hpf 500
-  # room 0.2
-  # size 0.5
+  -- # hpf 500
+  -- # room 0.2
+  -- # size 0.5
   # octave 4
   # gain 0.9
   -- # gain 0
-
-d7
-  -- $ whenmod 4 3 (fast 5)
-  -- $ fast 4
-  $ slow 2
-  $ s "gun_reload:1 gun_reload:2"
-  -- # amp 1
-  -- # grain 0 0.2
-  # gain 0.75
-
-d3
-  -- $ slow 2
-  -- $ fast 2
-  $ n "0 1 2 2 1 2 2 3"
-  # s "808bass"
-  # octave 6
-  # gain 0.85
 
 
 d2
@@ -172,17 +70,17 @@ d2
   # gain 0.9
   -- # gain 0
 
-d6
-  $ degrade
-  -- $ slow 4
+d5
+  -- $ degrade
+  $ slow 4
   -- $ swing 1.3
   $ s "laser"
   <| n (shuffle 8 $ run 16)
   # room 0.3
-  # release 0.5
+  # release 0.2
   # size 0.5
   # pan sine
-  # gain 0.9
+  # gain 1
 
 d5
   $ degrade
@@ -199,7 +97,7 @@ d5
   # gain 0.65
   -- # gain 0
 
-d5
+d6
   -- $ slow 2
   $ s "sophie_fx"
   <| n (shuffle 8 $ run 8)
@@ -225,8 +123,8 @@ d7
   # gain 1
 
 d7
-  -- $ whenmod 4 3 (fast 2)
-  $ s "cheer*2 cheer:1"
+  $ whenmod 4 3 (fast 2)
+  $ s "cheer*2 cheer*2"
   # amp 1.1
   -- # grain 0.15 0.55
   # octave 6
@@ -237,22 +135,12 @@ d7
 once
   $ s "groo:2"
 
-setcps (145/60/4)
-
-d1
+d2
   $ whenmod 4 3 (slow 2)
   $ s "sophie_percussion*4"
   # n "6"
   # gain 1.2
 
-
-d3
-  $ slow 2
-  -- $ fast 2
-  $ n "0 1 2 2 1 2 2 3"
-  # s "808bass"
-  # octave 6
-  # gain 1
 
 -- สาวป่าบง
 d6
@@ -269,22 +157,7 @@ d6
   # octave 6
   # legato 4
   -- # speed (2)
-  # gain 0.8
-
-panic
-
--- สาวเทคนิต
-d6
-  -- $ degrade
-  -- $ slow 3
-  $ chop 3
-  -- $ striate 4
-  $ s "paktai"
-  # grain 0 0.22
-  # crush 3.5
-  # room 0.3
-  # size 0.7
-  # gain 0.9
+  # gain 1
 
 -- ให้ปี้ได้ก่
 d6
@@ -311,10 +184,11 @@ d5
   $ degrade
   -- $ fast 4
   -- $ slow 2
+  $ iter 4
   $ s "impact*4"
   # n "0 1 2 3"
-  # pan rand
   # room 0.3
+  # release 0.4
   # gain 1
 
 d5
@@ -324,6 +198,7 @@ d5
   -- $ whenmod 4 3 (fast 2)
   $ s "bottle*2 [bottle bottle] ~ bottle"
   # room 0.3
+  # pan rand
   # gain 1
 
 -- d6
@@ -337,20 +212,4 @@ once
   -- # release 0.6
   # size 0.3
   # room 0.6
-  # gain 0.85
-
-
-
-setcps (145/60/4)
-
--- fashion show
--- once
-d7
-  $ chop 16
-  $ slow 8
-  -- $ whenmod 4 3 (# grain 0.35 0.7)
-  $ s "solo:0"
-  # grain 0 0.35
-  # room 0.3
-  # size 0.5
   # gain 0.85

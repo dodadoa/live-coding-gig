@@ -114,16 +114,6 @@ a.stop;
 
 
 (
-OSCdef(\eefly_osc, {
-	|msg, time, addr, recvPort| (
-		Synth(\electronic_fly).set(\note, msg[0])
-	)
-}, '/r');
-)
-
-
-
-(
 SynthDef(\hinote, {
 	arg freq, gain = 1;
 	var snd;
@@ -169,14 +159,6 @@ b = Pdef(\seq_bb, {
 	)
 }
 ).play;
-)
-
-(
-OSCdef(\move_osc, {
-	|msg, time, addr, recvPort| (
-		Synth(\hinote)
-	)
-}, '/move');
 )
 
 (
@@ -257,22 +239,14 @@ Pdef(\seq_hinote, {
 ).play;
 )
 
-Pdef.clear;
-// 127.0.0.1:57110
+
+
 (
-OSCdef(\move_osc, {
-	|msg, time, addr, recvPort| (
-		Synth(\hinote)
-	)
-}, '/move');
+h = Synth(\hinote)
 )
 
 (
-Synth(\hinote)
-)
-
-(
-SynthDef(\glitch, {
+SynthDef(\glitchy_note, {
 	arg freq, gain = 1;
 	var snd;
 	snd = SinOsc.ar(freq, 0, 1);
@@ -288,7 +262,7 @@ SynthDef(\glitch, {
 
 
 (
-Synth(\glitch);
+g = Synth(\glitchy_note);
 )
 
 
@@ -318,11 +292,11 @@ SynthDef(\melody, {
 )
 
 (
-Synth(\melody)
+m = Synth(\melody)
 )
 
 (
-Pdef(\seq_melody, {
+m = Pdef(\seq_melody, {
 	Pbind(
 		\instrument, \melody,
 		\note, Pseq([15, 14, 7, 5, 7, 5, 10], inf),
@@ -342,16 +316,10 @@ Pdef(\seq_melody).pause;
 Pdef.clear;
 
 
-
-
 (
-Pdef.clear;
-)
-
-(
-Pdef(\seq_glitch, {
+g = Pdef(\seq_glitch, {
 	Pbind(
-		\instrument, \glitch,
+		\instrument, \glitchy_note,
 		\freq, Pseq([14000, 13500, 11000, 12000], inf),
 		\dur, Prand([2, 1, 0.5, 0.25], inf),
 		\gain, 1

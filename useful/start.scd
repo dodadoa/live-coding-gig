@@ -15,11 +15,11 @@ s.options.maxNodes = 1024 * 32;
 s.waitForBoot {
     ~dirt = SuperDirt(2, s);
     ~dirt.start(57120, 0 ! 14);
-	~dirt.loadSoundFiles("/Users/wasawat.som.adm/Library/Application Support/SuperCollider/downloaded-quarks/Dirt-Samples/*")
+	// ~dirt.loadSoundFiles("/Users/wasawat.som.adm/Library/Application Support/SuperCollider/downloaded-quarks/Dirt-Samples/*")
 
-	// load("C:\\Users\\maddo\\AppData\\Local\\SuperCollider\\synthdefs\\mi-ugens.scd");
-	// ~dirt.loadSoundFiles("C:\\Users\\maddo\\AppData\\Local\\SuperCollider\\downloaded-quarks\\Dirt-Samples\\*");
-	// ~dirt.loadSoundFiles("C:\\Users\\maddo\\AppData\\Local\\SuperCollider\\samples\\*");
+	load("C:\\Users\\maddo\\AppData\\Local\\SuperCollider\\synthdefs\\mi-ugens.scd");
+	~dirt.loadSoundFiles("C:\\Users\\maddo\\AppData\\Local\\SuperCollider\\downloaded-quarks\\Dirt-Samples\\*");
+	~dirt.loadSoundFiles("C:\\Users\\maddo\\AppData\\Local\\SuperCollider\\samples\\*");
 }
 )
 

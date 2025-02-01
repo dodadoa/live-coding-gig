@@ -21,7 +21,6 @@ osc([1, 10, 20], 0.2, 1)
   .scale([0.1, 1, 2, 10, 20])
   .layer(src(o1).luma(0.2))
   .rotate(() => time / 4)
-
   .contrast(1.4)
   .rotate(() => -time / 3)
   .color([1,0,0,1],0,[0,1,1])
