@@ -1,0 +1,167 @@
+
+setcps (140/60/4)
+
+d1 $
+   whenmod 8 7 (# (s "808kick*2 808oh" # gain 0.8))
+   $
+  stack [
+    brak $
+    -- jux rev $
+    superimpose (striate 2 . (# gain 0.65)) $
+    layer [rev . (# gain 0.8), slow 2 . (# gain 0.9)] $
+    s "[hc:1 hc:2 hc:3 ho:2, 808hh*4 808oh]"
+    # speed 1.2
+    # room 0.15 # size 0.3
+    # gain 0.7
+    ,
+    wedge (1/2) (s "808sn:1 808bd:2*2") (s "808bd:2(3,8)")
+    # gain 1.1
+  ]
+-- # silence
+
+do
+let gainMain = 0.7
+let gainJux = gainMain - 0.1
+d2
+  $ rarely (# (tremolodepth 2 # tremolorate 4))
+  $ jux (rev . (# gain gainJux))
+  $ s "superfm*4"
+  # n "d'min a'min7"
+  # pan (sometimes (fast 2) $ slow 2 $ sine)
+  # tremolodepth 1 # tremolorate 2
+  # room 0.2 # size 0.25
+  # gain gainMain
+
+d1
+$ whenmod 8 7
+(#
+  stack [
+    s (randcat ["808sn:3*2", "[808oh*2, 808hh*4]", "808r(3,8)"]) # gain 0.9
+  ]
+)
+$ stack [
+  fast 2 $ whenmod 4 3 (# s "808sn") $ struct "t(3,8)" $ s "808bd" # gain 1.2,
+  whenmod 4 3 (fast 2) $ struct "~ t" $ s "808sn" # gain 1.1,
+  -- fast 2 $ "808openhh*2" # n (run 4) ,
+  fast 2 $ s "808oh*2"
+  # room 0.2 # size 0.3 # gain 0.9,
+  "808hh*16" # room 0.2 # size 0.3 # pan rand # gain 0.9 # speed 1.2
+]
+
+d2 $ stack [
+  degradeBy 0.25 $
+  slow 2 $
+  -- jux rev $
+  whenmod 4 3 (# octave 5) $
+  n (struct "t ~ t ~" (fastcat [(fromList [0..4]), (irand 5)]))
+  # s "decompose_cut"
+  # decay 0.5 # release 0.8 # gain 1.2
+]
+
+
+setcps (160/60/4)
+
+d1 $ stack [
+  -- jux rev
+  fast 2 $
+  superimpose (# (speed 2 # gain 0.8)) $
+  whenmod 7 6 (jux (slow 2 . (# (n (run 2) # gain 0.9)))) $
+  whenmod 4 3 (superimpose (slow 2 . (# (gain 0.9 # speed 2))))
+   -- $ every 2 (iter 8)
+  -- $ brak
+  $ n ((struct "[t(3,8), t t t t t ~ t t]") (choose [1,2,9,4,5,9])) # s "amencutup" # gain 1
+  # room 0.1 # size 0.5
+  # pan rand
+  # gain 0.7
+]
+
+d2
+  $ whenmod 4 3 (# octave 8)
+  $ someCyclesBy 0.2 (# accelerate 1.2)
+  $ sometimesBy 0.4 (fast 2)
+  $ jux rev
+  $ struct "t t t ~ t ~ ~ t"
+  $ (n "d'min9'o c'min9'd3'o e'min7'o")
+  # s "supergong"
+  # octave 7
+  # distort 2
+  # room 0.4 # size 0.5
+  # gain 0.75
+
+d4 $ silence
+
+d3
+  $ someCyclesBy 0.4 (chop 4)
+  -- $ jux rev
+  $ struct "t ~ ~ [t t] ~ t ~ t"
+  $ superimpose ((struct "~ t ~ ~ t ~ ~ [t t]") . (# s (randcat ["808shot", "sophie_percussion", "808bass"])))
+  $ s (randcat ["glitch","laser"])
+  # n (run 8)
+  -- # octave 8 # accelerate 1.5
+  # room 0.3 # size 0.5
+  # gain 0.8
+
+d1
+  $ s "808kick*4"
+  # gain 1.2
+
+d5
+  $ sometimesBy 0.4 (# silence)
+  $ jux rev
+  $ n (scale "chinese" "3 2 5 4 3 2 3 6")
+  # s "supersaw"
+  # octave 6
+  # size 0.8 # room 0.6
+  # delay 0.2
+  # distort 0.5
+  # release 0.9
+  # gain 0.7
+  # hpf 1000
+
+d4
+  $ iter 4
+  $ s "808shot*4"
+  # n (run 8)
+  # gain 0.8
+
+d5
+  -- $ hurry 2
+  $ jux (slow 2 . (# gain 0.9))
+  $ iter 4
+  $ s "laser*2"
+  # n (run 9)
+  # gain 0.9
+
+
+d2
+  $ degradeBy 0.7
+  $ superimpose (slow 2 . rev)
+  $ sometimesBy 0.4 (# (octave 7 # gain 0.5))
+  $ n ((struct "t ~ [t t] ~ [t t] t t ~")
+    (scale "indian" (wchoose [(0,0.1),(1,0.5),(3,0.25),(4,0.1),(5,0.3),(6,0.7)])))
+  # s "supermandolin"
+  # pan (slow 2 $ sine)
+  # octave 6
+  # room 0.3 # size 0.6
+  # gain 0.9
+  # hpf 1000
+  -- # silence
+
+d3
+  $ slow 8
+  $ n (fastcat ["c'maj e'min", (innerJoin $ choose ["g'maj", "c'min"])])
+  # s "plaits"
+  # amp1 1
+  # distort 0.2
+  # ratio2 1
+  # mod12 3
+  # octave 4
+  # gain 0.8
+  # hpf 300
+
+d4
+  $ s "808bass@2 808bass:1@2"
+  # delay 0.1
+  # octave 6
+  # gain 0.8
+  -- # silence
