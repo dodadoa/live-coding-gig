@@ -74,7 +74,7 @@ d7
     $ rolled
     $ struct "t*16" $ (scale "chinese" (irand 14))
     # s "gtr*8"
-    -- # crush 1.7
+    # crush 1.7
     # octave ((irand 4) + 2)
     # gain 0.6,
     ---

@@ -5,13 +5,14 @@ d1 $
    whenmod 8 7 (# (s "808kick*2 808oh" # gain 0.8))
    $
   stack [
-    brak $
-    -- jux rev $
+    -- brak $
+    whenmod 4 3 (brak) $
+    jux rev $
     superimpose (striate 2 . (# gain 0.65)) $
-    layer [rev . (# gain 0.8), slow 2 . (# gain 0.9)] $
+    -- layer [rev . (# gain 0.8), slow 2 . (# gain 0.9)] $
     s "[hc:1 hc:2 hc:3 ho:2, 808hh*4 808oh]"
     # speed 1.2
-    # room 0.15 # size 0.3
+    # room 0.25 # size 0.3
     # gain 0.7
     ,
     wedge (1/2) (s "808sn:1 808bd:2*2") (s "808bd:2(3,8)")
@@ -20,49 +21,65 @@ d1 $
 -- # silence
 
 do
-let gainMain = 0.7
+let gainMain = 0.6
 let gainJux = gainMain - 0.1
 d2
-  $ rarely (# (tremolodepth 2 # tremolorate 4))
+  $ slow 2
+  $ rarely (# (tremolodepth 0.2 # tremolorate 0.5))
   $ jux (rev . (# gain gainJux))
   $ s "superfm*4"
   # n "d'min a'min7"
-  # pan (sometimes (fast 2) $ slow 2 $ sine)
-  # tremolodepth 1 # tremolorate 2
-  # room 0.2 # size 0.25
+  -- # pan (sometimes (fast 2) $ slow 2 $ sine)
+  # tremolodepth 0.5 # tremolorate 1
+  # room 0.3 # size 0.5
   # gain gainMain
+
+d4
+  $ chop 2
+  $ ply "2 3 4"
+  -- $ fast 3
+  $ whenmod 4 3 (fast 2)
+  $ jux rev
+  -- $ whenmod 8 7 (fast 3)
+  $ someCycles (# (octave 8 # gain 0.5))
+  $ n (scale "major" "0..3")
+  # s (randcat["supersquare", "superfm"])
+  # octave 7
+  # room 0.3 # size 0.5
+  # gain 0.6
 
 d1
 $ whenmod 8 7
 (#
   stack [
-    s (randcat ["808sn:3*2", "[808oh*2, 808hh*4]", "808r(3,8)"]) # gain 0.9
+    s (randcat ["808sn:3*2", "[808oh*2, 808hh*4]", "808ride(3,8)"]) # gain 0.9
   ]
 )
 $ stack [
   fast 2 $ whenmod 4 3 (# s "808sn") $ struct "t(3,8)" $ s "808bd" # gain 1.2,
   whenmod 4 3 (fast 2) $ struct "~ t" $ s "808sn" # gain 1.1,
-  -- fast 2 $ "808openhh*2" # n (run 4) ,
+  fast 2 $ "~ 808ride*2" # n (run 4) # pan (fast 2 $ sine),
   fast 2 $ s "808oh*2"
   # room 0.2 # size 0.3 # gain 0.9,
   "808hh*16" # room 0.2 # size 0.3 # pan rand # gain 0.9 # speed 1.2
 ]
 
-d2 $ stack [
-  degradeBy 0.25 $
+d3 $ stack [
+  -- degradeBy 0.25 $
   slow 2 $
   -- jux rev $
   whenmod 4 3 (# octave 5) $
   n (struct "t ~ t ~" (fastcat [(fromList [0..4]), (irand 5)]))
   # s "decompose_cut"
-  # decay 0.5 # release 0.8 # gain 1.2
+  # decay 0.5 # release 0.8 # gain 0.9
 ]
 
 
-setcps (160/60/4)
+setcps (145/60/4)
 
 d1 $ stack [
-  -- jux rev
+  -- jux rev $
+  -- chop 8 $
   fast 2 $
   superimpose (# (speed 2 # gain 0.8)) $
   whenmod 7 6 (jux (slow 2 . (# (n (run 2) # gain 0.9)))) $
@@ -70,9 +87,12 @@ d1 $ stack [
    -- $ every 2 (iter 8)
   -- $ brak
   $ n ((struct "[t(3,8), t t t t t ~ t t]") (choose [1,2,9,4,5,9])) # s "amencutup" # gain 1
-  # room 0.1 # size 0.5
+  # room 0.2 # size 0.5
+  # speed 1.2
   # pan rand
-  # gain 0.7
+  # gain 0.8
+  ,
+  s "808kick:3*4" # gain 1.2
 ]
 
 d2
@@ -88,9 +108,8 @@ d2
   # room 0.4 # size 0.5
   # gain 0.75
 
-d4 $ silence
-
 d3
+  $ slow 2
   $ someCyclesBy 0.4 (chop 4)
   -- $ jux rev
   $ struct "t ~ ~ [t t] ~ t ~ t"
@@ -99,17 +118,19 @@ d3
   # n (run 8)
   -- # octave 8 # accelerate 1.5
   # room 0.3 # size 0.5
-  # gain 0.8
+  -- # pan rand
+  # gain 0.75
 
 d1
   $ s "808kick*4"
   # gain 1.2
 
 d5
+  $ slow 4
   $ sometimesBy 0.4 (# silence)
   $ jux rev
-  $ n (scale "chinese" "3 2 5 4 3 2 3 6")
-  # s "supersaw"
+  $ n (scale "chinese" "[3 2?] <5 1> 4? 3 ~ [2 3] 6@2")
+  # s (cat ["superfm", "supersaw"])
   # octave 6
   # size 0.8 # room 0.6
   # delay 0.2
@@ -122,14 +143,15 @@ d4
   $ iter 4
   $ s "808shot*4"
   # n (run 8)
-  # gain 0.8
+  # gain 0.7
 
 d5
+  $ slow 2
   -- $ hurry 2
   $ jux (slow 2 . (# gain 0.9))
   $ iter 4
   $ s "laser*2"
-  # n (run 9)
+  # n (run 92)
   # gain 0.9
 
 
@@ -144,7 +166,7 @@ d2
   # octave 6
   # room 0.3 # size 0.6
   # gain 0.9
-  # hpf 1000
+  -- # hpf 1000
   -- # silence
 
 d3
@@ -163,5 +185,29 @@ d4
   $ s "808bass@2 808bass:1@2"
   # delay 0.1
   # octave 6
-  # gain 0.8
+  # gain 0.7
   -- # silence
+
+d1
+  -- $ ply "2 6"
+  $ fast 2
+  $ whenmod 4 3 (fast 2)
+  $ someCycles (# speed 1.2)
+  $ s "[808kick*4, 808hh:2(7,8), [~ ~ 808oh:2 808oh], ~ <indust_sn:0*2 indust_sn:2*2>]"
+  -- $ s (randcat [
+  --     "808kick*4",
+  --     "808hh:2(7,8)",
+  --     "[~ ~ 808oh:2 808oh]",
+  --     "~ <indust_sn:0*2 indust_sn:2*2>"
+  --   ])
+  # room 0.25 # size 0.4
+  # gain 1
+
+d3
+  $ slow 2
+  $ s "808bass@2"
+  # n (irand 9)
+
+d4
+  $ s "glitch:2"
+  # gain 1.3

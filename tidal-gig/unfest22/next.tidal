@@ -1,0 +1,91 @@
+
+-- d1
+d1
+  -- $ ply "4 2"
+  $ stack [
+  ghost $
+  s "sub_hard_kick:2*4" # gain 1.1
+  ,
+  slow 2 $
+  degradeBy 0.2 $
+  sometimesBy 0.3 (fast 2) $
+  s "indust_sn:3(7,8)"
+  # room 0.2 # size 0.5
+  # speed 1.2
+  # gain 1
+  ,
+  echo 2 0.1 0.3 $
+  ghost $
+  s "808hh(13,16)"
+  # gain 0.9
+  ,
+  slow 2 $
+  struct ("t(5,8)") $ s "808oh" <| n (run 8)
+  # pan (fast (irand 3) $ sine)
+  # speed "{1,2,3}%8"
+]
+
+d1
+-- d2
+  -- $ degrade
+  $ stack [
+  s "sub_hard_kick*4" # gain 1.1
+  -- ,
+  -- slow 4 $ iter 2 $ s "impact" <| n (run 4) # sustain 0.5 # decay 0.2
+  -- s "bd" # gain 1.1
+  ,
+  slow 2 $ s "808shot:1(2,3)" # gain 1 # lpf 500
+]
+
+d3
+  -- $ fast "<0.5 2 1 0.5>"
+  $ stack [
+  slow 2 $
+  jux (slow 2) $
+  echo 2 0.4 0.5 $
+  s "entropy*2"
+  # distort 0.2
+  # room 0.3 # size 0.4
+  # gain 1.1,
+  jux rev $
+  echo 2 0.15 0.5 $
+  rolled $
+  off 0.2 (# (n "<a'sus9 ef'min7>" # gain 0.4)) $
+  n (scale "diminished" "1 ~ 3 [1 4] ~ [2 2] 1 5")
+  # s (randcat ["friab", "cuerda", "abbass", "dk"])
+  # distort 0.2
+  # octave 7
+  # coarse "2 4"
+  # room 0.4 # size "<0.7 0.8 0.9>"
+  # gain 0.7,
+  -- degradeBy 0.2 $
+  echo 2 0.1 0.5 $
+  striate 2 $
+  iter 4 $
+  n (scale "diminished" "1 2 3 4 7 3 1 4")
+  # s "supersquare"
+  -- # imag 0.9
+  # distort 0.9
+  # pan (every 4 (# square) $ slow 4 $ sine)
+  # room 0.2 # size 0.4
+  # gain 0.8
+]
+
+d3 $ stack [
+  -- degrade $
+  whenmod 4 3 (fast 2) $
+  jux rev $
+  rolled $
+  n (scale "diminished" "0..7") #
+  s "plaits"
+  # gain 0.9
+]
+
+d4 $ stack [
+  slow 4 $
+  iter 4 $
+  s "fx_scifi"
+  <| n (run 8)
+  # sustain 1.5
+  # gain 0.9
+]

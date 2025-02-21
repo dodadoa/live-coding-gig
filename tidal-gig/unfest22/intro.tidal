@@ -1,75 +1,135 @@
 setcps(130/60/4)
 
-d1 $ stack [
-  whenmod 4 3 (# (s "impact" <| n (shuffle 2 $ run 6)))  $
-  whenmod 8 7 (# (s "808superbass" <| n (shuffle 2 $ run 5))) $
-  slow 8 $
-  s "horror_fx" <| n (shuffle 1 $ run 7)
-  # room 0.3 # size 0.5
-  # gain 1,
-  s "808kick" # n (irand 4) # gain 1,
-  s "808bass" # gain 1.1
-]
+panic
 
-d2
-  -- $ press
-  $ slow 2
-  $ rarely (# (accelerate 1.5 # gain 1))
-  $ jux (rev . (off 0.02 (# (speed (fast 2 $ sine) # gain 0.9))))
-  $ iter 4
-  $ s (struct "t*16" (randcat ["808shot" , "decompose_cut", "glitch"]))
-  # n (mask "t*2 t(3,8)" (run 10) |+ (irand 10))
-  # waveloss (choose [2, 5, 1])
-  # release 1 # decay 0.7
-  # gain 0.9
-
-
-d4 $ stack [
-  degradeBy 0.25 $
+d1
+$ slow 4
+$ stack [
+  jux rev $
   slow 2 $
-  whenmod 4 3 (# octave 5) $
-  n (struct "t ~ t ~" (fastcat [(fromList [0..4]), (irand 5)]))
-  # s "hopbass"
-  # amp 1.3
-  # decay 0.5 # release 0.8
-  # gain 1
+  off 0.1 ((slow 2) . (# gain 0.6) ) $
+  whenmod 4 3 (fast 2) $
+  iter 4 $
+  spin 2 $
+  echo 4 0.2 0.3 $
+  rolled $
+  s "plaits" >| n "<a'min6 cf'm fs'maj7 af'sus>"
+  # vowel "[a i] i o"
+  # room 0.4 # size 0.5
+  # gain 0.7
+  # hpf 2000
+  -- # silence
+  ,
+  -- chop 4 $
+  -- iter 4 $
+  slow 2 $
+  echo 3 0.2 0.4 $
+  s "braids" <| note "a b ~ c [e a] d"
+  # octave "<3 4 4 4>"
+  # distort 1
+  # sustain "{2 1.5 1}%8"
+  # room 0.5 # size 0.7
+  # gain 0.8
+  # lpf 50
+  -- # silence
 ]
 
+d1 $ stack [
+  slow 8 $
+  iter 4 $
+  s "fx_scifi"
+  <| n (run 8)
+  # sustain 2
+  # gain 1,
+  slow 2 $
+  s "drone_dark_cine"
+  # gain 1.1
+  # n (irand 15)
+  -- # sustain 1.5
+  ,
+  slow 2 $ s "808shot"
+  # n (irand 4)
+  # gain 1
+  -- ,
+  -- slow 3 $
+  -- s "hardbass(1,3)" # n (irand 4) # gain 1
+  -- ,
+  -- slow 2 $
+  -- s "sub_hard_kick*4"
+  -- # n (irand 8)
+  -- # gain 1.1
+  -- ,
+  -- brak $
+  -- degrade $
+  -- s "808hh(15,16)"
+]
+
+xfade 1 $ stack [
+  someCyclesBy 0.4 (chop 2) $
+  slow 2 $
+  jux rev $
+  struct "t ~ ~ [t t] ~ t ~ t" $
+  off 0.25 (ghost . (struct "~ t ~ ~ t ~ ~ [t t]") . (# (s (randcat ["808shot", "sophie_percussion", "808bass"]) # gain 0.9))) $
+  s (randcat ["glitch","laser"])
+  # n (run 8)
+  # room 0.3 # size 0.5
+  # gain 0.9
+]
 
 d2
-  $ someCyclesBy 0.4 (chop 4)
-  -- $ jux rev
-  $ struct "t ~ ~ [t t] ~ t ~ t"
-  $ superimpose ((struct "~ t ~ ~ t ~ ~ [t t]") . (# s (randcat ["808shot", "sophie_percussion", "808bass"])))
-  $ s (randcat ["glitch","laser"])
-  # n (run 8)
-  -- # octave 8 # accelerate 1.5
-  # room 0.3 # size 0.5
-  # gain 0.8
-
-d3
+  -- $ fast 2
+  -- $ slow 4
   $ stack [
     sometimes (fast 2) $
     s "gabba@3 gabba"
-    # gain 0.9
-    # hpf 500,
+    # gain 1
+    ,
     degradeBy 0.3 $
     s "808shot:2"
-    # gain 1.1
+    # gain 1
+]
+
+xfade 1 $ stack [
+  whenmod 4 3 (# (s "impact" <| n (shuffle 2 $ run 6) # gain 0.9))  $
+  whenmod 8 7 (# (s "808superbass" <| n (shuffle 2 $ run 5) # gain 0.9)) $
+  slow 8 $
+  s "horror_fx" <| n (shuffle 2 $ run 15)
+  # room 0.3 # size 0.5
+  # gain 1,
+  s "808kick" # n (irand 4) # gain 1.1
+  ,
+  s "808bass" # n (irand 10) # gain 0.8 # sustain 1.5
+  ,
+  -- $ press
+  -- $ slow 2
+  fast 2
+  $ rarely (# (accelerate 0.2 # gain 1))
+  $ s (randcat ["decompose_cut", "drone_dark_cine"])
+  # n (struct "t*2 t(3,8)" (run 10) |+ (irand 10))
+  # waveloss (choose [2, 5, 1])
+  # pan (fast 2 $ sine + rand)
+  # sustain 1 # release 1.2
+  # decay 0.7
+  # gain 0.95
+  ,
+  -- degradeBy 0.25 $
+  slow 2 $
+  whenmod 4 3 (# octave 5) $
+  n (struct "t" (fastcat [(fromList [0..4]), (irand 10)]))
+  # s "hardbass"
+  # gain 1
 ]
 
 let pats =
       [
         ("a", stack [
-            superimpose (someCyclesBy 0.77 (chop (choose [2,3,4,5]))) $
-            superimpose (jux (# octave (choose [2, 3, 4]))) $
-            sometimesBy 0.2 (# s "supertron") $ chop 1 $ jux rev $
+            echo 4 0.1 0.7 $
+            sometimesBy 0.2 (# s "supertron") $ jux rev $
             n (scale "chinese" "0..15") #
             s "supersaw" #
-            distort 0.6 # pan rand #
-            sustain 0.12 #
+            distort 0.5 #
             room 0.4 # size 0.6 #
-            gain 0.58
+            gain 0.9
             ,
             jux rev $ jux (# pan cosine) $
             n (scale "chinese" "0..7") # s "superfm"
@@ -92,7 +152,7 @@ let pats =
             # room 0.5 # size 0.7
             # gain 1
             ,
-            s "808shot:3" # room 0.4 # size 0.6 # gain 1.2
+            s "808shot:3" # room 0.4 # size 0.6 # gain 1.1
           ]
         )
       ]
@@ -100,8 +160,8 @@ let pats =
         ("downGain",
           (
             # (
-              gain 0.4
-              # room 0.6 # size 0.8
+              gain 0.3
+              # room 0.4 # size 0.5
               # hpf 1000
             )
           )
@@ -111,11 +171,14 @@ let pats =
         )
       ]
 in
+-- xfade 1
 d1
+  -- $ slow 2
   -- $ qtrigger
-  -- $ someCyclesBy 0.2 (rev)
-  -- $ someCyclesBy 0.1 (superimpose (# (n (scale "chinese" "3 4 2 1") # octave 6 # gain 0.5)))
-  -- $ ur 4 "a a" pats fx
-  $ ur 4 "a:fast2 a a a [a:downGain,b] a a [a:downGain,b]" pats fx
+  $ someCyclesBy 0.2 (rev)
+  -- $ someCyclesBy 0.1 (superimpose (# (n (scale "chinese" "3 4 2 1") # octave 6 # gain 0.6)))
+  $ ur 4 "a a" pats fx
+  -- $ ur 4 "a:fast2 a a a [a:downGain,b] a a [a:downGain,b]" pats fx
   -- $ ur 4 "[a:downGain,b]!2" pats fx
   -- $ ur 4 "b [b:fast2,a:downGain]" pats fx
+  # gain 0.9
