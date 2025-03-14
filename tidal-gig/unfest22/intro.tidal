@@ -7,7 +7,7 @@ $ slow 4
 $ stack [
   jux rev $
   slow 2 $
-  off 0.1 ((slow 2) . (# gain 0.6) ) $
+  -- off 0.1 ((slow 2) . (# gain 0.6) ) $
   whenmod 4 3 (fast 2) $
   iter 4 $
   spin 2 $
@@ -15,8 +15,8 @@ $ stack [
   rolled $
   s "plaits" >| n "<a'min6 cf'm fs'maj7 af'sus>"
   # vowel "[a i] i o"
-  # room 0.4 # size 0.5
-  # gain 0.7
+  # room 0.3 # size 0.4
+  # gain 0.8
   # hpf 2000
   -- # silence
   ,
@@ -34,6 +34,8 @@ $ stack [
   -- # silence
 ]
 
+d2 $ s "808hh(15,16)" # pan (slow 2 $ sine)
+
 d1 $ stack [
   slow 8 $
   iter 4 $
@@ -45,26 +47,29 @@ d1 $ stack [
   s "drone_dark_cine"
   # gain 1.1
   # n (irand 15)
-  -- # sustain 1.5
+  # sustain 1.5
   ,
   slow 2 $ s "808shot"
   # n (irand 4)
   # gain 1
-  -- ,
-  -- slow 3 $
-  -- s "hardbass(1,3)" # n (irand 4) # gain 1
-  -- ,
-  -- slow 2 $
-  -- s "sub_hard_kick*4"
-  -- # n (irand 8)
-  -- # gain 1.1
-  -- ,
+  ,
+  slow 3 $
+  s "hardbass(1,3)" # n (irand 4)
+  # pan (slow 2 $ sine)
+  # gain 1
+  ,
+  slow 2 $
+  s "sub_hard_kick*4"
+  # n (irand 8)
+  # gain 1.1
+  ,
   -- brak $
-  -- degrade $
-  -- s "808hh(15,16)"
+  degrade $
+  s "808hh(15,16)"
+  # pan (slow 2 $ sine)
 ]
 
-xfade 1 $ stack [
+d1 $ stack [
   someCyclesBy 0.4 (chop 2) $
   slow 2 $
   jux rev $
@@ -73,7 +78,7 @@ xfade 1 $ stack [
   s (randcat ["glitch","laser"])
   # n (run 8)
   # room 0.3 # size 0.5
-  # gain 0.9
+  # gain 1
 ]
 
 d2
@@ -89,7 +94,7 @@ d2
     # gain 1
 ]
 
-xfade 1 $ stack [
+d1 $ stack [
   whenmod 4 3 (# (s "impact" <| n (shuffle 2 $ run 6) # gain 0.9))  $
   whenmod 8 7 (# (s "808superbass" <| n (shuffle 2 $ run 5) # gain 0.9)) $
   slow 8 $
@@ -98,8 +103,8 @@ xfade 1 $ stack [
   # gain 1,
   s "808kick" # n (irand 4) # gain 1.1
   ,
-  s "808bass" # n (irand 10) # gain 0.8 # sustain 1.5
-  ,
+  -- s "808bass" # n (irand 10) # gain 0.8 # sustain 1.5
+  -- ,
   -- $ press
   -- $ slow 2
   fast 2
@@ -129,7 +134,7 @@ let pats =
             s "supersaw" #
             distort 0.5 #
             room 0.4 # size 0.6 #
-            gain 0.9
+            gain 0.8
             ,
             jux rev $ jux (# pan cosine) $
             n (scale "chinese" "0..7") # s "superfm"
@@ -152,7 +157,7 @@ let pats =
             # room 0.5 # size 0.7
             # gain 1
             ,
-            s "808shot:3" # room 0.4 # size 0.6 # gain 1.1
+            s "808shot:2" # room 0.4 # size 0.6 # gain 1.1
           ]
         )
       ]
@@ -177,8 +182,9 @@ d1
   -- $ qtrigger
   $ someCyclesBy 0.2 (rev)
   -- $ someCyclesBy 0.1 (superimpose (# (n (scale "chinese" "3 4 2 1") # octave 6 # gain 0.6)))
-  $ ur 4 "a a" pats fx
+  -- $ ur 4 "a a" pats fx
   -- $ ur 4 "a:fast2 a a a [a:downGain,b] a a [a:downGain,b]" pats fx
   -- $ ur 4 "[a:downGain,b]!2" pats fx
-  -- $ ur 4 "b [b:fast2,a:downGain]" pats fx
+  $ ur 4 "b [b:fast2,a:downGain]" pats fx
+  -- # hpf 3000
   # gain 0.9

@@ -8,7 +8,8 @@ let samcha_hat = "808cb:2 808hh"
 let hat = "808hh:5*8"
 
 d1
- $ whenmod 4 3 (hurry 2)
+ $ chop 2
+ $ whenmod 4 3 (fast 2)
  $ s "bd:1 ~ sn:1 bd bd ~ bd ~"
  # gain 1.2
 
@@ -36,8 +37,8 @@ d2
 d1
   $ s "amencutup"
   <| n (shuffle 8 $ run 8)
-  -- # speed "{1,2,3}%8"
-  -- # hpf 600
+  # speed "{1,2,3}%8"
+  # hpf 600
   -- # release 0.25
   # gain 1
   -- # gain 0
@@ -46,13 +47,13 @@ d1
 d2
   -- $ fast 2
   -- $ iter 4
-  -- $ whenmod 4 3 (struct "t(3,8) t t*2 t(3,8)")
+  $ whenmod 4 3 (struct "t(3,8) t t*2 t(3,8)")
   $ sometimes (# octave 5)
   $ (struct "t t*2 t(3,8) t*2"
     $ n "1 2 4 3")
   # s "sophie_percussion*4"
-  -- # hpf 500
-  -- # room 0.2
+  # hpf 500
+  # room 0.2
   -- # size 0.5
   # octave 4
   # gain 0.9
@@ -134,10 +135,13 @@ d7
 
 once
   $ s "groo:2"
+  # room 0.5
+  # size 0.6
+  # gain 1.1
 
 d2
-  $ whenmod 4 3 (slow 2)
-  $ s "sophie_percussion*4"
+  -- $ whenmod 4 3 (slow 2)
+  $ s "sophie_percussion(5,8)"
   # n "6"
   # gain 1.2
 
@@ -149,9 +153,10 @@ d6
   $ chop 8
   $ slow 2
   $ s "gummueng:3"
-  # grain 0.2 0.25
+  -- # grain 0.2 0.25
   # room 0.3
   # size 0.5
+  # sustain 2
   # crush 5
   # pan sine
   # octave 6
@@ -161,7 +166,7 @@ d6
 
 -- ให้ปี้ได้ก่
 d6
-  $ degrade
+  -- $ degrade
   -- $ slow 1.1
   -- $ swing 1.2
   $ chop 4
@@ -172,12 +177,12 @@ d6
   # amp 1.6
   # grain 0 0.32
   # crush 7
-  # room 0.3
+  # room 2
   -- # size 0.5
-  -- # octave 5
+  # octave 6
   -- # speed 1.2
-  # gain 0.82
-  # pan rand
+  # gain 0.7
+  # pan sine
 
 d5
   -- once

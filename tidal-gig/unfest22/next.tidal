@@ -2,6 +2,7 @@
 -- d1
 d1
   -- $ ply "4 2"
+  -- $ ply 8
   $ stack [
   ghost $
   s "sub_hard_kick:2*4" # gain 1.1
@@ -78,7 +79,7 @@ d3 $ stack [
   rolled $
   n (scale "diminished" "0..7") #
   s "plaits"
-  # gain 0.9
+  # gain 0.8
 ]
 
 d4 $ stack [
@@ -87,5 +88,10 @@ d4 $ stack [
   s "fx_scifi"
   <| n (run 8)
   # sustain 1.5
-  # gain 0.9
+  # gain 0
+]
+
+d1 $ stack [
+  s "808hh(15,16)",
+  s "808kick*4" # gain 1.4
 ]

@@ -7,7 +7,7 @@
 
 let target =
       Target {oName = "VISUAL",       -- A friendly name for the target (only used in error messages)
-              oAddress = "192.168.1.114", -- The target's network address, normally "localhost"
+              oAddress = "192.168.1.70", -- The target's network address, normally "localhost"
               oPort = 3001,           -- The network port the target is listening on
               oLatency = 0.1,         -- Additional delay, to smooth out network jitter/get things in sync
               oSchedule = Live,       -- The scheduling method - see below

@@ -228,20 +228,21 @@ SynthDef(\percussion, {
 )
 
 (
-p = Pdef(\seq_perc, {
+Pdef(\seq_perc, {
 	Pbind(
-		\instrument, \perc,
+		\instrument, \percussion,
 		\freq, Pseq([100, 120, 180, 210], inf),
 		// \dur, Prand([0.25, 0.15, 0.5, 0.35, 0.1, 0.25, 0.2], inf),
-		\dur, 0.5,
+		\dur, 0.1,
 		\gain, 1
 	)
 }
 ).play;
 )
 
-Synth(\perc);
+Synth(\percussion);
 
+p.play;
 // Copy this for rand snippet
 // \dur, Prand([1, 0.5, 0.25, 0.2, 0.15, 0.1, 0.05, 0.01], inf),
 
@@ -277,7 +278,7 @@ SynthDef(\glitch, {
 	var snd;
 	snd = SinOsc.ar(freq, 0, 1);
 	snd = snd * Env.perc(0, 0.6).ar(Done.freeSelf);
-	snd = GVerb.ar(snd, 12, 2, 0, spread: 5, drylevel: 0.2);
+	// snd = GVerb.ar(snd, 12, 2, 0, spread: 5, drylevel: 0.2);
 	snd = snd * -20.dbamp;
 	snd = snd * gain;
 
@@ -325,11 +326,11 @@ Synth(\melody)
 Pdef(\seq_melody, {
 	Pbind(
 		\instrument, \melody,
-		\note, Pseq([15, 14, 7, 5, 7, 5, 10], inf),
+		\note, Prand([15, 14, 7, 5, 7, 5, 10, 2], inf),
 		\companderRelaxTime, Prand([0.01, 1, 0.5, 0.1], inf),
 		\compaanderClampTime, Prand([0.01, 1, 0.5, 0.1].reverse(), inf),
-		\dur, 1,
-		\gain, 0.7
+		\dur, Prand([0.2, 2, 1, 0.5, 0.1], inf),
+		\gain, 0.5
 	)
 }
 ).play;
@@ -352,8 +353,8 @@ Pdef.clear;
 Pdef(\seq_glitch, {
 	Pbind(
 		\instrument, \glitch,
-		\freq, Pseq([14000, 13500, 11000, 12000], inf),
-		\dur, Prand([2, 1, 0.5, 0.25], inf),
+		\freq, Pseq([14000, 13500, 11000, 12000, 5000, 3000, 10000], inf),
+		\dur, Prand([2, 1, 0.5, 0.25, 0.01, 0.1, 0.05], inf),
 		\gain, 1
 	)
 }
