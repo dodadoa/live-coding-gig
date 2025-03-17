@@ -1,6 +1,6 @@
 // licensed with CC BY-NC-SA 4.0 https://creativecommons.org/licenses/by-nc-sa/4.0/
-bpm = 135
-speed = 1
+bpm = 40
+speed = 0.05
 
 a.setBins(6)
 a.show()
@@ -54,6 +54,21 @@ osc(10, 1, 10)
   .layer(src(o1).luma(0.35))
   .out(o0)
 
+speed = 0.5
+
+
+osc(50,0.5,0.4)
+.out()
+
+osc(50, 0.5, 0)
+.rotate(1,0.5)
+.modulate(noise(10))
+.modulate(o0, 0.1)
+.out()
+
+
+speed = 0.3
+
 osc(10, 0.1, 10)
   .mask(
     osc(10, 0.1)
@@ -66,7 +81,7 @@ osc(10, 0.1, 10)
   .color(1, [0, 0.2,1].smooth(), [0, 1])
 	  .scroll([2, 4, 6], [2, 3, 4])
   .scale(1.5)
-  // .thresh(0.2)
+  .luma(0.4)
   .modulate(o0, 0.5)
   .diff(o1)
   .out(o0)

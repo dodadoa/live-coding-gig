@@ -34,7 +34,15 @@ $ stack [
   -- # silence
 ]
 
-d2 $ s "808hh(15,16)" # pan (slow 2 $ sine)
+d2
+  $ ply "0.5 1 2 <4 2> 3?"
+  $ jux (rev)
+  $ chop 2
+ $ s "808hh(15,16)" # pan (slow 2 $ sine)
+# speed "2 3 <1>" # accelerate 2
+# room 0.5
+# legato 0.3
+# gain 0.8
 
 d1 $ stack [
   slow 8 $
@@ -59,7 +67,7 @@ d1 $ stack [
   # gain 1
   ,
   slow 2 $
-  s "sub_hard_kick*4"
+  s "sub_hard_kick*1"
   # n (irand 8)
   # gain 1.1
   ,
@@ -83,7 +91,7 @@ d1 $ stack [
 
 d2
   -- $ fast 2
-  -- $ slow 4
+  $ slow 4
   $ stack [
     sometimes (fast 2) $
     s "gabba@3 gabba"

@@ -103,7 +103,7 @@ a = Pdef(\seq_electronic_fly, {
 	Pbind(
 		\instrument, \electronic_fly,
 		\note, Pseq([12, 10, 7, 8, 7, 9, 10], inf),
-		\dur, 1,
+		\dur, 2,
 		\gain, 1
 	)
 }
