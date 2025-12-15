@@ -1,0 +1,62 @@
+once $ s "looper" # n 4
+
+d1
+  -- $ degradeBy 0.5
+  $ fast 4
+  $ smash' 3 [4,6,8,2]
+  $ superimpose (# (octave 7 # gain 0.5))
+  $ superimpose (# (scram 2 # gain 0.8))
+  $ superimpose (# octave 5)
+  $ sometimes (jux (# accelerate (irand 4)))
+  $ jux (# (octave 9 # speed 2 # gain 0.5))
+  $ s "loop*8" # n 0
+  # amp 4
+  # release 0.4
+  # room 0.3 # size 0.4
+  # gain 0
+  # legato 3
+
+d2
+  $ jux (# (octave 4 # gain 0.5))
+  $ s "loop" # n 1
+  # amp 5
+  # octave 3
+  # room 0.5 # size 0.7
+  # gain 0
+
+d3
+  $ sometimes (fast 2)
+  $ fast 2
+  $ chew 2 "4*4 7 2*8 3"
+  $ s "loop" # 2
+  # amp 7
+  # scram 2
+  # octave 6
+  # distort 0.15
+  # pan rand
+  # gain 0
+
+d4
+  $ s "loop" # n 3
+  # amp 4
+  # distort 0.2
+  # gain 0
+  # pan (slow 2 $ sine)
+
+d5
+  $ ply "2 4 6 8"
+  $ whenmod 4 3 (# octave 8)
+  $ sometimes (chew 3 "7*2 6")
+  $ jux (# speed (-1))
+  $ sometimes (# accelerate (irand 8))
+  $ s "loop" # n 4
+  # amp 3
+  # speed 2
+  # accelerate 2
+  # octave 7
+  # room 0.4 # size 0.5
+  # distort 0.4
+  # pan (fast 2 $ sine)
+  # gain 0
+
+hush

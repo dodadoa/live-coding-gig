@@ -3,7 +3,7 @@ setcps(130/60/4)
 panic
 
 d1
-$ slow 4
+-- $ slow 4
 $ stack [
   jux rev $
   slow 2 $
@@ -17,7 +17,7 @@ $ stack [
   # vowel "[a i] i o"
   # room 0.3 # size 0.4
   # gain 0.8
-  # hpf 2000
+  -- # hpf 2000
   -- # silence
   ,
   -- chop 4 $
@@ -38,11 +38,11 @@ d2
   $ ply "0.5 1 2 <4 2> 3?"
   $ jux (rev)
   $ chop 2
-  $ s "808hh(15,16)" # pan (slow 2 $ sine)
-  # speed "2 3 <1>" # accelerate 2
-  # room 0.5
-  # legato 0.3
-  # gain 1
+ $ s "808hh(15,16)" # pan (slow 2 $ sine)
+# speed "2 3 <1>" # accelerate 2
+# room 0.5
+# legato 0.3
+# gain 0.8
 
 d1 $ stack [
   slow 8 $
@@ -52,7 +52,7 @@ d1 $ stack [
   # sustain 2
   # gain 1,
   slow 2 $
-  s "drone_dark_cine"
+  s "darkpad"
   # gain 1.1
   # n (irand 15)
   # sustain 1.5
@@ -69,7 +69,7 @@ d1 $ stack [
   slow 2 $
   s "sub_hard_kick*1"
   # n (irand 8)
-  # gain 1.1
+  # gain 1
   ,
   -- brak $
   degrade $
@@ -91,7 +91,7 @@ d1 $ stack [
 
 d2
   -- $ fast 2
-  -- $ slow 4
+  $ slow 4
   $ stack [
     sometimes (fast 2) $
     s "gabba@3 gabba"
@@ -147,7 +147,7 @@ let pats =
             jux rev $ jux (# pan cosine) $
             n (scale "chinese" "0..7") # s "superfm"
             # octave 3 # pan sine
-            # gain 0.62
+            # gain 0.7
           ]
         )
         ,
@@ -163,9 +163,10 @@ let pats =
             # amp1 1.3 # amp2 1.5
             # decay 0.3 # sustain 0.4
             # room 0.5 # size 0.7
-            # gain 1
+            # gain 0.85
             ,
-            s "808shot:2" # room 0.4 # size 0.6 # gain 1.1
+            s "sub_hard_kick:3*2" # room 0.4 # size 0.6 # gain 1,
+            s "808shot" # gain 0.9
           ]
         )
       ]
@@ -173,9 +174,8 @@ let pats =
         ("downGain",
           (
             # (
-              gain 0.3
+              gain 0.65
               # room 0.4 # size 0.5
-              # hpf 1000
             )
           )
         ),
@@ -188,11 +188,10 @@ in
 d1
   -- $ slow 2
   -- $ qtrigger
-  $ someCyclesBy 0.2 (rev)
+  -- $ someCyclesBy 0.2 (rev)
   -- $ someCyclesBy 0.1 (superimpose (# (n (scale "chinese" "3 4 2 1") # octave 6 # gain 0.6)))
-  -- $ ur 4 "a a" pats fx
+  $ ur 4 "[b, a a]" pats fx
   -- $ ur 4 "a:fast2 a a a [a:downGain,b] a a [a:downGain,b]" pats fx
   -- $ ur 4 "[a:downGain,b]!2" pats fx
-  $ ur 4 "b [b:fast2,a:downGain]" pats fx
+  -- $ ur 4 "b [b:fast2,a:downGain]" pats fx
   -- # hpf 3000
-  # gain 0.9

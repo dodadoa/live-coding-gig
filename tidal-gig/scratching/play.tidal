@@ -1,0 +1,63 @@
+once $ s "looper" # n 0
+
+d2
+  $ jux rev
+  -- $ superimpose (# octave 4)
+  $ striate 2
+  -- $ smash' 2 [1,5,7,5]
+  -- $ chew 2 "2*3 2 ~ 5"
+  $ s "loop*8" # n 0
+  # amp 1.2
+  # octave 7
+  # speed 2
+  # room 0.3 # size 0.5
+  -- # clouds (1-s ine) 0.2 1.6 1.5
+  -- # cloudsblend 0.6 0.4 0.4 0.7
+  -- # cloudsgain 0.5
+  # gain 0.6
+  # legato 4
+
+d2
+  $ degradeBy 0.5
+  $ fast 2
+  $ chew 4 "3 5*2 7 7"
+  $ echo 3 0.2 0.2
+  $ sometimes (fast 2)
+  $ sometimes (# accelerate 2)
+  $ s "loop*4" # n 1
+  # octave 8
+  # pan (slow 2 $ sine)
+  -- # elementsstrength 1
+  -- # elementsflow 0.2
+  -- # elementsdamp 0.2
+  -- # elementspitch 0.9
+  -- # elementscontour 0.4
+  -- # hpf 1000 # hpq 0.4
+  -- # octave 3
+  -- # scram 0.7
+  -- # coarse 3
+  # distort 2
+  -- # comb 7
+  # room 0.3 # size 0.6
+  -- # clouds rand 0.2 0.9 0.6
+  -- # cloudsblend 0.7 0.5 0.32 0.4
+  # gain 0.85
+  # legato 4
+
+d3
+  $ ghost
+  $ sometimes (# crush 2)
+  $ echo 2 0.3 0.2
+  -- $ chew 4 "7 1*2 [4 3]"
+  -- $ smash' 3 [5,2,7]
+  $ s "loop*16" # 2
+  # octave 6
+  # release 0.2
+  -- # crush 4
+  -- # distort 2
+  -- # clouds 0.3 0.6 0.9 0.6 # cloudsblend 0.8 0.5 0.2 0.6
+  # room 0.6 # size 0.8
+  # gain 0.9
+  # legato 4
+
+panic

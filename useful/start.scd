@@ -8,6 +8,12 @@ s.options.numBuffers = 1024 * 16;
 s.options.maxNodes = 1024 * 32;
 // s.options.inDevice_("MME : Microphone (Volt 2)");
 // s.options.outDevice_("MME : Speakers (Volt 2)");
+// s.options.inDevice_("MME : Line (Komplete Audio 2)");
+// s.options.outDevice_("MME : Line (Komplete Audio 2)");
+s.options.inDevice_("ASIO : JackRouter");
+s.options.outDevice_("ASIO : JackRouter");
+// s.options.inDevice_("MME : Microphone (US-2x2 HR)");
+// s.options.outDevice_("MME : Speakers (US-2x2 HR)");
 )
 
 
@@ -16,16 +22,20 @@ s.waitForBoot {
     ~dirt = SuperDirt(2, s);
     ~dirt.start(57120, 0 ! 14);
 	// ~dirt.loadSoundFiles("/Users/wasawat.som.adm/Library/Application Support/SuperCollider/downloaded-quarks/Dirt-Samples/*")
+	// ~looper = TidalLooper(~dirt);
+	 ~looper = TidalLooper(~dirt);
 
 	load("C:\\Users\\maddo\\AppData\\Local\\SuperCollider\\synthdefs\\mi-ugens.scd");
 	~dirt.loadSoundFiles("C:\\Users\\maddo\\AppData\\Local\\SuperCollider\\downloaded-quarks\\Dirt-Samples\\*");
-	~dirt.loadSoundFiles("C:\\Users\\maddo\\AppData\\Local\\SuperCollider\\samples\\*");
-	~dirt.loadSoundFiles("C:\\Users\\maddo\\AppData\\Local\\SuperCollider\\samples\\amb_glitch\\one-shots\\*");
-	~dirt.loadSoundFiles("C:\\Users\\maddo\\AppData\\Local\\SuperCollider\\samples\\amb_glitch\\one-shots\\drum_hits\\*");
-	~dirt.loadSoundFiles("C:\\Users\\maddo\\AppData\\Local\\SuperCollider\\samples\\fx\\*");
-	~dirt.loadSoundFiles("C:\\Users\\maddo\\AppData\\Local\\SuperCollider\\samples\\kick\\*");
-	~dirt.loadSoundFiles("C:\\Users\\maddo\\AppData\\Local\\SuperCollider\\samples\\drone\\*");
-	~dirt.loadSoundFiles("C:\\Users\\maddo\\AppData\\Local\\SuperCollider\\samples\\jam\\*");
+	// ~dirt.loadSoundFiles("C:\\Users\\maddo\\AppData\\Local\\SuperCollider\\samples\\*");
+	//~dirt.loadSoundFiles("C:\\Users\\maddo\\AppData\\Local\\SuperCollider\\samples\\amb_glitch\\one-shots\\*");
+	//~dirt.loadSoundFiles("C:\\Users\\maddo\\AppData\\Local\\SuperCollider\\samples\\amb_glitch\\one-shots\\drum_hits\\*");
+	//~dirt.loadSoundFiles("C:\\Users\\maddo\\AppData\\Local\\SuperCollider\\samples\\fx\\*");
+	// ~dirt.loadSoundFiles("C:\\Users\\maddo\\AppData\\Local\\SuperCollider\\samples\\kick\\*");
+	// ~dirt.loadSoundFiles("C:\\Users\\maddo\\AppData\\Local\\SuperCollider\\samples\\drone\\*");
+	// ~dirt.loadSoundFiles("C:\\Users\\maddo\\AppData\\Local\\SuperCollider\\samples\\808hh\\*");
+	// ~dirt.loadSoundFiles("C:\\Users\\maddo\\AppData\\Local\\SuperCollider\\samples\\jam\\*");
+	~dirt.loadSoundFiles("C:\\Users\\maddo\\AppData\\Local\\SuperCollider\\samples\\flok\\*");
 }
 )
 
@@ -114,7 +124,6 @@ SynthDef(\entropy, { |out, sustain=1, pan, decay=0, width=0.3, attack, release|
 
 	Out.ar(out, DirtPan.ar(sig, ~dirt.numChannels, pan, env));
 }).add;
-
 
 SynthDef(\blow, { |out, decay=0, sustain=0.03, freq, pan, accelerate, voice=0.5,
     semitone=12, resonance=0.3, lfo=1, pitch1=1, width=0.3, speed=1|

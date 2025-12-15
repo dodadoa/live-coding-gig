@@ -1,0 +1,6 @@
+osc(1,16)
+.diff(gradient(16))
+.rotate(Math.PI/2)
+.pixelate(32, 4)
+.color(1,0.2,0.2)
+.out(o0)

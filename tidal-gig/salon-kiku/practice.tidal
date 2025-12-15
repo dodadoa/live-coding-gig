@@ -1,0 +1,27 @@
+
+
+d2 $ stack [
+  whenmod 4 3 (degradeBy 0.75) $
+  every 2 (# pan (fast 2 $ sine)) $
+  echo 4 0.35 0.35 $
+  slow 2 $
+  off 0.01 (# (octave 8 # distort 0.4 # room 0.8 # hpf 3000 # gain 0.6)) $
+  n (scale "lydian" "[1 2 3 4]*4[3 4 5 6]*2")
+  # s "superpiano"
+  # octave 7
+  # decay 0.4
+  # room 0.5 # size 0.6
+  # gain 0.35
+]
+
+d3 $ stack [
+  rarely (# (octave 5 # gain 0.45)) $
+  off 0.15 (# (speed 0.3 # gain 0.35 # pan sine)) $
+  superimpose (# (octave 3 # room 0.85 # size 0.9 # gain 0.45)) $
+  n (scale "lydian" "~ 1 3 [~ 5] ~ [3 7] ~ [1 4]")
+  # s "supervibe"
+  # octave 8
+  # decay 0.3
+  # room 0.6 # size 0.7
+  # gain 1
+]

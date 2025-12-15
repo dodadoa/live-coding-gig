@@ -1,0 +1,3 @@
+linput = pI "linput"
+lname = pS "lname"
+recordSource = pS "recordSource"

@@ -13,7 +13,8 @@ d1
   $ stack [
     s "dr:1 dr:2*4 [dr:0*2 dr:1?] dr:2*4",
     s "808bd*2" # amp 1.2,
-    s "hh27*16"
+    s "hh27*16",
+    s "sub_hard_kick(5,8)"
   ]
 
 hush
@@ -21,9 +22,13 @@ hush
 d2
   $ degrade
   $ s "gabba*16"
+  -- # lpf 500
+  # speed rand
+  # octave "<6 7> <8 5>"
+  # distort 0.4
+  # lpf 700
   # room 0.1 # size 0.25
-  # lpf 500
-  # gain 1.1
+  # gain 1
 
 d7
   $ rarely (# s "plaits")
@@ -34,7 +39,7 @@ d7
   # room 0.3 # size 0.65
   # pan sine
   # octave 4
-  # c loudsgain 1.3 # cloudspitch 2
+  # cloudsgain 1.3 # cloudspitch 2
   # gain 1
 
 d7
@@ -134,12 +139,12 @@ d1 $ s "amencutup" <| n (shuffle 8 $ run 8)
     # gain 1.1
     # speed "{1,2,3}%8"
 
-d2 $ s "808bd*4" # gain 1.2
+d2 $ s "sub_hard_kick*4" # gain 1
 
 d5
   $ fast 4 $ whenmod 8 7 (slow 3) $ whenmod 4 3 (slow 2) $ whenmod 4 3 (# n (scale "chinese" "2 1 3 1"))
   $ n (scale "chinese" "4 3 2 1" ) # s "superpiano"
-  # octave 8 # room 0.4 # size 0.8 # hpf 2000 # gain 1
+  # octave 8 # room 0.4 # size 0.8 # hpf 2000 # gain 0.8
 
 d2
   $ s "808bass"
@@ -174,7 +179,7 @@ d4
   # octave 2
   # hpf 1500
   # room 0.3
-  # gain 1.2
+  # gain 1
 
 d6
   -- $ fast 2

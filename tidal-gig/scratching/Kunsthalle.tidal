@@ -1,0 +1,75 @@
+once $ s "looper" # n 1
+
+d1
+  $ superimpose ((chew 2 "2 3 4 5") . (# gain 0.4))
+  $ superimpose (# (distort 2 # gain 0.3))
+  $ superimpose (# (scram 2 # gain 0.7 # pan (slow 2 $ sine)))
+  $ superimpose (# (octave 10 # gain 0.5))
+  $ superimpose (# (octave 9 # gain 0.6))
+  $ jux (# octave 8)
+  $ jux (# octave 7)
+  $ jux (# octave 6)
+  $ jux (# octave 5)
+  $ s "loop"
+  # amp 12
+  # room 0.6 # size 0.7
+  # gain 0.8
+  # legato 2
+
+d2
+  -- $ ply 2
+  -- $ ply "4 2 8"
+  $ slow "2 1.25 1.5"
+  $ chew 2 "3*2 7 5 4*2"
+  $ superimpose (# (scram 0.5 # accelerate 0.5))
+  $ jux (# octave 3)
+  $ jux (# octave 4)
+  $ superimpose (# (distort 2 # gain 0.6))
+  $ s "loop*4" # n 1
+  # pan (slow 4 $ sine)
+  # octave 7
+  # clouds rand 0.4 0.4 0.9
+  # cloudsblend 0.6 0.4 0.6 0.8
+  -- # crush 10
+  # room 0.6 # size 0.8
+  # gain 0
+  # legato 4
+
+hush
+
+d2
+  $ whenmod 8 7 (# imag 2)
+  $ jux (# octave 6)
+  $ chew 4 "2*8 4 8 7"
+  $ s "loop" # n "0 1 2"
+  # scram 2
+  # room 0.6 # size 0.8
+  # pan (fast 4 $ cosine)
+  # gain 0
+
+d3
+  $ ply 2
+  $ every 2 (# accelerate 1.2)
+  $ jux (# speed 2)
+  $ sometimes (# (octave 8 # speed 1.2))
+  $ s "loop*2" # n 2
+  # crush 2 # distort 2
+  # room 0.3 # size 0.5
+  # gain 0
+  # legato 2
+
+d4
+  $ ghost
+  $ degradeBy 0.25
+  -- $ jux (# accelerate 2)
+  $ s "loop*16" # n "2 3"
+  # octave (6)
+  # release 0.25
+  # crush 4
+  # distort 1.5
+  # room 0.4 # size 0.7
+  # accelerate 2
+  # lpf 300
+  # pan rand
+  # gain 0
+  -- # legato 2

@@ -1,0 +1,42 @@
+once $ s "looper" # n 1
+
+d1
+  $ ghost
+  $ superimpose (# (speed 2 # octave 7 # accelerate 2))
+  $ superimpose (# (release 0.05 # gain 0.6 # octave 2) )
+  $ jux (rev)
+  $ sometimes (fast 2)
+  $ sometimes (# speed "2 3")
+  $ fast 2
+  $ s "loop loop ~ loop"
+  # n 0
+  # amp 1.2
+  # release 0.04
+  # octave 3
+  # crush 5
+  # distort 4
+  # room 0.5 # size 0.7
+  # gain 0.7
+  -- # lpf 500
+  # legato 4
+
+d2
+  $ chop "2"
+  $ striate 2
+  $ rarely (# pan sine)
+  $ jux (# octave 7)
+  $ sometimes (# accelerate 2)
+  $ s "loop"
+  # amp 0.6
+  # decay 0.2
+  # octave "6 8 9"
+  # release 0.65
+  # crush 2
+  # distort 1.4
+  # clouds 0.1 0.5 0.05 0.1
+  # cloudsblend 1 0.2 0.33 0.8
+  # pan (slow 2 $ sine)
+  # room 0.6 # size 0.8
+  # gain 1
+  # hpf 500
+  # gain "0.7 0.8 0.5 0.8"

@@ -1,0 +1,53 @@
+d5
+  $ ghost
+  $ sometimes (fast 2)
+  -- $ chop "4 2 3"
+  $ s "bass*8"
+  # n (scale "chinese" "0..7")
+  # gain 1.2
+
+d6 $ s "[indust_sn(5,8)] [sub_hard_kick 808ride]"
+  # gain 1.1
+
+once $ s "looper" # n 3
+
+d4
+  $ chop "4 2"
+  $ fast 2
+  $ s "loop:3"
+  # speed sine
+  # decay 0.4
+  # distort 1.2
+  # octave 8
+  # room 0.2 # size 0.3
+  # gain 0.9
+  # legato 2
+
+d1
+  $ whenmod 4 3 (jux (# (speed 2 # octave 6)))
+  $ jux (# (speed 2 # octave 5))
+  $ s "loop:0"
+  # decay 1
+  # speed sine
+  # room 0.8 # size 0.9
+  # gain 0.8
+  # legato 2
+
+d2
+  $ superimpose (chop "4 3 2")
+  $ jux (# octave 8)
+  $ s "loop:1"
+  # pan (slow 2 $ sine)
+  # octave 7
+  # room 0.8 # size 0.9
+  # gain 0.8
+
+d3
+  $ s "loop:2"
+  # octave 6
+  # accelerate 2
+  # distort 1.2
+  # room 0.2 # size 0.4
+  # gain 0.8
+  # crush 4
+  -- # hpf 3000

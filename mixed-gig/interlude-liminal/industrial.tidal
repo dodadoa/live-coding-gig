@@ -4,6 +4,7 @@ d1 $
   -- ply "4" $
   -- ply "2 3" $
   -- ply " 2 4" $
+  whenmod 4 3 (slow 2) $
   stack [
     slow 2 $
     n ("3 2 5 0")
@@ -12,6 +13,7 @@ d1 $
     # gain 1
     ,
     -- iter 2 $
+    whenmod 4 3 (fast 2) $
     slow 2 $
     ghost $
     sometimes (fast 2) $
@@ -45,19 +47,17 @@ d1 $
 d3
   -- $ ply "4 2"
   -- $ ply "2 3"
-  -- $ rarely (stutter 2 3)
-  -- $ slow "<2 1.5 1 -1 2>"
-  $ degradeBy 0.5
+  $ degradeBy 0.25
   $ stack [
     ghost $
-    echo 4 0.2 0.3 $
-    whenmod 4 3 (# (speed 2 # gain 1)) $
-    off 0.25 (slow 2) $
-    struct "t(11,16)" $ s "per" <| n (run 8)
-    # room 0.3 # size 0.4
+    echo 3 0.2 0.3 $
+    off 0.25 ((slow 2) . (# gain 0.6)) $
+    iter 16  $
+    struct "t(11,16)" $ s "superfm" <| n (run 16)
+    # room 0.2 # size 0.3
     -- # octave 5 # accelerate 2 # gain "<0.9 0.8> 0.9"
     # pan (every 2 (slow 2) $ fast 2 $ cosine)
-    # gain "<0.9 1> 1"
+    # gain 0.7
     -- # gain 0.8
   ]
 

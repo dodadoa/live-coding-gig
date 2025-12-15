@@ -1,0 +1,272 @@
+once $ s "looper" # n 0
+
+d1 $ s "loop" # gain 1
+
+d1
+  $ rarely (# accelerate 0.8)
+  $ rarely (# speed 2)
+  $ s "loop"
+  # release 0.5
+  -- # decay 0.4
+  # speed 2
+  -- # accelerate 2
+  # gain 1
+  # legato 1
+
+d1
+  $ rarely ghost
+  $ jux (# speed 0.2)
+  $ chew "2 4 7 8" "2 8 7 4*2"
+  $ superimpose (# octave 7)
+  $ echo 3 0.2 0.5
+  $ stutter 3 2
+  $ s "808bd"
+  # accelerate 5
+  # room 0.8 # size 0.5
+  # pan (slow 2 $ sine)
+  # gain 0.6
+
+once
+  $ superimpose (# octave 3)
+  $ superimpose (# room 0.7)
+  $ s "fx_scifi:5"
+  # speed 1
+  # release 2
+  # pan (slow 2 $ sine)
+  # gain 1
+  # legato 2
+
+d1 $ stack [
+  slow 8 $
+  striate 2 $
+  stutter 3 2 $
+  echo 2 0.5 0.5 $
+  jux (# speed 3) $
+  rarely (# speed 0.1) $
+  rarely (# accelerate 10) $
+  rarely (chew "2 5 5" "1 7 8*2") $
+  s "808oh*16"
+  # speed (-0.5)
+  # pan (fast 2 $ sine)
+  # room 1 # size 0.3
+  # gain 0
+  # legato 1
+  ,
+  slow 4 $
+  striate 2 $
+  -- stutter 3 2 $
+  echoWith 2 1 (# octave 5) $
+  echo 2 0.5 0.5 $
+  superimpose (# speed (-0.1)) $
+  -- chew "2 7 3 5*4" "1 5*3 6*2" $
+  s "waterstream*8"
+  # n (irand 8)
+  # amp 1
+  # release 2
+  # decay 1
+  # legato 2
+  # speed (0.5)
+  # room 0.3 # size 0.4
+  # octave 4
+  # pan (slow 2 $ sine)
+  # gain 0.3
+  ,
+  swing 0.5 $
+  echo 2 0.5 0.5 $
+  jux (# speed 2) $
+  chew "2 3*4 5 7" "8 7*3 2 5*2" $
+  s "808oh*16"
+  # speed 0.5
+  # octave 4
+  # accelerate (1.5 + rand)
+  # pan (slow 2 $ sine)
+  # gain 0.175
+]
+
+d1 $ stack [
+  slow 4 $
+  -- ply "3 2 3" $
+  echo 4 0.8 0.7 $
+  -- stutter 3 2 $
+  jux (# speed 0.2) $
+  sometimes (# accelerate 4) $
+  superimpose (# (octave 8 # pan (slow 2 $ cosine))) $
+  superimpose (# octave 4) $
+  -- superimpose (# (imag 0.3 # octave 1 # speed 0.8 )) $
+  chew "5 7 20" " 2 4*3 7/5 2*8 5*3" $
+    s "fx_scifi(3,8)"
+  # speed 1.4
+  # octave 9
+  # accelerate 0.5
+  # room 0.3 # size 0.5
+  # distort 2
+  # pan (slow 4 $ sine)
+  # gain 0.5
+  # legato 2
+]
+-- # silence
+
+once
+  $ superimpose (# room 0.7)
+  $ s "fx_scifi:1"
+  # speed 1
+  # release 2
+  # pan (slow 2 $ sine)
+  # gain 1
+  # legato 2
+
+d2
+  $ degrade
+  $ slow 8
+  $ chew "2 4*8" "2 3 8 1"
+  $ superimpose (# octave 4)
+  -- $ superimpose (# imag 0.5)
+  $ s "gong*4"
+  -- # n (irand 16)
+  # n (scale "minor" "4 2 3 8")
+  # release 4
+  # sustain 4
+  # octave 9
+  # room 0.2 # size 0.5
+  # pan (slow 4 $ sine)
+  # gain 0.9
+  # legato 1
+  -- # silence
+
+d1 $ stack [
+  slow 1 $
+  striate 2 $
+  swing 0.25 $
+  -- degrade $
+  rarely (# room 0.8) $
+  rarely (# accelerate 1.2) $
+  jux (# octave 6) $
+  s "fx_organic*16"
+  # speed 2
+  # accelerate "0.5 1 2 4"
+  # octave 7
+  # release 2
+  # room 0.6 # size 0.6
+  # pan (slow 4 $ sine)
+  # gain 0.25
+  # legato 2
+]
+
+d2
+  $ slow "<2 4 1.5 3>"
+  $ chew "7 2 4 6" "2 5*3 1 5"
+  $ s "sub_hard_kick*32"
+  # speed 2
+  # accelerate 4
+  # pan (slow 4 $ sine)
+  # gain 0.5
+
+d2
+  $ s "808hh*16"
+  # speed 2
+  # accelerate "2 4 8"
+  # pan (fast 4 $ sine)
+  # gain 1
+
+panic
+
+d2 $
+  fast 4 $
+  s "glitch*4"
+  # n "<2 2 2 5>"
+  # pan (fast 4 $ sine)
+  # speed 1.1
+  -- # octave 3
+  # gain 0.6
+  # legato 2
+
+all $ slow 8
+
+all
+  $ striate 2
+  . stutter 3 2
+  . (# (room 1 # size 1))
+  . (# gain 0)
+
+all $ id
+
+d1
+  -- $ fast 4
+  -- $ slow "<2 4 1.5 1.2>"
+  -- $ slow 2
+  -- $ degradeBy 0.5
+  -- $ chew "2*4 3 4*7" "2*8 3 5"
+  $ superimpose (# speed 2)
+  $ jux (# speed 1.5)
+  $ stack [
+    slow 4 $
+    -- chew "2*4 3 4*7" "2*8 3 5" $
+    echo 2 3 1 $
+    stutter 2 3 $
+    s "freejazz_stab"
+    # n (irand 16)
+    # decay 0.75
+    # gain 0.9
+    # speed 1.2
+    # legato 2
+    ,
+    fast 2 $
+    striate 2 $
+    -- chew "2*4 3 4*7" "2*8 3 5" $
+    s "freejazz_melodic"
+    # n (irand 16)
+    # decay 0.75
+    # gain 0.9
+    # speed 2
+    # legato 2
+    -- ,
+    -- chew "2*4 3 4*7" "2*8 3 5" $
+    -- s "freejazz_drum"
+    -- # n (irand 16)
+    -- # gain 0.9
+    -- -- # speed 1.2
+    -- # legato 1.5
+  ]
+  # pan (fast 2 $ sine)
+  # legato 1.5
+
+once
+  $ superimpose (# octave 4)
+  $ chew "2 4 4" "7 8*2 4 2"
+  $ s "freejazz_stab"
+  # n (irand 16)
+  # decay 0.35
+  # room 0.2
+  # pan (fast 4 $ sine)
+  # gain 1
+
+d1 $ 
+  slow 4 $
+  -- $ hurry 4
+  -- superimpose (# speed 0.5) $
+  -- jux (# speed (-0.5)) $
+  s "freejazz_drum"
+  # n (irand 16)
+  -- # accelerate 2
+  # decay 0.75
+  # gain 1
+  # legato 1
+
+panic
+
+d1
+  $ fast 2
+  $ s "freejazz_stab"
+  # n (irand 16)
+  -- # decay 0.75
+  # gain 1.2
+  # legato 1.5
+
+once
+  $ s "fx_scifi:3"
+  # release 2
+  # pan (slow 2 $ sine)
+  # gain 0.9
+  # legato 2
+
+panic

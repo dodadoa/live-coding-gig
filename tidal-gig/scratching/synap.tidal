@@ -1,0 +1,45 @@
+once $ s "looper" # n 1
+
+hush
+
+panic
+
+d1
+  -- $ ply 2
+  $ fast 2
+  $ stripe 2
+  $ smash' 4 [2,6,8,4]
+  $ sometimes (jux (# accelerate 2))
+  $ chop 4
+  $ sometimes (jux (# speed 1.5))
+  -- $ superimpose ((chew 2 "2 7*2 3 4") . (# gain 0.9))
+  $ superimpose (# (scram 2 # gain 1.1))
+  -- $ superimpose (# octave 7)
+  $ jux (# octave 6)
+  -- $ jux (# octave 9)
+  -- $ jux (# octave 8)
+  $ s "loop" # n 0
+  # amp 1.2
+  # clouds rand 0.4 0.3 0.5
+  # cloudsblend 0.3 0.3 0.8 0.6
+  # room 0.4 # size 0.5
+  -- # octave 4
+  -- # speed (-2)
+  # accelerate 2
+  -- # gain (range 0 1.2 sine)
+  # gain 0
+  # legato 4
+
+d2
+  $ superimpose (# speed 2)
+  $ jux (# octave 6)
+  $ jux (# octave 4)
+  $ s "loop" # n 1
+  # amp 2
+  # octave 5
+  # room 0.4 # size 0.7
+  # pan (slow 2 $ sine)
+  # scram 2
+  -- # distort 0.4
+  -- # lpf 600
+  # gain 0
