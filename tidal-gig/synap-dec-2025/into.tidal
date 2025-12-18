@@ -1,0 +1,36 @@
+setcps (130/60/4)
+
+d1
+  $ slow 2 -- 1,2,3,4
+  -- $ slow "<2 3 1? 4>"
+  $ echo 2 4 1
+  $ iter 4
+  -- $ loopAt "<0.3 0.2 0.5 0.1>"
+  $ loopAt "0.3 0.2 0.5 0.1"
+  $ randcat [
+    s "indust_sn*4,per*2",
+    s "sophie_percussion*4,808shot*2",
+    s "808oh*6,freejazz_stab*2"
+  ]
+  -- $ s "indust_sn"
+  # n (irand 8)
+  # release 1.5
+  # decay 1
+  # room 0.2 # size 0.3
+  # gain 0.85
+
+setcps (130/60/4)
+
+d3
+  $ striate 2
+  $ echo 4 4 1
+  $ sometimes (# speed 3)
+  $ rarely (# speed (-1))
+  $ loopAt "0.2 0.1 0.3 0.5"
+  $ iter 4
+  $ s "fx_scifi"
+  # speed 2
+  # decay 0.6
+  # release 0.45
+  # gain 0.65
+  # pan "<0.1 0.9>"

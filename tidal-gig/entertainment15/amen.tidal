@@ -57,12 +57,12 @@ d3
   stack [
   whenmod 4 3 (# octave 5) $
   n (struct "t t t ~ t t t ~" (scale "lydian" "0 2 4 2"))
-  # s "zonta"
+  # s "superpiano"
   # room 0.4 # size 0.5
   # gain 0.8,
   rolled $
   n (struct "t t ~ t ~ t t t" (scale "lydian" "1 4 4 3"))
-  # s "uou"
+  # s "superchip"
   # room 0.5 # size 0.6
   # gain 0.8
 ]
