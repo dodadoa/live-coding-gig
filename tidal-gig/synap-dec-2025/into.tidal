@@ -1,36 +1,38 @@
 setcps (130/60/4)
 
 d1
+  -- $ hurry 4
+  -- $ ply 2
   $ slow 2 -- 1,2,3,4
+  -- $ fastGap 2
   -- $ slow "<2 3 1? 4>"
   $ echo 2 4 1
-  $ iter 4
-  -- $ loopAt "<0.3 0.2 0.5 0.1>"
-  $ loopAt "0.3 0.2 0.5 0.1"
+  -- $ chunk 4 (slow 2)
+  -- $ iter 4 $ rot 2
+  -- $ smash 2 [0.2, 0.3, 0.4]
+  $ loopAt "<0.3 0.2 0.5 0.1>"
+  -- $ loopAt "0.3 0.2 0.5 0.1"
+  -- $ fast 2 $ loopAt 1 $ chop 8
   $ randcat [
-    s "indust_sn*4,per*2",
-    s "sophie_percussion*4,808shot*2",
+    s "indust_sn*4,per*2"
+    ,
+    s "sophie_percussion*4,808shot*2"
+    ,
     s "808oh*6,freejazz_stab*2"
+    ,
+    s "sub_hard_kick*4,gabba*2"
+    ,
+    s "proc*1,glitch*4"
+    ,
+    s "fx_laser*2,fx_scifi"
+    ,
+    s "fx_organic,drone"
   ]
-  -- $ s "indust_sn"
-  # n (irand 8)
+  -- $ s "indust_sn*4"
+  # n (irand 16)
   # release 1.5
   # decay 1
   # room 0.2 # size 0.3
-  # gain 0.85
+  # gain 1
 
 setcps (130/60/4)
-
-d3
-  $ striate 2
-  $ echo 4 4 1
-  $ sometimes (# speed 3)
-  $ rarely (# speed (-1))
-  $ loopAt "0.2 0.1 0.3 0.5"
-  $ iter 4
-  $ s "fx_scifi"
-  # speed 2
-  # decay 0.6
-  # release 0.45
-  # gain 0.65
-  # pan "<0.1 0.9>"

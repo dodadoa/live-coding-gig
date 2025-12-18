@@ -74,14 +74,14 @@ $ stack [
   off 0.01 (struct "t*4 ~" . (# octave 6)) $
   s "sub_hard_kick:2"
   # gain 0.8,
-  s "808bass:4*1 ~" # gain 0.7,
+  s "808bass:4*1 ~" # gain 0.75,
   s "~ 808bass:0*2" # gain 0.75
 ]
 
 d2
 -- $ slow 2
 -- $ hurry 2
--- $ ply 4
+-- $ ply 2
 $ stack [
   slow 2 $
   echo 2 0.5 0.5 $
@@ -92,7 +92,7 @@ $ stack [
   # room 0.3
   # decay 0.2
   # release 0.5
-  # gain 0.85
+  # gain 0.875
   ,
   rarely (# octave 5) $
   echo 4 0.5 0.5 $
@@ -110,10 +110,9 @@ $ stack [
   superimpose (# (hpf 2000 # gain 0.75)) $
   struct "t*2 t*2 t*2 t*2" (n "ef'minor9 gf'major7 ef'minor9 bf'11")
   # s "supersaw"
-  -- # sustain 1
   # decay 0.5
   # room 0.4 # size 0.5
-  # gain 0.65
+  # gain 0.75
 ]
   -- # djf sine
 
@@ -162,8 +161,6 @@ d3
     # gain 0.9
   ]
 
-setcps (130/60/4)
-
 d1
 -- $ ply 2
 $ stack [
@@ -191,22 +188,26 @@ $ stack [
   # gain 0.55
 ]
 
-d3
+d4
 $ stack [
   slow 2 $
-  fast 8 $
+  -- fast 4 $
   stutter 1 0.5 $
+  whenmod 8 7 (# n (scale "lydian" "[[3 1] [2 4] [4 5] [8 8 8 8]]")) $
   whenmod 4 3 (# n (scale "lydian" "3 [1 2] 4 [8 7]")) $
   superimpose (# (octave 5 # gain 0.7)) $
   n (scale "lydian" "3 [1 7] 6 5")
-  # s "superfm"
+  -- n (scale "lydian" "[[3 1] [2 4] [4 5] [8 8 8 8]]")
+  # s "superpiano"
   # octave 4
-  # attack 0.3
+  # decay 0.2
+  # sustain 0.5
+  # release 0.45
   # octave 7
   # distort 1.2
-  # release 0.4
-  # gain 0.75
-  # gain 0.85
+  # room 0.5 # size 0.3
+  # gain 0.8
+  # hpf 300
 ]
 
 setcps (165/60/4)
@@ -295,18 +296,19 @@ d1
   -- $ ply "<1 2 1 1>"
   $ stack [
     ghost $
-    n (struct "~ ~ ~ ~ ~ ~ ~ t*2" (irand 10)) # s (randcat["indust_sn", "808sn"]) # coarse 2 # gain 0.8
+    n (struct "~ ~ t ~ t [t t] ~ t*2" (irand 10)) # s (randcat["indust_sn", "808sn"])
+    # gain 1
     ,
     whenmod 8 7 (ply "1 2" ) $
-    fast 2 $
     someCyclesBy 0.2 (# accelerate 0.1) $
     whenmod 4 3 (# pan (fast 2 $ sine))
-    "amencutup(15,16)" <| n (shuffle 8 $ run 8)
+    "amencutup(15,16)" # amp 1
+    <| n (shuffle 8 $ run 8)
     # room 0.2 # size 0.4
     # speed 1.2
     # gain 1
     ,
-    s "808kick*4" # gain 1.1
+    s "sub_hard_kick:4*4" # gain 1
   ]
 
 
@@ -400,7 +402,6 @@ d2
   $ ghost
   $ echo 4 0.5 0.2
   $ every 2 (rev)
-  -- $ jux rev
   -- $ rot 4 $ iter 4
   $ superimpose (rolled . (# (n "<ds'dim e'maj c'maj fs'min>" # octave 6 # room 0.6 # size 0.8 # gain 0.6)))
   $ whenmod 4 3 (fast 2) $
@@ -428,19 +429,34 @@ d2
 
 d1
   -- $ hurry 4
+  -- $ ply 2
   $ slow 2 -- 1,2,3,4
+  -- $ fastGap 2
   -- $ slow "<2 3 1? 4>"
   $ echo 2 4 1
-  $ iter 4
-  -- $ loopAt "<0.3 0.2 0.5 0.1>"
-  $ loopAt "0.3 0.2 0.5 0.1"
-  -- $ randcat [
-  --   s "indust_sn*4,per*2",
-  --   s "sophie_percussion*4,808shot*2",
-  --   s "808oh*6,freejazz_stab*2"
-  -- ]
-  $ s "indust_sn*4"
-  # n (irand 8)
+  -- $ chunk 4 (slow 2)
+  $ iter 4 $ rot 2
+  -- $ smash 2 [0.2, 0.3, 0.4]
+  $ loopAt "<0.3 0.2 0.5 0.1>"
+  -- $ loopAt "0.3 0.2 0.5 0.1"
+  -- $ fast 2 $ loopAt 1 $ chop 8
+  $ randcat [
+    s "indust_sn*4,per*2"
+    ,
+    s "sophie_percussion*4,808shot*2"
+    ,
+    s "808oh*6,freejazz_stab*2"
+    ,
+    s "sub_hard_kick*4,gabba*2"
+    ,
+    s "proc*1,glitch*4"
+    ,
+    s "fx_laser*2,fx_scifi"
+    ,
+    s "fx_organic,drone"
+  ]
+  -- $ s "indust_sn*4"
+  # n (irand 16)
   # release 1.5
   # decay 1
   # room 0.2 # size 0.3
