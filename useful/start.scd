@@ -3,9 +3,12 @@
 include("SuperDirt");
 
 (
-s.options.memSize = 8192 * 32;
-s.options.numBuffers = 1024 * 32;
+s.options.numBuffers = 1024 * 256;
+s.options.memSize = 8192 * 16;
 s.options.maxNodes = 1024 * 32;
+s.options.numOutputBusChannels = 8; // total number of channels output
+s.options.numInputBusChannels = 2;
+
 // s.options.inDevice_("MME : Microphone (Volt 2)");
 // s.options.outDevice_("MME : Speakers (Volt 2)");
 // s.options.inDevice_("MME : Line (Komplete Audio 2)");
@@ -25,10 +28,10 @@ s.waitForBoot {
 	// ~looper = TidalLooper(~dirt);
 	// ~looper = TidalLooper(~dirt);
 
-	// load("C:\\Users\\maddo\\AppData\\Local\\SuperCollider\\synthdefs\\mi-ugens.scd");
+	load("C:\\Users\\maddo\\AppData\\Local\\SuperCollider\\synthdefs\\mi-ugens.scd");
 	~dirt.loadSoundFiles("C:\\Users\\maddo\\AppData\\Local\\SuperCollider\\downloaded-quarks\\Dirt-Samples\\*");
 	// ~dirt.loadSoundFiles("C:\\Users\\maddo\\AppData\\Local\\SuperCollider\\samples\\*");
-	//~dirt.loadSoundFiles("C:\\Users\\maddo\\AppData\\Local\\SuperCollider\\samples\\amb_glitch\\one-shots\\*");
+	//~dirt.loadSoundFiles("C:\\Users\\maddo\\AppData\\Local\\SuperCollider\\samples\\amb_glitch\\one-shots\\*");`
 	//~dirt.loadSoundFiles("C:\\Users\\maddo\\AppData\\Local\\SuperCollider\\samples\\amb_glitch\\one-shots\\drum_hits\\*");
 	//~dirt.loadSoundFiles("C:\\Users\\maddo\\AppData\\Local\\SuperCollider\\samples\\fx\\*");
 	// ~dirt.loadSoundFiles("C:\\Users\\maddo\\AppData\\Local\\SuperCollider\\samples\\kick\\*");

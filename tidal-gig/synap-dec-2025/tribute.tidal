@@ -1,0 +1,97 @@
+setcps (130/60/4)
+
+d1
+  -- $ hurry 2
+  -- $ ply 2
+  $ slow 2 -- 1,2,3,4
+  -- $ fastGap 2
+  -- $ slow "<2 3 1? 4>"
+  $ echo 2 4 1
+  -- $ chunk 4 (slow 2)
+  -- $ iter 4 $ rot 2
+  -- $ smash 2 [0.2, 0.3, 0.4]
+  $ loopAt "<0.3 0.2 0.5 0.1>"
+  -- $ loopAt "0.3 0.2 0.5 0.1"
+  -- $ fast 2 $ loopAt 1 $ chop 8
+  $ randcat [
+    s "indust_sn*4,per*2"
+    -- ,
+    -- s "sophie_percussion*4,808shot*2"
+    -- ,
+    -- s "808oh*6,freejazz_stab*2"
+    ,
+    s "sub_hard_kick*4,gabba*2"
+    -- ,
+    -- s "proc*1,glitch*4"
+    -- ,
+    -- s "fx_laser*2,fx_scifi"
+    ,
+    s "fx_organic,drone"
+    ,
+    s "mo_perc*4,mo_snare*4"
+  ]
+  -- $ s "indust_sn*4"
+  # n (irand 16)
+  # release 1.5
+  # decay 1
+  # room 0.2 # size 0.3
+  # gain 1
+
+d2
+  $ degradeBy 0.9
+  $ echo 2 4 1
+  $ loopAt "<0.1 0.4 0.3 0.6>"
+  $ randcat [
+    off 0.1 (# octave 5)
+    $ off 0.15 (# (octave 7 # gain 0.5))
+    $ rot 4 $ iter 4
+    $ sometimes (# n ("1? 2? 3? 4? 5? 6? 7? 8?"))
+    $ sometimes (# n ((scale "minor" "1? 2? 3? 4? 5? 6? 7? 8?")))
+    $ n (stretch (scale "lydian" "1? 2? 3? 4? 5? 6? 7? 8?"))
+    # s "tides*4"
+    # octave 6
+    # clouds 0.4 0.95 0.8 0.7
+    # verb 0.9 0.7 0.6 "0.3 0.1 0.1 0.1"
+    # legato 1
+    # amp 0.35,
+    s "mo_tonal*8"
+    # n (irand 16)
+  ]
+  # release 1.5
+  # decay 1
+  # room 0.2 # size 0.3
+  # gain 1
+
+d3
+  $ s "mo_bass*2"
+  # n (irand 16)
+  # gain 0.7
+
+d4
+  $ degrade
+  -- $ hurry 2
+  -- $ ply 2
+  $ slow 2 -- 1,2,3,4
+  -- $ fastGap 2
+  -- $ slow "<2 3 1? 4>"
+  $ echo 2 4 1
+  -- $ chunk 4 (slow 2)
+  -- $ iter 4 $ rot 2
+  -- $ smash 2 [0.2, 0.3, 0.4]
+  $ loopAt "<0.3 0.2 0.5 0.1>"
+  -- $ loopAt "0.3 0.2 0.5 0.1"
+  -- $ fast 2 $ loopAt 1 $ chop 8
+  $ randcat [
+    s "mo_fx*4"
+  ]
+  # n (irand 16)
+  # release 1.5
+  # decay 1
+  # room 0.2 # size 0.3
+  # gain 0.85
+
+panic
+
+setcps (130/60/4)
+
+--------------------------------------

@@ -1,0 +1,21 @@
+d2
+  $ degradeBy 0.9
+  $ fast 2
+  $ off 0.1 (# octave 5)
+  $ off 0.15 (# (octave 7 # gain 0.5))
+  $ superimpose (loopAt "<0.2 0.4 0.6 0.1>")
+  $ off 0.05 (# (octave 3 # gain 0.85))
+  $ rot 4 $ iter 4
+  $ sometimes (# n (scale "minor" "1 2@2 3 4 7 8@2"))
+  $ n (scale "lydian" "1 2@2 3 4 8 7@2")
+  # s "omi"
+  # octave 4
+  # clouds 0.9 0.45 0.6 0.3
+  # rings 200 rand 0.7 0.5 rand # ringsmodel "0 1"
+  # verb 0.6 1 0.1 0.1
+  # room 0.3 # size 0.4
+  # sustain 1.2
+  # gain 0.8
+  # legato 2
+
+panic

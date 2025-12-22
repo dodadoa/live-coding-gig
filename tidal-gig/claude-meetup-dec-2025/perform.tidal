@@ -441,8 +441,8 @@ d1
   -- $ slow "<2 3 1? 4>"
   $ echo 2 4 1
   -- $ chunk 4 (slow 2)
-  $ iter 4 $ rot 2
-  -- $ smash 2 [0.5, 0.3, 0.4] -- . (# hpf 100)
+  -- $ iter 4 $ rot 2
+  -- $ smash 2 [0.2, 0.3, 0.4]
   $ loopAt "<0.3 0.2 0.5 0.1>"
   -- $ loopAt "0.3 0.2 0.5 0.1"
   -- $ fast 2 $ loopAt 1 $ chop 8
