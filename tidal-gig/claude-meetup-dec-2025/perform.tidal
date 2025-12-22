@@ -1,5 +1,7 @@
 setcps (50/60/4)
 
+d1 $ s "bd*4"
+
 d1
 $ sometimes (# accelerate 1.2)
 $ echo 4 0.5 0.5
@@ -77,6 +79,7 @@ $ stack [
   s "808bass:4*1 ~" # gain 0.75,
   s "~ 808bass:0*2" # gain 0.75
 ]
+  # djf 0.5
 
 d2
 -- $ slow 2
@@ -93,16 +96,16 @@ $ stack [
   # decay 0.2
   # release 0.5
   # gain 0.875
-  ,
-  rarely (# octave 5) $
-  echo 4 0.5 0.5 $
-  jux (# octave 4) $
-  off 0.25 (# (distort 0.5 # room 0.9 # gain 0.5)) $
-  superimpose (# (s "supersaw" # room 0.3 # decay 0.2 # gain 0.4)) $
-  struct "~ [t t]*2 t [t t]" (n "ef'minor9 bf'major9 ef'minor9 bf'major9")
-  # (s "superpiano")
-  # room 0.4 # size 0.6
-  # gain 0.7
+  -- ,
+  -- rarely (# octave 5) $
+  -- echo 4 0.5 0.5 $
+  -- jux (# octave 4) $
+  -- off 0.25 (# (distort 0.5 # room 0.9 # gain 0.5)) $
+  -- superimpose (# (s "supersaw" # room 0.3 # decay 0.2 # gain 0.4)) $
+  -- struct "~ [t t]*2 t [t t]" (n "ef'minor9 bf'major9 ef'minor9 bf'major9")
+  -- # (s "superpiano")
+  -- # room 0.4 # size 0.6
+  -- # gain 0.7
   ,
   echo 4 0.5 0.5 $
   jux (# octave 4) $
@@ -120,10 +123,11 @@ d1
 -- $ ply 2
 -- $ striate 2
 -- $ fast 2
+-- $ slow 2
 -- $ hurry 2
 $ stack [
   s "sub_hard_kick:3(4,8)" # gain 0.85,
-  -- s "[808oh:6*4,~ indust_sn:4*2]" # room 0.4 # gain 0.9,
+  s "[808oh:6*4,~ indust_sn:4*2]" # room 0.4 # gain 0.9,
   s "glitch:6*2" # pan (fast 2 $ sine),
   ghost $
   s "[808bd:1 808sn]!2" # room 0.2 # gain 0.9,
@@ -196,8 +200,8 @@ $ stack [
   whenmod 8 7 (# n (scale "lydian" "[[3 1] [2 4] [4 5] [8 8 8 8]]")) $
   whenmod 4 3 (# n (scale "lydian" "3 [1 2] 4 [8 7]")) $
   superimpose (# (octave 5 # gain 0.7)) $
-  n (scale "lydian" "3 [1 7] 6 5")
-  -- n (scale "lydian" "[[3 1] [2 4] [4 5] [8 8 8 8]]")
+  -- n (scale "lydian" "3 [1 7] 6 5")
+  n (scale "lydian" "[[3 1] [2 4] [4 5] [8 8 8 8]]")
   # s "superpiano"
   # octave 4
   # decay 0.2
@@ -390,12 +394,14 @@ d3
   # gain 0.5
 
 d1 $ stack [
-  "sub_hard_kick:1*4,808kick:1*8" # gain 0.9,
+  "[sub_hard_kick:1*4,808kick:1*8]" # gain 0.9,
   whenmod 4 3 (fast 2) $ s "[~ indust_sn]*2",
   ghost $ "808hh(15,16)" # room 0.1 # size 0.7 # gain 0.9,
   s "808cp:2 ~ 808cp:4(3,4) ~" # speed 1.35 # gain 0.9,
   s "808bass*2" # gain 0.8
 ]
+
+xfade 1 $ silence
 
 d2
   $ slow 2
@@ -436,24 +442,24 @@ d1
   $ echo 2 4 1
   -- $ chunk 4 (slow 2)
   $ iter 4 $ rot 2
-  -- $ smash 2 [0.2, 0.3, 0.4]
+  -- $ smash 2 [0.5, 0.3, 0.4] -- . (# hpf 100)
   $ loopAt "<0.3 0.2 0.5 0.1>"
   -- $ loopAt "0.3 0.2 0.5 0.1"
   -- $ fast 2 $ loopAt 1 $ chop 8
   $ randcat [
-    s "indust_sn*4,per*2"
+    s "[indust_sn*4,per*2]"
     ,
-    s "sophie_percussion*4,808shot*2"
+    s "[sophie_percussion*4,808shot*2]"
     ,
-    s "808oh*6,freejazz_stab*2"
+    s "[808oh*6,freejazz_stab*2]"
     ,
-    s "sub_hard_kick*4,gabba*2"
+    s "[sub_hard_kick*4,gabba*2]"
     ,
-    s "proc*1,glitch*4"
+    s "[proc*1,glitch*4]"
     ,
-    s "fx_laser*2,fx_scifi"
+    s "[fx_laser*2,fx_scifi]"
     ,
-    s "fx_organic,drone"
+    s "[fx_organic,drone]"
   ]
   -- $ s "indust_sn*4"
   # n (irand 16)
