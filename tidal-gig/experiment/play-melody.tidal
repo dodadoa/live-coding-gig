@@ -1,0 +1,24 @@
+d1
+  $ slow 2
+  $ jux (# octave 3)
+  $ every 4 (echo 2 4 1)
+  $ swing 1.05
+  $ sometimes (# accelerate 2)
+  $ sometimes (# octave 6)
+  $ someCycles (fast 2 . (# (octave 8 # release 0.1)))
+  -- $ loopAt "<8 4 6.28 12>"
+  $ randcat [s "superpiano*16" , s "supersaw*8", s "superfm*4", s "supersquare*4"]
+  # release 0.225
+  -- # distort "<1.2 0.25 0.5 0.9>"
+  # size 0.3 # room 0.8
+  # n (irand 32)
+  # gain 0.75
+
+d2
+  $ swing 1.05
+  $ superimpose (# octave 3)
+  $ s "superfm*16"
+  # n (irand 8)
+  # octave 7
+  # release 0.1
+  # gain 0.8

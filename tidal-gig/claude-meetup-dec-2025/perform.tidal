@@ -391,7 +391,7 @@ d3
   # hpf 1000
   # room 0.2
   # size 0.3
-  # gain 0.5
+  # gain 0.8
 
 d1 $ stack [
   "[sub_hard_kick:1*4,808kick:1*8]" # gain 0.9,

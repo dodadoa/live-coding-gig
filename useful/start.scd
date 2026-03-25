@@ -6,7 +6,7 @@ include("SuperDirt");
 s.options.numBuffers = 1024 * 256;
 s.options.memSize = 8192 * 16;
 s.options.maxNodes = 1024 * 32;
-s.options.numOutputBusChannels = 8; // total number of channels output
+s.options.numOutputBusChannels = 2; // total number of channels output
 s.options.numInputBusChannels = 2;
 
 // s.options.inDevice_("MME : Microphone (Volt 2)");
@@ -15,15 +15,15 @@ s.options.numInputBusChannels = 2;
 // s.options.outDevice_("MME : Line (Komplete Audio 2)");
 // s.options.inDevice_("ASIO : JackRouter");
 // s.options.outDevice_("ASIO : JackRouter");
-// s.options.inDevice_("MME : Microphone (US-2x2 HR)");
-// s.options.outDevice_("MME : Speakers (US-2x2 HR)");
+s.options.inDevice_("MME : Microphone (US-2x2 HR)");
+s.options.outDevice_("MME : Speakers (US-2x2 HR)");
 )
 
 
 (
 s.waitForBoot {
     ~dirt = SuperDirt(2, s);
-    ~dirt.start(57120, 0 ! 14);
+	~dirt.start(57120);
 	// ~dirt.loadSoundFiles("/Users/wasawat.som.adm/Library/Application Support/SuperCollider/downloaded-quarks/Dirt-Samples/*")
 	// ~looper = TidalLooper(~dirt);
 	// ~looper = TidalLooper(~dirt);
