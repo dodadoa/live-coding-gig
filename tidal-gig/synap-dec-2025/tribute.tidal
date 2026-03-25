@@ -1,4 +1,27 @@
-setcps (130/60/4)
+setcps (100/60/4)
+
+panic
+
+d3
+  $ degradeBy 0.95
+  $ fast 2
+  $ off 0.1 (# octave 5)
+  $ off 0.15 (# (octave 7 # gain 0.5))
+  $ off 0.05 (# (octave 3 # gain 0.85))
+  $ rot 4 $ iter 4
+  $ sometimes (# n (scale "minor" "1 2@2 3 4 7 8@2"))
+  $ n (scale "lydian" "1 2@2 3 4 8 7@2")
+  # s "omi"
+  # octave 4
+  # clouds 0.9 0.45 0.6 0.3
+  # rings 200 rand 0.7 0.5 rand # ringsmodel "0 1"
+  # verb 0.6 1 0.1 0.1
+  # room 0.3 # size 0.4
+  # sustain 1
+  # orbit 1
+  # gain 1
+  # legato 2
+
 
 import Prelude hiding (all)
 
@@ -59,6 +82,110 @@ d2
   $ degradeBy 0.75
   $ slow 2
   $ echo 2 4 1
+  $ jux rev
+  $ hurry 2
+  $ ply 2
+  -- $ degradeBy 0.25
+  $ fast 2
+  $ brak
+  $ slow 2 -- 1,2,3,4
+  -- $ fastGap 2
+  -- $ slow "<2 3 1? 4>"
+  $ echo 2 4 1
+  $ superimpose (# octave 6)
+  $ superimpose (# (imag 8 # gain 0.8))
+  $ chunk 4 (slow 2)
+  $ iter 4 $ rot 2
+  $ smash 2 [0.2, 0.3, 0.4]
+  -- $ loopAt "<0.3 0.2 0.5 0.1>"
+  $ loopAt "<0.3 0.5>"
+  -- $ loopAt "0.3 0.2 0.5 0.1"
+  $ fast 2 $ loopAt 1 $ chop 8
+  $ randcat [
+    s "[indust_sn*8,per*2]"
+      ,
+    s "[sophie_percussion*8,808shot*2]"
+    ,
+    -- s "[808oh*6,freejazz_stab*2]"
+    -- ,
+    -- s "[sub_hard_kick*4,gabba*2]"
+    -- ,
+    -- s "[proc*1,glitch*4]"
+    -- ,
+    -- s "[fx_laser*2,fx_scifi]"
+    -- ,
+    -- s "[mo_perc*8,mo_snare*4]"
+    -- ,
+    -- s "[mo_fx*2, mo_tonal*2]"
+    -- ,
+    -- s "[808bass*2, bass*4]"
+    -- ,
+    s "[808sn*4, gabba*8]"
+  ]
+  -- $ s "indust_sn*4"
+  # n (irand 16)
+  # release 1.5
+  # decay 1
+  # speed "1 2 4"
+  -- # room 0.2 # size 0.3
+  # gain 1
+  -- # hpf 3000
+  # orbit 0
+  -- # pan sine
+
+d2 $ s "sub_hard_kick:3*2" # gain 0
+
+d3
+  $ s "mo_bass*2"
+  # n (irand 16)
+  # gain 0.7
+  # orbit 1
+
+panic
+
+d4
+  -- $ degradeBy 0.9
+  $ echo 2 4 1
+  $ loopAt "<0.1 0.4 0.3 0.6>"
+  $ randcat [
+    -- off 0.1 (# octave 5)
+    -- $ off 0.15 (# (octave 7 # gain 0.5))
+    -- $ rot 4 $ iter 4
+    -- $ sometimes (# n ("1? 2? 3? 4? 5? 6? 7? 8?"))
+    -- $ sometimes (# n ((scale "minor" "1? 2? 3? 4? 5? 6? 7? 8?")))
+    -- $ n (stretch (scale "lydian" "1? 2? 3? 4? 5? 6? 7? 8?"))
+    -- # s "tides*4"
+    -- # octave 6
+    -- # clouds 0.4 0.95 0.8 0.7
+    -- # verb 0.9 0.7 0.6 "0.3 0.1 0.1 0.1"
+    -- # legato 1
+    -- # amp 0.35
+    -- ,
+    s "mo_tonal*4"
+    # n (irand 16)
+    ,
+    s "[fx_organic*2,drone*2]"
+  ]
+  # release 1.5
+  # decay 1
+  # room 0.2 # size 0.3
+  # gain 1
+  # hpf 2000
+  # orbit 1
+  # pan (slow 2 sine)
+
+
+d4
+  $ degrade
+  -- $ hurry 2
+  -- $ ply 2
+  $ slow 2 -- 1,2,3,4
+  -- $ fastGap 2
+  -- $ slow "<2 3 1? 4>"
+  $ echo 2 4 1
+  -- $ chunk 4 (slow 2)
+  -- $ iter 4 $ rot 2
+  -- $ smash 2 [0.2, 0.3, 0.4]
   $ loopAt "<0.3 0.2 0.5 0.1>"
   $ randcat [
     s "mo_fx*4,808oh*2",
@@ -71,6 +198,19 @@ d2
   # n (irand 32) # release 1.5 # decay 1 # gain 1
   -- # clouds 0.3 rand 0 0.4 # cloudsblend 0.1 rand 0.1 0
   # orbit 2 # pan (slow 2 sine)
+    s "mo_fx*4"
+    ,
+    s "laser*4"
+    ,
+    s "proc*4"
+  ]
+  # n (irand 16)
+  # release 1.5
+  # decay 1
+  # room 0.2 # size 0.3
+  # gain 0.85
+  # orbit 1
+  # pan (slow 2 $ sine)
 
 panic
 
